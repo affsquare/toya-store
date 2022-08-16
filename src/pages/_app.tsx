@@ -5,15 +5,21 @@ import { MobileMenuProvider } from "@lib/context/mobile-menu-context"
 import { StoreProvider } from "@lib/context/store-context"
 import { CartProvider, MedusaProvider } from "medusa-react"
 import { Hydrate } from "react-query"
+
 import '../../node_modules/@fortawesome/fontawesome-free/css/all.min.css'
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import "styles/globals.css"
-// import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.js'
 import '../../node_modules/@fortawesome/fontawesome-free/js/all.min.js'
 import { AppPropsWithLayout } from "types/global"
+// import { Layout } from '@modules/layout/templates';
+import {  useLayoutEffect } from 'react';
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page)
+  
+  useLayoutEffect(()=>{
+    import("../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js")
+  })
 
   return (
     <MedusaProvider

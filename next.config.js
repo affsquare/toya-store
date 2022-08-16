@@ -5,8 +5,12 @@ module.exports = withStoreConfig({
   features: store.features,
   reactStrictMode: true,
   images: {
-    domains: ["medusa-public-images.s3.eu-west-1.amazonaws.com", "localhost"],
+    //domains: ["medusa-public-images.s3.eu-west-1.amazonaws.com", "localhost"],
+    domains: ["http://192.168.1.10:9000"],
   },
 })
+
+
+
 
 console.log("next.config.js", JSON.stringify(module.exports, null, 2))

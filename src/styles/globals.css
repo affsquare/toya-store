@@ -1,8 +1,13 @@
+*::selection{
+  color: #fff;
+  background-color: rgba(174, 100, 76, 1);
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer utilities {
+
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -13,16 +18,18 @@
   }
 
   .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 
-  input:focus ~ label,
-  input:not(:placeholder-shown) ~ label {
-    @apply -translate-y-2 text-xsmall-regular; 
+  input:focus~label,
+  input:not(:placeholder-shown)~label {
+    @apply -translate-y-2 text-xsmall-regular;
   }
 
-  input:focus ~ label {
+  input:focus~label {
     @apply left-0;
   }
 
@@ -55,7 +62,7 @@
   }
 
   .contrast-btn {
-    @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
+    @apply px-4 py-2 border border-black rounded-full hover: bg-black hover:text-white transition-colors duration-200 ease-in;
   }
 
   .text-xsmall-regular {
@@ -111,3 +118,190 @@
   }
 }
 
+/* Start FeaturedProducts */
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1280px !important;
+  }
+}
+
+@media (min-width: 1680px) {
+  .container {
+    max-width: 1280px !important;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1280px !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1280px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px !important;
+  }
+}
+
+.nav-item a:hover {
+  padding-bottom: 3px;
+  color: rgba(174, 100, 76, 1) !important;
+  border-bottom: 2px solid rgba(174, 100, 76, 1)
+}
+
+.header-categories {
+  color: rgba(174, 100, 76, 1);
+  font-weight: bolder;
+  font-size: 30px;
+  letter-spacing: 10px;
+}
+
+.header-line {
+  width: 100%;
+  height: 3px;
+  background-color: rgba(174, 100, 76, 1);
+}
+
+.img img,
+.img-component img {
+  transition: all 0.3s ease;
+}
+
+.categories-components:hover .img img,
+.enjoy-time-saving:hover .img-component img,
+.men-best-selling:hover .img-component img,
+.sale-up:hover .img-component img{
+  cursor: pointer;
+  -webkit-transform: scale3d(1.05, 1.05, 1.05);
+  transform: scale3d(1.05, 1.05, 1.05);
+}
+
+/* End FeaturedProducts */
+
+/* Start Best Seller */
+.bestSeller {
+  background-image: url('../../public/Rectangle-1876.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+
+.best-head,
+.best-span,
+.card-title-price,
+.blog-head {
+  color: rgba(174, 100, 76, 1);
+}
+
+.best-span,
+.blog-head {
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.nav-pills .nav-link.active {
+  border-bottom: 2px solid rgba(174, 100, 76, 1);
+  border-radius: 0;
+}
+
+.nav-link, .card-title span {
+  color: #707070;
+}
+
+.nav-link:hover, .card-title span:hover {
+  color: rgba(174, 100, 76, 1);
+}
+
+.nav-link:focus {
+  border-radius: 0;
+  border-bottom: 2px solid rgba(174, 100, 76, 1);
+  color: rgba(174, 100, 76, 1);
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  color: rgba(174, 100, 76, 1);
+  background-color: transparent;
+}
+
+/* End Best Seller */
+
+/* Start influencers reviews */
+.influencers{
+  background-color: #fbf3ea;
+  background-image: url("../../public/textrue-2.svg");
+}
+
+.signup-discount{
+  transition: all 0.3s ease;
+  background-image: url("../../public/waves-Repeat-Grid-1.svg");
+}
+
+.signup-discount:hover{
+  background-color: rgba(255, 255, 255, 0.5);
+  background-image: none;
+}
+
+.signup-discount p{
+  font-size: 15px;
+  color: #363636;
+  font-weight: bold;
+}
+.subscribe input{
+  padding: 5px 10px;
+  width: 100%;
+  background-color: #fff;
+  color:#363636;
+  border: 1px solid #BEBEBE;
+}
+.subscribe input:focus{
+  outline: none;
+  border: 1px solid #BEBEBE;
+}
+.subscribe button{
+  background-color: #25252d !important;
+  color: #fff;
+  font-weight: bold;
+}
+.subscribe button:hover{
+  outline: none;
+  background-color: rgba(174, 100, 76, 1) !important;
+  color: #fff;
+}
+
+/* End influencers reviews */
+
+/* Start Blog */
+.blogs .header span{
+  transition: all 0.3s ease;
+}
+.blogs .header span:hover{
+  cursor: pointer;
+  color: rgba(174, 100, 76, 1);
+}
+.blog-box{
+  transition: all 0.3s ease;
+}
+.blog-box:hover{
+  box-shadow: 0 10px 20px rgb(0 0 0 / 15%);
+}
+.blog-card-body p{
+  font-size:18px;
+  font-weight: bold;
+  color: #282828;
+}
+.blog-card-body span{
+  font-size:12px;
+  color: #9c9c9c;
+}
+.card-p{
+  font-size:14px;
+  color: #101010;
+}
+/* End Blog */

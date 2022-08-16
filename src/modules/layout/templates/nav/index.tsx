@@ -10,6 +10,8 @@ import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import ContactNav from "../../components/ContactNav/ContactNav"
 import Image from "next/image"
+import Navbar from './../../components/Navbar';
+
 const Nav = () => {
   const { pathname } = useRouter()
   const [isHome, setIsHome] = useState(false)
@@ -42,54 +44,45 @@ const Nav = () => {
 
   return (
     <>
-    <ContactNav/>
-    <div
-      className={clsx("sticky top-7 inset-x-0 z-50 group", {
-        "!fixed": isHome,
-        "top-0" : !isHome || isScrolled,
-      })}
-    >
-      <header
-        className={clsx(
-          "relative h-16 px-8 mx-auto transition-colors pt-3 bg-transparent border-b border-transparent duration-200 ",
-          {
-            "!bg-white !border-gray-200": !isHome || isScrolled,
-          }
-        )}
+      <ContactNav />
+      <div
+        className={clsx("sticky top-7 inset-x-0 z-50 group mb-2", {
+          "!fixed": isHome,
+          "top-0": !isHome || isScrolled,
+        })}
       >
-        <nav
+        <div className="container">
+
+        <header
+        
           className={clsx(
-            "text-gray-900 flex items-center justify-between w-full h-full text-small-regular transition-colors duration-200",
+            "relative h-16  mx-auto transition-colors py-4 bg-transparent border-b border-transparent duration-200 ",
             {
-              "text-white group-hover:text-gray-900": isHome && !isScrolled,
+              "!bg-white !border-gray-200": !isHome || isScrolled,
             }
           )}
         >
-          {/* Logo Image */}
-          <div className="flex items-center h-full">
-            <Link href="/">
-              <a>
-              <Image
-                  src="/Logo.png"
-                  width={50}
-                  height={50}
-                  alt=""
-                  className="w-100"
-                  draggable="false"
-                />
-              </a>
-            </Link>
-          </div>
-          
-          <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
-            <CartDropdown />
-          </div>
-        </nav>
-        <MobileMenu />
-      </header>
-    </div>
+          <nav
+            className={clsx(
+              "text-gray-900 flex items-center justify-between content-container h-full text-small-regular transition-colors duration-200 px-0",
+              {
+                "text-white group-hover:text-gray-900": isHome && !isScrolled,
+              }
+            )}
+          >
+            <div className="text center">
+              <Navbar />
+            </div>
+            <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
+              <CartDropdown />
+            </div>
+          </nav>
+          <MobileMenu />
+        </header>
+        </div>
+      </div>
     </>
-    
+
   )
 }
 

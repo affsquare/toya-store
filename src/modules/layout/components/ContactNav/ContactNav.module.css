@@ -2,7 +2,7 @@
 .header{
   font-family: 'Roboto', sans-serif;
   border-bottom:1px solid rgba(230,230,230,.4);
-  /* justify-content: space-between; */
+  /* justify-content: space-evenly; */
 }
 .Login{
   border-left: 1px solid rgba(230,230,230,.4);
@@ -14,4 +14,5 @@
 }
 .icon{
   font-size: 14px;
+  
 }

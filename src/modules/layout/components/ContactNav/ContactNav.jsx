@@ -13,13 +13,13 @@ export default function
   return (
     <>
       <header className={`${Style.header}`}>
-        <div className="container px-3 mt-2">
+        <div className="container  mt-2">
           <div className="row justify-content-between align-items-center">
             {/* contact */}
             <div className="col-lg-3">
               <div className={`${Style.contact} contact d-flex `}>
                 <div className={` contact-questions`}>
-                  <span><i class="fa-solid fa-headphones-simple"></i></span>
+                  <span><i className="fa-solid fa-headphones-simple"></i></span>
                   <span className="ms-2">Got Questions?</span>
                 </div>
                 <div className="contact-number">
@@ -38,7 +38,7 @@ export default function
                     <Link href="/account">
                       <a>
                         <div className={`${Style.Login} Login px-3 d-flex justify-content-end align-items-center`}>
-                          <span className={`${Style.icon}`}><i class="fa-regular fa-user"></i></span>
+                          <span className={`${Style.icon}`}><i className="fa-regular fa-user"></i></span>
                           <span className="ms-2">Login</span>
                         </div>
                       </a>
@@ -47,8 +47,8 @@ export default function
                 </div>
                 {/* Social Icons */}
                 <div className="social">
-                  <span className={`${Style.icon} px-4`}><i class="fa-brands fa-facebook-f"></i></span>
-                  <span className={`${Style.icon}`}><i class="fa-brands fa-instagram"></i></span>
+                  <span className={`${Style.icon} px-4`}><i className="fa-brands fa-facebook-f"></i></span>
+                  <span className={`${Style.icon}`}><i className="fa-brands fa-instagram"></i></span>
                 </div>
               </div>
             </div>
