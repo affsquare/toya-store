@@ -1,7 +1,8 @@
-*::selection{
+*::selection {
   color: #fff;
   background-color: rgba(174, 100, 76, 1);
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -149,8 +150,12 @@
     max-width: 1280px !important;
   }
 }
-
-.nav-item a:hover {
+.actNav{
+  padding-bottom: 3px;
+  color: rgba(174, 100, 76, 1) !important;
+  border-bottom: 2px solid rgba(174, 100, 76, 1)
+}
+.main-nav a:hover {
   padding-bottom: 3px;
   color: rgba(174, 100, 76, 1) !important;
   border-bottom: 2px solid rgba(174, 100, 76, 1)
@@ -177,7 +182,7 @@
 .categories-components:hover .img img,
 .enjoy-time-saving:hover .img-component img,
 .men-best-selling:hover .img-component img,
-.sale-up:hover .img-component img{
+.sale-up:hover .img-component img {
   cursor: pointer;
   -webkit-transform: scale3d(1.05, 1.05, 1.05);
   transform: scale3d(1.05, 1.05, 1.05);
@@ -210,11 +215,13 @@
   border-radius: 0;
 }
 
-.nav-link, .card-title span {
+.nav-link,
+.card-title span {
   color: #707070;
 }
 
-.nav-link:hover, .card-title span:hover {
+.nav-link:hover,
+.card-title span:hover {
   color: rgba(174, 100, 76, 1);
 }
 
@@ -233,43 +240,47 @@
 /* End Best Seller */
 
 /* Start influencers reviews */
-.influencers{
+.influencers {
   background-color: #fbf3ea;
   background-image: url("../../public/textrue-2.svg");
 }
 
-.signup-discount{
+.signup-discount {
   transition: all 0.3s ease;
   background-image: url("../../public/waves-Repeat-Grid-1.svg");
 }
 
-.signup-discount:hover{
+.signup-discount:hover {
   background-color: rgba(255, 255, 255, 0.5);
   background-image: none;
 }
 
-.signup-discount p{
+.signup-discount p {
   font-size: 15px;
   color: #363636;
   font-weight: bold;
 }
-.subscribe input{
+
+.subscribe input {
   padding: 5px 10px;
   width: 100%;
   background-color: #fff;
-  color:#363636;
+  color: #363636;
   border: 1px solid #BEBEBE;
 }
-.subscribe input:focus{
+
+.subscribe input:focus {
   outline: none;
   border: 1px solid #BEBEBE;
 }
-.subscribe button{
+
+.subscribe button {
   background-color: #25252d !important;
   color: #fff;
   font-weight: bold;
 }
-.subscribe button:hover{
+
+.subscribe button:hover {
   outline: none;
   background-color: rgba(174, 100, 76, 1) !important;
   color: #fff;
@@ -278,30 +289,118 @@
 /* End influencers reviews */
 
 /* Start Blog */
-.blogs .header span{
+.blogs .header span {
   transition: all 0.3s ease;
 }
-.blogs .header span:hover{
+
+.blogs .header span:hover {
   cursor: pointer;
   color: rgba(174, 100, 76, 1);
 }
-.blog-box{
+
+.blog-box {
   transition: all 0.3s ease;
 }
-.blog-box:hover{
+
+.blog-box:hover {
   box-shadow: 0 10px 20px rgb(0 0 0 / 15%);
+  cursor: pointer;
 }
-.blog-card-body p{
-  font-size:18px;
+
+.blog-card-body p {
+  font-size: 18px;
   font-weight: bold;
   color: #282828;
 }
-.blog-card-body span{
-  font-size:12px;
+
+.blog-card-body span {
+  font-size: 12px;
   color: #9c9c9c;
 }
-.card-p{
-  font-size:14px;
+
+.card-p {
+  font-size: 14px;
   color: #101010;
 }
+
 /* End Blog */
+/* Start Footer */
+.footer-line {
+  width: 100%;
+  height: 2px;
+  margin: auto;
+  background-color: rgba(174, 100, 76, 1);
+}
+
+.foot-nav {
+  color: #000 !important;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.foot-nav a:hover {
+  color: #363636 !important;
+}
+
+.play-store {
+  border: 1px solid#D9D9D9;
+}
+
+.play-store:hover,
+.play-store:focus {
+  border: 1px solid#D9D9D9 !important;
+  outline: none;
+}
+
+.play-store img {
+  width: 23.8px;
+  height: 26px;
+}
+
+.download .now {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.download .store {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.contact-Nav {
+  font-size: 14px;
+}
+
+/* End Footer */
+
+/* Start Shop */
+.shop{
+  color: #767676;
+
+}
+.shop a {
+  font-size: 11px;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, .05);
+  color: #767676;
+  font-weight: bold;
+}
+.shop a:hover{
+  color: rgba(174, 100, 76, 1) !important;
+}
+.shop span svg{
+  font-size: 10px;
+}
+.shop span {
+  font-size: 12px;
+}
+.filter{
+  color: #5a5a5a;
+}
+input[type=checkbox] {
+  accent-color: rgba(174, 100, 76, 1);
+}
+
+/* End Shop */

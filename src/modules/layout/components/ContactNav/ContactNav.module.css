@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital@1&family=Open+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&family=Roboto&display=swap');
 .header{
   font-family: 'Roboto', sans-serif;
-  border-bottom:1px solid rgba(230,230,230,.4);
-  /* justify-content: space-evenly; */
+  border-bottom:1px solid rgba(230,230,230,.4); 
 }
 .Login{
   border-left: 1px solid rgba(230,230,230,.4);

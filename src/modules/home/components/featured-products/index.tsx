@@ -11,17 +11,18 @@ const FeaturedProducts = () => {
     const { data } = useFeaturedProductsQuery()
 
     return (
-        <div className="swiper-wrapper py-12 mt-4">
+        <div className="swiper-wrapper pt-10 mt-5">
             <div className="container  ">
                 <div className="swiper-slider-bg ">
                     <img src="toya20-coupon-banner.jpg" alt="" className="w-100" />
                 </div>
+                
                 {/* Categories Component */}
                 <Categories />
 
                 {/* <div className="flex flex-col items-center text-center mb-16">
                     <span className="text-base-regular text-gray-600 mb-6">
-                        Latest products
+                        Latest product
                     </span>
                     <p className="text-2xl-regular text-gray-900 max-w-lg mb-4">
                         Our newest styles are here to help you look your best.

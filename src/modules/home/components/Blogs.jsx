@@ -6,7 +6,7 @@ export default function Blogs() {
                 <div className="container">
                     <div className="header text-center mb-4">
                         <h2 className=" blog-head mb-1"> Blogs</h2>
-                        <span className="fw-bold">Learn More</span>
+                        <span className="fw-bold mt-3 mb-4 d-block">Learn More</span>
                     </div>
                     <div className="row">
                         <div className="col-md-3">

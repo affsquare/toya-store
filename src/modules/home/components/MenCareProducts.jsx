@@ -10,7 +10,7 @@ export default function MenCareProducts() {
             <section>
                 <div className="container">
                     <div className="header text-center">
-                        <h2 className="fs-3 best-head mb-5"><span className="best-span ">Men Care</span> Products</h2>
+                        <h2 className="fs-3 best-head mb-4"><span className="best-span ">Men Care</span> Products</h2>
                     </div>
                     <div className="row">
                         <div className="col-md-10 ps-0">

@@ -19,8 +19,8 @@ export default function InfluencersReviews() {
                                     Sign up for dermatologist-approved skincare and haircare tips along<br />
                                     with our latest product & offers news.</p>
                                 <div className="subscribe d-flex justify-content-between mt-4 px-0 px-md-4">
-                                    <input className="rounded-1" type="email" name="email" placeholder="Your email address" />
-                                    <button className="btn">Subscribe </button>
+                                    <input className="" type="email" name="email" placeholder="Your email address" />
+                                    <button className="btn rounded-0">Subscribe </button>
                                 </div>
                             </div>
                         </div>

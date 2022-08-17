@@ -12,12 +12,12 @@ import "styles/globals.css"
 import '../../node_modules/@fortawesome/fontawesome-free/js/all.min.js'
 import { AppPropsWithLayout } from "types/global"
 // import { Layout } from '@modules/layout/templates';
-import {  useLayoutEffect } from 'react';
-
+import { useLayoutEffect } from 'react';
+import Layout from './../modules/layout/templates/index';
 function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page)
-  
-  useLayoutEffect(()=>{
+
+  useLayoutEffect(() => {
     import("../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js")
   })
 
@@ -34,7 +34,10 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
             <CartProvider>
               <StoreProvider>
                 <AccountProvider>
-                  {getLayout(<Component {...pageProps} />)}
+                  <Layout>
+
+                    <Component {...pageProps} />
+                  </Layout>
                 </AccountProvider>
               </StoreProvider>
             </CartProvider>
@@ -46,3 +49,4 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 }
 
 export default App
+  // {getLayout(<Component {...pageProps} />)}
