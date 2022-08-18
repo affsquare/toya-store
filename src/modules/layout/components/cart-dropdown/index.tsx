@@ -17,7 +17,6 @@ const CartDropdown = () => {
   const items = useEnrichedLineItems()
   const { deleteItem } = useStore()
   const { state, open, close } = useCartDropdown()
-
   return (
     <div className="h-full z-50" onMouseEnter={open} onMouseLeave={close}>
       <Popover className="relative h-full">

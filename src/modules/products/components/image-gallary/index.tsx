@@ -22,6 +22,29 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
 
   return (
     <div className="flex items-start relative">
+      {/* Full Images */}
+      <div className="flex flex-col flex-1 small:mx-16 gap-y-4">
+        {images.map((image, index) => {
+          return (
+            <div
+              ref={(image) => imageRefs.current.push(image)}
+              key={image.id}
+              className="relative aspect-[29/34] w-full"
+              id={image.id}
+            >
+              <Image
+                src={image.url}
+                layout="fill"
+                objectFit="cover"
+                priority={index <= 2 ? true : false}
+                className="absolute inset-0"
+                alt={`Product image ${index + 1}`}
+              />
+            </div>
+          )
+        })}
+      </div>
+      {/* Small Images */}
       <div className="hidden small:flex flex-col gap-y-4 sticky top-20">
         {images.map((image, index) => {
           return (
@@ -44,27 +67,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
           )
         })}
       </div>
-      <div className="flex flex-col flex-1 small:mx-16 gap-y-4">
-        {images.map((image, index) => {
-          return (
-            <div
-              ref={(image) => imageRefs.current.push(image)}
-              key={image.id}
-              className="relative aspect-[29/34] w-full"
-              id={image.id}
-            >
-              <Image
-                src={image.url}
-                layout="fill"
-                objectFit="cover"
-                priority={index <= 2 ? true : false}
-                className="absolute inset-0"
-                alt={`Product image ${index + 1}`}
-              />
-            </div>
-          )
-        })}
-      </div>
+
     </div>
   )
 }

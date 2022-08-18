@@ -9,6 +9,9 @@ import { useCart } from "medusa-react"
 import { useEffect, useMemo } from "react"
 import { useInView } from "react-intersection-observer"
 import { useInfiniteQuery } from "react-query"
+import Button from '@modules/common/components/button';
+import { useProductActions } from '@lib/context/product-context';
+import { Product } from "types/medusa"
 
 type InfiniteProductsType = {
   params: StoreGetProductsParams
@@ -52,12 +55,23 @@ const InfiniteProducts = ({ params }: InfiniteProductsType) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView, hasNextPage])
 
+  /* ////////////////////// */
+
+
+  const { addToCart } = useProductActions()
+
   return (
     <div className="flex-1 content-container">
       <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
         {previews.map((p) => (
-          <li key={p.id}>
+          <li className="position-relative" key={p.id}>
             <ProductPreview {...p} />
+            
+            {/* Add To Cart Buttton */}
+            <Button className="position-absolute rounded-0 start-0 w-50 prod-cart-btn"
+              onClick={addToCart}>
+              {"Add to cart"}
+            </Button>
           </li>
         ))}
         {isLoading &&

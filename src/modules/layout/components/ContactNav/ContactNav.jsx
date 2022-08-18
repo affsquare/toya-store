@@ -1,15 +1,12 @@
 import Style from "./ContactNav.module.css"
-import { useMobileMenu } from "@lib/context/mobile-menu-context"
-import Hamburger from "@modules/common/components/hamburger"
-import CartDropdown from "@modules/layout/components/cart-dropdown"
-import DropdownMenu from "@modules/layout/components/dropdown-menu"
-import MobileMenu from "@modules/mobile-menu/templates"
+
 import DesktopSearchModal from "@modules/search/templates/desktop-search-modal"
-import clsx from "clsx"
 import Link from "next/link"
 
 export default function
   ContactNav() {
+
+
   return (
     <>
       <header className={`${Style.header}`}>

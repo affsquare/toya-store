@@ -27,35 +27,18 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
     <div className="flex flex-col gap-y-2">
       {product.collection && (
         <Link href={`/collections/${product.collection.id}`}>
-          <a className="text-small-regular text-gray-700">
+          <a className="text-small-regular text-gray-700 ">
             {product.collection.title}
           </a>
         </Link>
       )}
-      <h3 className="text-xl-regular">{product.title}</h3>
+      {/* product-title */}
+      <h3 className="text-xl-regular product-title fw-bold">{product.title}</h3>
 
-      <p className="text-base-regular">{product.description}</p>
-
-      {product.variants.length > 1 && (
-        <div className="my-8 flex flex-col gap-y-6">
-          {product.options.map((option) => {
-            return (
-              <div key={option.id}>
-                <OptionSelect
-                  option={option}
-                  current={options[option.id]}
-                  updateOption={updateOptions}
-                  title={option.title}
-                />
-              </div>
-            )
-          })}
-        </div>
-      )}
-
-      <div className="mb-4">
+      {/* Product-Price  */}
+      <div className="my-3 ">
         {selectedPrice ? (
-          <div className="flex flex-col text-gray-700">
+          <div className="flex flex-col price ">
             <span
               className={clsx("text-xl-semi", {
                 "text-rose-600": selectedPrice.price_type === "sale",
@@ -81,6 +64,28 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
           <div></div>
         )}
       </div>
+
+      {/* product-description */}
+      <p className="text-base-regular">{product.description}</p>
+
+      {/* Product-Size & Color */}
+      {product.variants.length > 1 && (
+        <div className="my-8 flex flex-col gap-y-6">
+          {product.options.map((option) => {
+            return (
+              <div key={option.id}>
+                <OptionSelect
+                  option={option}
+                  current={options[option.id]}
+                  updateOption={updateOptions}
+                  title={option.title}
+                />
+              </div>
+            )
+          })}
+        </div>
+      )}
+
 
       <Button onClick={addToCart}>
         {!inStock ? "Out of stock" : "Add to cart"}

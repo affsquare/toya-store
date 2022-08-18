@@ -403,4 +403,40 @@ input[type=checkbox] {
   accent-color: rgba(174, 100, 76, 1);
 }
 
+/* Start Product Preview */
+  .title{
+    font-size: 15.4px;
+    color: #3a3a3a;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  .title:hover, .price{
+    color: rgba(174, 100, 76, 1);
+  }
+  .price{
+    font-size: 16px;
+  } 
+/* End Product Preview */
+
+/* Start Product Actions */
+.product-title{
+  color: #707070;
+  font-size: 24px;
+}
+.border-color{
+  border: 1px solid rgba(174, 100, 76, 1)!important;
+}
+.cart-btn{
+  color: #fff;
+  font-weight: bold;
+  background-color: rgba(174, 100, 76, 1);
+}
+/* End Product Actions */
+
+/* Start infinite products*/
+.prod-cart-btn{
+  bottom: 19%;
+}
+/* End infinite products*/
+
 /* End Shop */

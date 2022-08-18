@@ -71,12 +71,12 @@ const Nav = () => {
                             )}
                         >
                             <div className="row w-100">
-                                <div className="col-md-8 pe-0">
+                                <div className="col-md-9 ">
                                     <div className="text center">
                                         <Navbar />
                                     </div>
                                 </div>
-                                <div className="col-md-4 px-0">
+                                <div className="col-md-3 ">
                                     <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end pt-2">
                                         <CartDropdown />
                                     </div>

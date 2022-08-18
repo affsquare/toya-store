@@ -55,7 +55,7 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
     </div>
   )
 }
-
+/* Product Info */
 const ProductInfoTab = ({ product }: ProductTabsProps) => {
   return (
     <Tab.Panel className="text-small-regular py-8">
@@ -97,7 +97,7 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
     </Tab.Panel>
   )
 }
-
+/* Shipping Info Tab */
 const ShippingInfoTab = () => {
   return (
     <Tab.Panel className="text-small-regular py-8">

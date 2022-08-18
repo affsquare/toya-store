@@ -29,7 +29,7 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
               key={v}
               className={clsx(
                 "border-gray-200 border text-xsmall-regular h-[50px] transition-all duration-200",
-                { "border-gray-900": v === current }
+                { "border-color": v === current }
               )}
             >
               {v}

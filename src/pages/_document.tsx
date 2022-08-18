@@ -18,6 +18,7 @@ class MyDocument extends Document {
         </Head>
         <body>
           <Main />
+          <script async src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
           <NextScript />
         </body>
       </Html>

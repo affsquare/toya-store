@@ -14,12 +14,10 @@ import { AppPropsWithLayout } from "types/global"
 // import { Layout } from '@modules/layout/templates';
 import { useLayoutEffect } from 'react';
 import Layout from './../modules/layout/templates/index';
-function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? ((page) => page)
+import { IS_BROWSER } from '@lib/constants';
 
-  useLayoutEffect(() => {
-    import("../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js")
-  })
+function App({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <MedusaProvider
