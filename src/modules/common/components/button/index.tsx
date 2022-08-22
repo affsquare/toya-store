@@ -22,7 +22,7 @@ const Button = ({
         {
           "cart-btn rounded ":
             variant === "primary",
-          "text-gray-900 bg-transparent border-gray-920 hover:bg-gray-100":
+          "text-gray-900 bg-transparent border-gray-920 hover:bg-gray-100 px-2 rounded-1" :
             variant === "secondary",
         },
         className

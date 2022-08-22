@@ -58,10 +58,10 @@ const InfiniteProducts = ({ params }: InfiniteProductsType) => {
   /* ////////////////////// */
 
 
-  const { addToCart } = useProductActions()
+  // const { addToCart } = useProductActions()
 
   return (
-    <div className="flex-1 content-container">
+    <div className="flex-1 container">
       <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
         {previews.map((p) => (
           <li className="position-relative" key={p.id}>
@@ -69,7 +69,7 @@ const InfiniteProducts = ({ params }: InfiniteProductsType) => {
             
             {/* Add To Cart Buttton */}
             <Button className="position-absolute rounded-0 start-0 w-50 prod-cart-btn"
-              onClick={addToCart}>
+             >
               {"Add to cart"}
             </Button>
           </li>

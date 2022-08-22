@@ -123,7 +123,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
               />
               <div>
                 <Button
-                  className="!min-h-[0] h-[46px] w-[80px]"
+                  className="!min-h-[0] h-[54px] w-[80px]"
                   disabled={isLoading}
                   isLoading={isLoading}
                 >

@@ -18,6 +18,10 @@ import { IS_BROWSER } from '@lib/constants';
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
+  useLayoutEffect(() => {
+    import("../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js")
+  })
+
 
   return (
     <MedusaProvider

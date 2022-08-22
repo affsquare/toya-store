@@ -85,11 +85,22 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
           })}
         </div>
       )}
+      <div className="addCart d-flex">
+        <div className="quantity w-25 d-flex align-items-center">
+          <input type="number" className="input-text qty text-center" step="1" min="1" max="" name="quantity" value="1" title="Qty" />
+          <div className="plus-min d-flex flex-column justify-content-center">
+            <div  className="btn ">+</div>
+            <div className="btn ">-</div>
+          </div>
+
+        </div>
+        {/* Add To Cart Buttton */}
+        <Button onClick={addToCart}>
+          {!inStock ? "Out of stock" : "Add to cart"}
+        </Button>
+      </div>
 
 
-      <Button onClick={addToCart}>
-        {!inStock ? "Out of stock" : "Add to cart"}
-      </Button>
     </div>
   )
 }

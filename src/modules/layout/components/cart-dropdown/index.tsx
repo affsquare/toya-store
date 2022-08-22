@@ -11,6 +11,7 @@ import { formatAmount, useCart } from "medusa-react"
 import Link from "next/link"
 import { Fragment } from "react"
 import { CalculatedVariant } from "types/medusa"
+import Checkout from './../../../../pages/checkout';
 
 const CartDropdown = () => {
   const { cart, totalItems } = useCart()
@@ -18,11 +19,16 @@ const CartDropdown = () => {
   const { deleteItem } = useStore()
   const { state, open, close } = useCartDropdown()
   return (
-    <div className="h-full z-50" onMouseEnter={open} onMouseLeave={close}>
+    <div className="h-full z-50" >
       <Popover className="relative h-full">
-        <Link href="/cart" passHref>
-          <Popover.Button className="h-full text-black">{`My Bag (${totalItems})`}</Popover.Button>
-        </Link>
+        {/* <Link href="/cart" passHref> */}
+          <Popover.Button className="h-full text-black">
+            <div className="relative " onClick={open}>
+              <span><i className="fa-solid fa-cart-shopping fa-xl "> </i></span> <span className="total-items absolute d-flex justify-content-center align-items-center">{totalItems}</span>
+            </div>
+
+          </Popover.Button>
+        {/* </Link> */}
         <Transition
           show={state}
           as={Fragment}
@@ -35,10 +41,11 @@ const CartDropdown = () => {
         >
           <Popover.Panel
             static
-            className="hidden small:block absolute top-[calc(100%+1px)] right-0 bg-white border-x border-b border-gray-200 w-[382px] text-gray-900"
+            className="hidden small:block absolute top-0 left-10 bg-zinc-50 border-x border-b border-gray-200 w-[310px] text-gray-900"
           >
-            <div className="p-4 flex items-center justify-center">
+            <div className="px-4 pt-4 flex items-center justify-between mb-4">
               <h3 className="text-large-semi">Shopping Bag</h3>
+              <div role="button" onClick={close} className="text-large-semi"><i className="fa-solid fa-xmark fa-1x"></i></div>
             </div>
             {cart && items?.length ? (
               <>
@@ -49,10 +56,10 @@ const CartDropdown = () => {
                     })
                     .map((item) => (
                       <div
-                        className="grid grid-cols-[122px_1fr] gap-x-4"
+                        className="grid grid-cols-[122px_1fr] gap-x-4 border-b-2 border-gray-300"
                         key={item.id}
                       >
-                        <div className="w-[122px]">
+                        <div className="w-[120px]">
                           <Thumbnail thumbnail={item.thumbnail} size="full" />
                         </div>
                         <div className="flex flex-col justify-between flex-1">
@@ -79,7 +86,7 @@ const CartDropdown = () => {
                               </div>
                             </div>
                           </div>
-                          <div className="flex items-end justify-between text-small-regular flex-1">
+                          <div className="flex items-center justify-between text-small-regular flex-1">
                             <div>
                               <button
                                 className="flex items-center gap-x-1 text-gray-500"
@@ -95,10 +102,12 @@ const CartDropdown = () => {
                     ))}
                 </div>
                 <div className="p-4 flex flex-col gap-y-4 text-small-regular">
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-700 font-semibold">
+                  <div className="flex items-center justify-between align-center">
+                    <span className=" text-uppercase fw-bold ">
                       Subtotal{" "}
-                      <span className="font-normal">(incl. taxes)</span>
+                      <span className="font-normal d-flex align-items-center">
+                        <i className="fa-solid fa-circle-info me-1"></i> <span>include: taxes</span>
+                      </span>
                     </span>
                     <span className="text-large-semi">
                       {formatAmount({
@@ -108,11 +117,27 @@ const CartDropdown = () => {
                       })}
                     </span>
                   </div>
-                  <Link href="/cart" passHref>
-                    <a>
-                      <Button>Go to bag</Button>
-                    </a>
-                  </Link>
+                  <div className="d-flex">
+                    <div className="col-md-6">
+
+                      <Link href="/checkout" passHref>
+                        <a >
+                          <Button>Checkout</Button>
+                        </a>
+                      </Link>
+                    </div>
+
+                    <div className="col-md-6">
+                      <Link href="/cart" passHref>
+                        <a>
+                          <span className="checkout rounded ms-2">View Cart</span>
+
+                        </a>
+                      </Link>
+                    </div>
+
+                  </div>
+
                 </div>
               </>
             ) : (
@@ -128,6 +153,9 @@ const CartDropdown = () => {
                         <span className="sr-only">Go to all products page</span>
                         <Button onClick={close}>Explore products</Button>
                       </a>
+                    </Link>
+                    <Link href="/checkout" passHref>
+                      <a >Checkout</a>
                     </Link>
                   </div>
                 </div>
