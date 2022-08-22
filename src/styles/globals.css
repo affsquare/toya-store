@@ -3,6 +3,10 @@
   background-color: rgba(174, 100, 76, 1);
 }
 
+.toya-color {
+  color: rgba(174, 100, 76, 1)
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -147,9 +151,10 @@ span.checkout:hover {
   border-top-left-radius: 40%;
   border-top-right-radius: 40%;
   border-bottom-right-radius: 40%;
-  color:#fff;
-  font-size: 10px 
+  color: #fff;
+  font-size: 10px
 }
+
 /* End CartDropdown*/
 
 /* Start FeaturedProducts */
@@ -254,6 +259,7 @@ span.checkout:hover {
 .card-title span {
   color: #707070;
 }
+
 a.back-to-chart:hover,
 .nav-link:hover,
 .card-title span:hover {

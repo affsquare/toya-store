@@ -4,8 +4,9 @@ import Button from "@modules/common/components/button"
 import OptionSelect from "@modules/products/components/option-select"
 import clsx from "clsx"
 import Link from "next/link"
-import React, { useMemo } from "react"
+import React, { useMemo, useState } from "react"
 import { Product } from "types/medusa"
+import { useStore } from '@lib/context/store-context';
 
 type ProductActionsProps = {
   product: Product
@@ -22,6 +23,10 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
 
     return variantPrice || cheapestPrice || null
   }, [price])
+
+
+  const { updateItem, deleteItem } = useStore()
+  let [itemQuentity, setItemQuentity] = useState(0);
 
   return (
     <div className="flex flex-col gap-y-2">
@@ -94,6 +99,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
           </div>
 
         </div>
+
         {/* Add To Cart Buttton */}
         <Button onClick={addToCart}>
           {!inStock ? "Out of stock" : "Add to cart"}

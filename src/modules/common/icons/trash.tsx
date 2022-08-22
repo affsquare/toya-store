@@ -14,6 +14,7 @@ const Trash: React.FC<IconProps> = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...attributes}
+      
     >
       <path
         d="M3.33301 5.49054H4.81449H16.6663"
