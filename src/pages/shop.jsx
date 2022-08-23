@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Store from './store';
+
 export default function Shop() {
     return (
-        <>
             <div className="container mt-4">
                 <div className="shop d-flex align-items-center">
                     <Link href="/">Home</Link>
@@ -17,6 +17,5 @@ export default function Shop() {
                 <Store />
 
             </div>
-        </>
     )
 }

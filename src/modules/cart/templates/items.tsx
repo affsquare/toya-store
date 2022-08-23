@@ -13,18 +13,23 @@ const ItemsTemplate = ({ items, region }: ItemsTemplateProps) => {
       <div className="border-b border-gray-200 pb-3 ">
         <h1 className="text-xl-semi">Shopping Bag</h1>
       </div>
-      <div className="grid grid-cols-1 gap-y-8 py-8">
+      <div className="products-header d-flex my-4 fw-bolder text-gray-500">
+        <div className="col-md-4 text-end  pe-5">Product</div>
+        <div className="col-md-3 text-center ">Price</div>
+        <div className="col-md-3 text-start ps-4">Quantity</div>
+      </div>
+      <div className="grid grid-cols-1 gap-y-5 pb-8">
         {items && region
           ? items
-              .sort((a, b) => {
-                return a.created_at > b.created_at ? -1 : 1
-              })
-              .map((item) => {
-                return <Item key={item.id} item={item} region={region} />
-              })
+            .sort((a, b) => {
+              return a.created_at > b.created_at ? -1 : 1
+            })
+            .map((item) => {
+              return <Item key={item.id} item={item} region={region} />
+            })
           : Array.from(Array(5).keys()).map((i) => {
-              return <SkeletonLineItem key={i} />
-            })}
+            return <SkeletonLineItem key={i} />
+          })}
       </div>
     </div>
   )

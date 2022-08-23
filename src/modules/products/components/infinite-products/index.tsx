@@ -6,15 +6,18 @@ import { StoreGetProductsParams } from "@medusajs/medusa"
 import ProductPreview from "@modules/products/components/product-preview"
 import SkeletonProductPreview from "@modules/skeletons/components/skeleton-product-preview"
 import { useCart } from "medusa-react"
-import { useEffect, useMemo } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useInView } from "react-intersection-observer"
 import { useInfiniteQuery } from "react-query"
-import Button from '@modules/common/components/button';
-import { useProductActions } from '@lib/context/product-context';
+import Button from '@modules/common/components/button'
+import { useProductActions } from '@lib/context/product-context'
 import { Product } from "types/medusa"
 
 type InfiniteProductsType = {
   params: StoreGetProductsParams
+}
+type ProductActionsProps = {
+  product: Product
 }
 
 const InfiniteProducts = ({ params }: InfiniteProductsType) => {
@@ -57,44 +60,38 @@ const InfiniteProducts = ({ params }: InfiniteProductsType) => {
 
   /* ////////////////////// */
 
-
   // const { addToCart } = useProductActions()
-
   return (
-    <div className="flex-1 container">
-      <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
-        {previews.map((p) => (
-          <li className="position-relative" key={p.id}>
-            <ProductPreview {...p} />
-            
-            {/* Add To Cart Buttton */}
-            <Button className="position-absolute rounded-0 start-0 w-50 prod-cart-btn"
-             >
-              {"Add to cart"}
-            </Button>
-          </li>
-        ))}
-        {isLoading &&
-          !previews.length &&
-          repeat(8).map((index) => (
-            <li key={index}>
-              <SkeletonProductPreview />
+    <>
+      <div className="flex-1 container">
+        <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
+          {previews.map((p) => (
+            <li className="position-relative" key={p.id}  >
+                <ProductPreview {...p} />        
             </li>
           ))}
-        {isFetchingNextPage &&
-          repeat(getNumberOfSkeletons(data?.pages)).map((index) => (
-            <li key={index}>
-              <SkeletonProductPreview />
-            </li>
-          ))}
-      </ul>
-      <div
-        className="py-16 flex justify-center items-center text-small-regular text-gray-700"
-        ref={ref}
-      >
-        <span ref={ref}></span>
+          {isLoading &&
+            !previews.length &&
+            repeat(8).map((index) => (
+              <li key={index}>
+                <SkeletonProductPreview />
+              </li>
+            ))}
+          {isFetchingNextPage &&
+            repeat(getNumberOfSkeletons(data?.pages)).map((index) => (
+              <li key={index}>
+                <SkeletonProductPreview />
+              </li>
+            ))}
+        </ul>
+        <div
+          className="py-16 flex justify-center items-center text-small-regular text-gray-700"
+          ref={ref}
+        >
+          <span ref={ref}></span>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

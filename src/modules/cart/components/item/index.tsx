@@ -7,11 +7,25 @@ import Trash from "@modules/common/icons/trash"
 import Thumbnail from "@modules/products/components/thumbnail"
 import { CalculatedVariant } from "types/medusa"
 import { useState } from 'react';
-import { formatAmount } from 'medusa-react';
+import MyVerticallyCenteredModal from './../MyVerticallyCenteredModal';
+import Plus from "@modules/common/icons/plus"
+import Minus from "@modules/common/icons/minus"
+import { useCallback } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 type ItemProps = {
     item: Omit<LineItem, "beforeInsert">
     region: Region
+}
+
+/* Heart Icons Components */
+const HeartIcon = (props: any) => {
+
+    if (props.active) {
+        return <FontAwesomeIcon icon="heart" />
+    }
+
+    return <FontAwesomeIcon icon={["far", "heart"]} />
 }
 
 const Item = ({ item, region }: ItemProps) => {
@@ -22,15 +36,21 @@ const Item = ({ item, region }: ItemProps) => {
 
     const [solidHeart, setSolidHeart] = useState(false);
 
+    const [modalShow, setModalShow] = useState(false);
+
+
+    const handleIncrease = useCallback(() => {
+        if (itemQuentity > 1) {
+            setItemQuentity(itemQuentity -= 1)
+        }
+    }, [itemQuentity])
+
+
+
     return (
         <>
-        <div className="products-header d-flex ">
-            <div className="col-md-6 text-end pe-5">Product</div>
-            <div className="col-md-2 text-center">Price</div>
-            <div className="col-md-2 text-center pe-5">Quantity</div>
-            <div className="col-md-2 text-center">Subtotal  </div>
-        </div>
-            <div className="row items-center">
+
+            <div className="row items-center bg-gray-50">
 
                 {/* Image */}
                 <div className="col-md-2">
@@ -38,7 +58,7 @@ const Item = ({ item, region }: ItemProps) => {
                 </div>
 
                 {/* Title */}
-                <div className="col-md-2">
+                <div className="col-md-3">
                     <span>{item.title}</span>
                     <LineItemOptions variant={item.variant} />
                 </div>
@@ -60,16 +80,14 @@ const Item = ({ item, region }: ItemProps) => {
                     <div className="quantity d-flex align-items-center">
                         {/* Decrease */}
                         <div onClick={() => {
-                            if (itemQuentity) {
+                            if (itemQuentity > 1) {
                                 setItemQuentity(itemQuentity -= 1)
                             }
-
                             updateItem({
                                 lineId: item.id,
                                 quantity: itemQuentity,
                             })
-                        }
-                        } role="button" className="bg-gray-200 rounded-circle  w-6 h-6 d-flex items-center justify-center text-xs"><i className="fa-solid fa-minus"></i></div>
+                        }} role="button" className="bg-gray-200 rounded-circle  w-6 h-6 d-flex items-center justify-center text-xs"><Minus /></div>
                         <span className=" text-center mx-3 " > {itemQuentity}</span>
 
                         {/* increase */}
@@ -81,35 +99,35 @@ const Item = ({ item, region }: ItemProps) => {
                                 lineId: item.id,
                                 quantity: itemQuentity,
                             })
-                        }} role="button" className="bg-gray-200 rounded-circle  w-6 h-6 d-flex items-center justify-center text-xs"><i className="fa-solid fa-plus "></i></div>
+                        }} role="button" className="bg-gray-200 rounded-circle  w-6 h-6 d-flex items-center justify-center text-xs"><Plus /></div>
 
                     </div>
-                </div>
-
-                {/* SubTotal */}
-                <div className="col-md-2">
-                    <h5>SubTotal</h5>
                 </div>
 
                 {/* Icons */}
                 <div className="col-md-2">
                     <div className="d-flex items-center justify-between">
-                        <div className="heart" role="button" onClick={() => setSolidHeart(!solidHeart)}>
-                            {solidHeart ? <i className="fa-solid fa-heart"></i> : <i className="fa-regular fa-heart"></i>}
+                        <div className="heart" role="button" onClick={() => {setSolidHeart(!solidHeart)}}>
+                            <HeartIcon active={solidHeart} />
                         </div>
                         <button
                             className=" d-flex items-center  text-gray-500"
-                            onClick={() => deleteItem(item.id)}
+                            onClick={() => setModalShow(true)}
                         >
                             <Trash size={14} />
                             <span className="ms-1">Remove</span>
                         </button>
                     </div>
-
                 </div>
 
-
-
+                {/* Model */}
+                <MyVerticallyCenteredModal
+                    thumbnail={item.thumbnail}
+                    title={item.title}
+                    delete={() => deleteItem(item.id)}
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                />
 
                 {/* <NativeSelect
             value={item.quantity}
@@ -132,7 +150,6 @@ const Item = ({ item, region }: ItemProps) => {
                 )
               })}
           </NativeSelect> */}
-
 
             </div>
         </>

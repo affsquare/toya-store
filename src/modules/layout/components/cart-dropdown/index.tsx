@@ -122,25 +122,20 @@ const CartDropdown = () => {
                     </div>
                     <div className="d-flex">
                       <div className="col-md-6">
-
                         <Link href="/checkout" passHref>
                           <a >
                             <Button onClick={close}> Checkout</Button>
                           </a>
                         </Link>
                       </div>
-
                       <div className="col-md-6">
                         <Link href="/cart" passHref>
                           <a>
                             <span onClick={close} className="checkout rounded ms-2">View Cart</span>
-
                           </a>
                         </Link>
                       </div>
-
                     </div>
-
                   </div>
                 </>
               ) : (
@@ -157,7 +152,6 @@ const CartDropdown = () => {
                           <Button onClick={close}>Explore products</Button>
                         </a>
                       </Link>
-
                     </div>
                   </div>
                 </div>

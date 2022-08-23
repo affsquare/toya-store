@@ -27,9 +27,9 @@ const CartTotals: React.FC<CartTotalsProps> = ({ cart }) => {
   return (
     <div>
       <div className="text-small-regular text-gray-700">
-        <div className="flex items-center justify-between text-base-regular text-gray-900 mb-2">
-          <span>Subtotal</span>
-          <span>{getAmount(subtotal)}</span>
+        <div className="flex items-center justify-between text-base-regular text-gray-900 mb-2 ">
+          <span className="fw-bold text-gray-500 h6">Subtotal</span>
+          <span className="h6">{getAmount(subtotal)}</span>
         </div>
         <div className="flex flex-col gap-y-1">
           {!!discount_total && (
@@ -45,17 +45,17 @@ const CartTotals: React.FC<CartTotalsProps> = ({ cart }) => {
             </div>
           )}
           <div className="flex items-center justify-between">
-            <span>Shipping</span>
+            <span className="fw-bold text-gray-500 ">Shipping</span>
             <span>{getAmount(shipping_total)}</span>
           </div>
           <div className="flex items-center justify-between">
-            <span>Taxes</span>
+            <span className="fw-bold text-gray-500 ">Taxes</span>
             <span>{getAmount(tax_total)}</span>
           </div>
         </div>
-        <div className="h-px w-full border-b border-gray-200 border-dashed my-4" />
-        <div className="flex items-center justify-between text-base-regular text-gray-900 mb-2">
-          <span>Total</span>
+        <div className="h-px w-full border-b border-gray-200 border-dashed my-4 " />
+        <div className="flex items-center justify-between text-base-regular bg-black text-white mb-2 p-2 rounded fw-bold ">
+          <span >Total</span>
           <span>{getAmount(total)}</span>
         </div>
       </div>

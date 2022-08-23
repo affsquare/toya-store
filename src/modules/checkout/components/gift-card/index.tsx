@@ -104,7 +104,7 @@ const GiftCard: React.FC<GiftCardProps> = ({ cart }) => {
               />
               <div>
                 <Button
-                  className="!min-h-[0] h-[46px] w-[80px]"
+                  className="!min-h-[0] h-[55px] w-[80px]"
                   disabled={isLoading}
                   isLoading={isLoading}
                 >

@@ -6,6 +6,12 @@
 .toya-color {
   color: rgba(174, 100, 76, 1)
 }
+.toya-bg {
+  background-color: rgba(174, 100, 76, 1)
+}
+.toya-border {
+  border: 1px solid rgba(174, 100, 76, 1)
+}
 
 @tailwind base;
 @tailwind components;

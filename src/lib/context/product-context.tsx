@@ -118,7 +118,7 @@ export const ProductProvider = ({
     setOptions({ ...options, ...update })
   }
 
-  const addToCart = () => {
+  const addToCart = (quantity?: any) => {
     if (variant) {
       addItem({
         variantId: variant.id,
@@ -148,23 +148,23 @@ export const ProductProvider = ({
   }
 
   return (
-    <ProductActionContext.Provider
-      value={{
-        quantity,
-        maxQuantityMet,
-        disabled,
-        inStock,
-        options,
-        variant,
-        addToCart,
-        updateOptions,
-        decreaseQuantity,
-        increaseQuantity,
-        formattedPrice,
-      }}
-    >
-      {children}
-    </ProductActionContext.Provider>
+      <ProductActionContext.Provider
+        value={{
+          quantity,
+          maxQuantityMet,
+          disabled,
+          inStock,
+          options,
+          variant,
+          addToCart,
+          updateOptions,
+          decreaseQuantity,
+          increaseQuantity,
+          formattedPrice,
+        }}
+      >
+        {children}
+      </ProductActionContext.Provider>
   )
 }
 
