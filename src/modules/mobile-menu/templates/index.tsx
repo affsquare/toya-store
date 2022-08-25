@@ -4,7 +4,7 @@ import MainMenu from "@modules/mobile-menu/components/main-menu"
 import CountryMenu from "../components/country-menu"
 import SearchMenu from "../components/search-menu"
 
-const MobileMenu = () => {
+const   MobileMenu = () => {
   const {
     screen: [currentScreen],
   } = useMobileMenu()
@@ -14,10 +14,10 @@ const MobileMenu = () => {
       <div className="flex flex-col flex-1">
         {(() => {
           switch (currentScreen) {
-            case "country":
-              return <CountryMenu />
-            case "search":
-              return <SearchMenu />
+            // case "country":
+            //   return <CountryMenu />
+            // case "search":
+            //   return <SearchMenu />
             default:
               return <MainMenu />
           }

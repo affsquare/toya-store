@@ -2,9 +2,7 @@ import clsx from "clsx"
 import Link from "next/link"
 import { ProductPreviewType } from "types/global"
 import Thumbnail from "../thumbnail"
-import Button from '@modules/common/components/button'
 import { useState } from "react"
-
 const ProductPreview = ({
     title,
     handle,
@@ -14,12 +12,20 @@ const ProductPreview = ({
 
     const [addToCart_, setAddToCart] = useState(false)
     // const { addToCart } = useProductActions()
-
     return (
         <Link href={`/products/${handle}`}>
             <a  >
-                <div className="position-relative " onMouseEnter={() => setAddToCart(true)} onMouseLeave={() => setAddToCart(false)}>
-                    <Thumbnail thumbnail={thumbnail} size="full" />
+                <div className="position-relative transition-all ease-in-out duration-300" onMouseEnter={() => setAddToCart(true)} onMouseLeave={() => setAddToCart(false)}>
+                    <div className="position-relative ">
+
+                        <Thumbnail thumbnail={thumbnail} size="full" />
+
+                        {/* Add To Cart Buttton */}
+                        {addToCart_ ? <button className="toya-bg text-white position-absolute rounded-0 start-0 bottom-0  py-1 px-2">
+                            {"Add to cart"}
+                        </button> : ""}
+
+                    </div>
                     <div className="text-base-regular mt-2 ">
                         <span className="title">{title}</span>
                         <div className="flex items-center gap-x-2 mt-1">
@@ -42,10 +48,7 @@ const ProductPreview = ({
                                 <div className="w-20 h-6 animate-pulse bg-gray-100"></div>
                             )}
                         </div>
-                        {/* Add To Cart Buttton */}
-                        {addToCart_ ? <Button  className="position-absolute rounded-0 start-0 w-50 prod-cart-btn">
-                            {"Add to cart"}
-                        </Button> : ""}
+
                     </div>
                 </div>
             </a>

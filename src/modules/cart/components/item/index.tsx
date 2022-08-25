@@ -10,7 +10,6 @@ import { useState } from 'react';
 import MyVerticallyCenteredModal from './../MyVerticallyCenteredModal';
 import Plus from "@modules/common/icons/plus"
 import Minus from "@modules/common/icons/minus"
-import { useCallback } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 type ItemProps = {
@@ -38,34 +37,24 @@ const Item = ({ item, region }: ItemProps) => {
 
     const [modalShow, setModalShow] = useState(false);
 
-
-    const handleIncrease = useCallback(() => {
-        if (itemQuentity > 1) {
-            setItemQuentity(itemQuentity -= 1)
-        }
-    }, [itemQuentity])
-
-
-
     return (
         <>
-
             <div className="row items-center bg-gray-50">
 
                 {/* Image */}
-                <div className="col-md-2">
+                <div className="col-sm-2">
                     <Thumbnail thumbnail={item.thumbnail} size="full" />
                 </div>
 
                 {/* Title */}
-                <div className="col-md-3">
+                <div className="col-sm-3">
                     <span>{item.title}</span>
                     <LineItemOptions variant={item.variant} />
                 </div>
 
                 {/* Price */}
-                <div className="col-md-2">
-                    <div className="">
+                <div className="col-sm-2">
+                    <div className="my-2 my-md-0">
                         <LineItemPrice
                             variant={item.variant as CalculatedVariant}
                             quantity={item.quantity}
@@ -75,9 +64,9 @@ const Item = ({ item, region }: ItemProps) => {
                 </div>
 
                 {/* Quantity */}
-                <div className="col-md-2">
+                <div className="col-sm-2">
 
-                    <div className="quantity d-flex align-items-center">
+                    <div className="quantity d-flex align-items-center my-2 my-md-0">
                         {/* Decrease */}
                         <div onClick={() => {
                             if (itemQuentity > 1) {
@@ -88,7 +77,7 @@ const Item = ({ item, region }: ItemProps) => {
                                 quantity: itemQuentity,
                             })
                         }} role="button" className="bg-gray-200 rounded-circle  w-6 h-6 d-flex items-center justify-center text-xs"><Minus /></div>
-                        <span className=" text-center mx-3 " > {itemQuentity}</span>
+                        <span className=" text-center mx-2 mx-md-3 " > {itemQuentity}</span>
 
                         {/* increase */}
                         <div onClick={() => {
@@ -105,9 +94,9 @@ const Item = ({ item, region }: ItemProps) => {
                 </div>
 
                 {/* Icons */}
-                <div className="col-md-2">
+                <div className="col-sm-3 col-md-2">
                     <div className="d-flex items-center justify-between">
-                        <div className="heart" role="button" onClick={() => {setSolidHeart(!solidHeart)}}>
+                        <div className="heart me-sm-2 me-1 " role="button" onClick={() => {setSolidHeart(!solidHeart)}}>
                             <HeartIcon active={solidHeart} />
                         </div>
                         <button
@@ -115,7 +104,7 @@ const Item = ({ item, region }: ItemProps) => {
                             onClick={() => setModalShow(true)}
                         >
                             <Trash size={14} />
-                            <span className="ms-1">Remove</span>
+                            <span className="">Remove</span>
                         </button>
                     </div>
                 </div>

@@ -9,12 +9,12 @@ export default function
 
   return (
     <>
-      <header className={`${Style.header}`}>
+      <header className={`${Style.header} contHead`}>
         <div className="container  mt-2">
           <div className="row justify-content-between align-items-center">
             {/* contact */}
-            <div className="col-lg-3">
-              <div className={`${Style.contact} contact d-flex `}>
+            <div className="col-5">
+              <div className={`${Style.contact} contact d-flex justify-start`}>
                 <div className={` contact-questions`}>
                   <span><i className="fa-solid fa-headphones-simple"></i></span>
                   <span className="ms-2">Got Questions?</span>
@@ -26,7 +26,7 @@ export default function
             </div>
 
             {/*Login & social Icons */}
-            <div className="col-lg-3">
+            <div className="col-3">
               <div className="Login-social d-flex justify-content-end align-items-center">
                 {/* Login */}
                 <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">

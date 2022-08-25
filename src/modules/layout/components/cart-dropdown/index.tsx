@@ -1,4 +1,4 @@
-import { Popover, Transition } from "@headlessui/react"
+import { Dialog, Popover, Transition } from "@headlessui/react"
 import { useCartDropdown } from "@lib/context/cart-dropdown-context"
 import { useStore } from "@lib/context/store-context"
 import useEnrichedLineItems from "@lib/hooks/use-enrich-line-items"
@@ -27,32 +27,44 @@ const CartDropdown = () => {
 
           <Popover.Button className="h-full text-black">
             <div className="relative " onClick={open}>
-              <span><i className="fa-solid fa-cart-shopping fa-xl "> </i></span> <span className="total-items absolute d-flex justify-content-center align-items-center">{totalItems}</span>
+              <span className="text-gray-600"><i className="fa-solid fa-cart-shopping fa-xl"> </i></span> <span className="total-items absolute d-flex justify-content-center align-items-center">{totalItems}</span>
             </div>
           </Popover.Button>
-          
+
           <Transition
             show={state}
             as={Fragment}
-            enter="transition ease-out duration-500"
-            enterFrom="opacity-0 translate-x-6"
-            enterTo="opacity-100 translate-x-0"
-            leave="transition ease-in duration-200"
-            leaveFrom="opacity-100 translate-x-0"
-            leaveTo="opacity-0 translate-x-6"
+            enter="transition ease-in-out duration-500 transform"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition ease-in-out duration-500 transform"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
           >
-            {/* {show?:null} */}
+            <div onClick={close} className="fixed inset-0 bg-black/[.6] transition-opacity " ></div>
+          </Transition>
+
+          <Transition
+            show={state}
+            as={Fragment}
+            enter="transition ease-in-out duration-500 transform"
+            enterFrom="translate-x-full"
+            enterTo="-translate-x-0"
+            leave="transition ease-in-out duration-500 transform"
+            leaveFrom="-translate-x-0"
+            leaveTo="translate-x-full"
+          >
             <Popover.Panel
               static
-              className="hidden small:block absolute top-1 left-12 bg-zinc-50 border-x border-b border-gray-200 w-[310px] text-gray-900"
+              className=" small:flex fixed inset-y-0 right-0 w-[300px] flex-col px-2 z-50 bg-zinc-50 border-x border-b border-gray-200  text-gray-900"
             >
-              <div className="px-4 pt-4 flex items-center justify-between mb-4">
+              <div className=" pt-4 flex items-center justify-between mb-5 px-3">
                 <h3 className="text-large-semi">Shopping Bag</h3>
                 <div role="button" onClick={close} className="text-large-semi"><i className="fa-solid fa-xmark fa-1x"></i></div>
               </div>
               {cart && items?.length ? (
                 <>
-                  <div className="overflow-y-scroll max-h-[402px] px-4 grid grid-cols-1 gap-y-8 no-scrollbar">
+                  <div className="cartDown-height overflow-y-scroll  px-4 grid grid-cols-1 gap-y-8 no-scrollbar">
                     {items
                       .sort((a, b) => {
                         return a.created_at > b.created_at ? -1 : 1
@@ -104,15 +116,15 @@ const CartDropdown = () => {
                         </div>
                       ))}
                   </div>
-                  <div className="p-4 flex flex-col gap-y-4 text-small-regular">
-                    <div className="flex items-center justify-between align-center">
-                      <span className=" text-uppercase fw-bold ">
-                        Subtotal{" "}
-                        <span className="font-normal d-flex align-items-center">
+                  <div className="absolute bottom-0 start-0 end-0  flex flex-col gap-y-4 text-small-regular">
+                    <div className="flex items-center justify-between align-center px-3">
+                      <div>
+                        <span className=" text-uppercase fw-bold ">Subtotal:</span>
+                        <span className="font-normal d-flex align-items-center text-xs">
                           <i className="fa-solid fa-circle-info me-1"></i> <span>include: taxes</span>
                         </span>
-                      </span>
-                      <span className="text-large-semi">
+                      </div>
+                      <span className="text-xl toya-color">
                         {formatAmount({
                           amount: cart.subtotal || 0,
                           region: cart.region,
@@ -121,14 +133,14 @@ const CartDropdown = () => {
                       </span>
                     </div>
                     <div className="d-flex">
-                      <div className="col-md-6">
+                      <div className="col-6">
                         <Link href="/checkout" passHref>
                           <a >
                             <Button onClick={close}> Checkout</Button>
                           </a>
                         </Link>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-6">
                         <Link href="/cart" passHref>
                           <a>
                             <span onClick={close} className="checkout rounded ms-2">View Cart</span>
@@ -144,7 +156,7 @@ const CartDropdown = () => {
                     <div className="bg-gray-900 text-small-regular flex items-center justify-center w-6 h-6 rounded-full text-white">
                       <span>0</span>
                     </div>
-                    <span className=" h6">Your shopping bag is empty.</span>
+                    <span className=" h6 my-4">Your shopping bag is empty.</span>
                     <div>
                       <Link href="/store">
                         <a>

@@ -14,9 +14,9 @@ export default function index() {
                         <h2 className="text-uppercase header-categories px-3">Categories</h2>
                         <span className="header-line"></span>
                     </div>
-                    <div className="row g-4">
+                    <div className="row g-3">
                         {/* Hair Products*/}
-                        <div className="col-md-6 ps-0">
+                        <div className="col-md-6 px-0 pe-md-2 ">
                             <div className="hair categories-components overflow-hidden">
                                 <div className="img ">
                                     <Image
@@ -28,7 +28,7 @@ export default function index() {
                             </div>
                         </div>
                         {/* Men Products*/}
-                        <div className="col-md-6 pe-0 ">
+                        <div className="col-md-6  px-0 ps-md-2">
                             <div className="men categories-components overflow-hidden">
                                 <div className="img ">
                                     <Image
@@ -40,7 +40,7 @@ export default function index() {
                             </div>
                         </div>
                         {/* Body Products*/}
-                        <div className="col-md-6 ps-0">
+                        <div className="col-md-6 px-0 pe-md-2">
                             <div className="body categories-components overflow-hidden">
                                 <div className="img ">
                                     <Image
@@ -52,7 +52,7 @@ export default function index() {
                             </div>
                         </div>
                         {/* Skin Products*/}
-                        <div className="col-md-6 pe-0">
+                        <div className="col-md-6 px-0 ps-md-2">
                             <div className="skin categories-components overflow-hidden">
                                 <div className="img ">
                                     <Image

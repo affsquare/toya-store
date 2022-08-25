@@ -26,11 +26,11 @@ export default function MyVerticallyCenteredModal(props) {
 
             <Modal.Footer>
                 <div className="container">
-                    <div className="row justify-content-center px-5">
-                        <div className="col-md-6">
+                    <div className="row justify-content-center px-1 px-md-5">
+                        <div className="col-6">
                             <button onClick={props} className="toya-border toya-bg text-white px-3 py-2 w-100"> <i class="fa-regular fa-heart"></i> Add to Wishlist</button>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-6">
                             <button onClick={props.delete} className="toya-color toya-border px-3 py-2 w-100"> <i class="fa-solid fa-trash-can"></i> Just Delet</button>
                         </div>
                     </div>
