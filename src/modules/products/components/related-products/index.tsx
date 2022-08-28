@@ -62,38 +62,41 @@ const RelatedProducts = ({ product }: RelatedProductsProps) => {
           You might also want to check out these products.
         </p>
       </div>
+      <div className="container">
 
-      <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8">
-        {previews.map((p) => (
-          <li key={p.id}>
-            <ProductPreview {...p} />
-          </li>
-        ))}
-        {isLoading &&
-          !previews.length &&
-          repeat(8).map((index) => (
-            <li key={index}>
-              <SkeletonProductPreview />
+
+        <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8">
+          {previews.map((p) => (
+            <li key={p.id}>
+              <ProductPreview {...p} />
             </li>
           ))}
-        {isFetchingNextPage &&
-          repeat(getNumberOfSkeletons(data?.pages)).map((index) => (
-            <li key={index}>
-              <SkeletonProductPreview />
-            </li>
-          ))}
-      </ul>
-      {hasNextPage && (
-        <div className="flex items-center justify-center mt-8">
-          <Button
-            isLoading={isLoading}
-            onClick={() => fetchNextPage()}
-            className="w-72"
-          >
-            Load more
-          </Button>
-        </div>
-      )}
+          {isLoading &&
+            !previews.length &&
+            repeat(8).map((index) => (
+              <li key={index}>
+                <SkeletonProductPreview />
+              </li>
+            ))}
+          {isFetchingNextPage &&
+            repeat(getNumberOfSkeletons(data?.pages)).map((index) => (
+              <li key={index}>
+                <SkeletonProductPreview />
+              </li>
+            ))}
+        </ul>
+        {hasNextPage && (
+          <div className="flex items-center justify-center mt-8">
+            <Button
+              isLoading={isLoading}
+              onClick={() => fetchNextPage()}
+              className="w-72"
+            >
+              Load more
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

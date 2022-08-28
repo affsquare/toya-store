@@ -18,7 +18,6 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
     let { updateOptions, addToCart, options, inStock, variant } =
         useProductActions()
 
-        
     const price = useProductPrice({ id: product.id, variantId: variant?.id })
 
     const selectedPrice = useMemo(() => {
@@ -114,7 +113,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
                 </div>
 
                 {/* Add To Cart Buttton */}
-                <Button onClick={() => { addToCart(itemQuentity) }}>
+                <Button onClick={() =>  addToCart(itemQuentity) }>
                     {!inStock ? "Out of stock" : "Add to cart"}
                 </Button>
             </div>

@@ -2,10 +2,9 @@ import clsx from "clsx"
 import Link from "next/link"
 import { ProductPreviewType } from "types/global"
 import Thumbnail from "../thumbnail"
-import { useContext, useState } from "react"
-import { useProductActions } from '@lib/context/product-context';
+import { useState } from "react"
 
-const ProductPreview = ({
+const VerticalPreview = ({
     title,
     handle,
     thumbnail,
@@ -13,24 +12,18 @@ const ProductPreview = ({
 }: ProductPreviewType) => {
 
 
+
     const [addToCart_, setAddToCart] = useState(false)
     // const { addToCart } = useProductActions()
     return (
         <Link href={`/products/${handle}`}>
-            
             <a  >
-                <div className="position-relative transition-all ease-in-out duration-300" onMouseEnter={() => setAddToCart(true)} onMouseLeave={() => setAddToCart(false)}>
-                    <div className="position-relative ">
+                <div className="flex position-relative transition-all ease-in-out duration-300 " >
+                    
+                        <Thumbnail thumbnail={thumbnail} size="small" />
 
-                        <Thumbnail thumbnail={thumbnail} size="full" />
-
-                        {addToCart_ ? <button onClick={()=> console.log("hello")
-                        } className="toya-bg text-white position-absolute rounded-0 start-0 bottom-0  py-1 px-2">
-                            {"Add to cart"}
-                        </button> : ""}
-
-                    </div>
-                    <div className="text-base-regular mt-2 ">
+                        {/* Add To Cart Buttton */}
+                    <div className="text-base-regular ms-3 relative">
                         <span className="title">{title}</span>
                         <div className="flex items-center gap-x-2 mt-1">
                             {price ? (
@@ -52,13 +45,16 @@ const ProductPreview = ({
                                 <div className="w-20 h-6 animate-pulse bg-gray-100"></div>
                             )}
                         </div>
-
+                        <button className="toya-bg text-white rounded-0   absolute   bottom-0 end-0 py-1 px-2 ">
+                            {"Add to cart"}
+                        </button>
                     </div>
                 </div>
             </a>
+            
         </Link>
     )
 }
 
 
-export default ProductPreview
+export default VerticalPreview

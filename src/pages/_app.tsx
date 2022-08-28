@@ -16,6 +16,7 @@ import { useLayoutEffect } from 'react';
 import Layout from './../modules/layout/templates/index';
 import { IS_BROWSER } from '@lib/constants';
 
+
 function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
   useLayoutEffect(() => {

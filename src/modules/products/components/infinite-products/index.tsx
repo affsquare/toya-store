@@ -12,12 +12,11 @@ import { useInfiniteQuery } from "react-query"
 import Button from '@modules/common/components/button'
 import { useProductActions } from '@lib/context/product-context'
 import { Product } from "types/medusa"
+import VerticalPreview from './../vertical-preview/index';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 type InfiniteProductsType = {
   params: StoreGetProductsParams
-}
-type ProductActionsProps = {
-  product: Product
 }
 
 const InfiniteProducts = ({ params }: InfiniteProductsType) => {
@@ -61,29 +60,72 @@ const InfiniteProducts = ({ params }: InfiniteProductsType) => {
   /* ////////////////////// */
 
   // const { addToCart } = useProductActions()
+  const [views, setViews] = useState(true)
   return (
     <>
       <div className="flex-1 container">
-        <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
-          {previews.map((p) => (
-            <li className="position-relative" key={p.id}  >
-                <ProductPreview {...p} />        
-            </li>
-          ))}
-          {isLoading &&
-            !previews.length &&
-            repeat(8).map((index) => (
-              <li key={index}>
-                <SkeletonProductPreview />
-              </li>
+        <div className="mb-3 flex justify-end items-center">
+          <span className="text-gray-600 font-semibold">Views:</span>
+          <span>
+            <FontAwesomeIcon icon={["fas", "grip-vertical"]} onClick={() => setViews(true)} size={"lg"} className="mx-3 " />
+            <FontAwesomeIcon icon={["fas", "list"]} onClick={() => setViews(false)} size={"lg"} />
+
+          </span>
+        </div>
+        {views ?
+
+          /*cols Products Preview */
+          <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
+            {previews.map((p) => (
+              <>
+                <li className="position-relative" key={p.id}  >
+                  <ProductPreview {...p} />
+                </li>
+              </>
             ))}
-          {isFetchingNextPage &&
-            repeat(getNumberOfSkeletons(data?.pages)).map((index) => (
-              <li key={index}>
-                <SkeletonProductPreview />
-              </li>
-            ))}
-        </ul>
+            {isLoading &&
+              !previews.length &&
+              repeat(8).map((index) => (
+                <li key={index}>
+                  <SkeletonProductPreview />
+                </li>
+              ))}
+            {isFetchingNextPage &&
+              repeat(getNumberOfSkeletons(data?.pages)).map((index) => (
+                <li key={index}>
+                  <SkeletonProductPreview />
+                </li>
+              ))}
+          </ul>
+
+          :
+
+          /* Vertical Products Preview */
+          <ul className="flex">
+            <div className="col-md-12">
+
+              {previews.map((p) => (
+                <li className="position-relative mb-3" key={p.id}  >
+                  <VerticalPreview {...p} />
+                </li>
+              ))}
+              {isLoading &&
+                !previews.length &&
+                repeat(8).map((index) => (
+                  <li key={index}>
+                    <SkeletonProductPreview />
+                  </li>
+                ))}
+              {isFetchingNextPage &&
+                repeat(getNumberOfSkeletons(data?.pages)).map((index) => (
+                  <li key={index}>
+                    <SkeletonProductPreview />
+                  </li>
+                ))}
+            </div>
+          </ul>}
+
+
         <div
           className="py-16 flex justify-center items-center text-small-regular text-gray-700"
           ref={ref}
