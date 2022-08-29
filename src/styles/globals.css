@@ -567,3 +567,45 @@ input[type=number] {
 /* End infinite products*/
 
 /* End Shop */
+
+/* Start carousel */
+.react-multiple-carousel__arrow {
+  background: #fff !important;
+  
+}
+
+.react-multiple-carousel__arrow::before {
+  color: #000 !important;
+  font-size: 25px !important;
+  font-weight: bolder !important;
+  
+}
+
+.react-multiple-carousel__arrow--right {
+  right: calc(1% + 1px)!important;
+}
+
+.react-multiple-carousel__arrow--right::before {
+  content: "\2192"!important;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: calc(1% + 1px)!important;
+}
+
+.react-multiple-carousel__arrow--left::before {
+  content: "\2190"!important;
+}
+
+button.react-multiple-carousel__arrow{
+  display: none !important;
+}
+
+.carasol-slider:hover button.react-multiple-carousel__arrow{
+  display: block !important;
+}
+
+ul.react-multi-carousel-track li{
+  padding: 0px 10px !important;
+}
+/* End carousel */

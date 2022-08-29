@@ -15,6 +15,8 @@ const ProductPreview = ({
 
     const [addToCart_, setAddToCart] = useState(false)
     // const { addToCart } = useProductActions()
+
+
     return (
         <Link href={`/products/${handle}`}>
             
@@ -24,7 +26,11 @@ const ProductPreview = ({
 
                         <Thumbnail thumbnail={thumbnail} size="full" />
 
-                        {addToCart_ ? <button onClick={()=> console.log("hello")
+                        {addToCart_ ? <button onClick={(e)=>{
+                            e.preventDefault();
+                            e.stopPropagation();
+                            console.log("hello")
+                        }
                         } className="toya-bg text-white position-absolute rounded-0 start-0 bottom-0  py-1 px-2">
                             {"Add to cart"}
                         </button> : ""}

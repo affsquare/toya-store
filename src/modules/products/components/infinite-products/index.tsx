@@ -9,11 +9,9 @@ import { useCart } from "medusa-react"
 import { useEffect, useMemo, useState } from "react"
 import { useInView } from "react-intersection-observer"
 import { useInfiniteQuery } from "react-query"
-import Button from '@modules/common/components/button'
-import { useProductActions } from '@lib/context/product-context'
-import { Product } from "types/medusa"
 import VerticalPreview from './../vertical-preview/index';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 
 type InfiniteProductsType = {
   params: StoreGetProductsParams
@@ -79,6 +77,7 @@ const InfiniteProducts = ({ params }: InfiniteProductsType) => {
             {previews.map((p) => (
               <>
                 <li className="position-relative" key={p.id}  >
+                
                   <ProductPreview {...p} />
                 </li>
               </>

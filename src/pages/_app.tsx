@@ -38,7 +38,6 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
               <StoreProvider>
                 <AccountProvider>
                   <Layout>
-
                     <Component {...pageProps} />
                   </Layout>
                 </AccountProvider>

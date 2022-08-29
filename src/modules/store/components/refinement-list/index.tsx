@@ -82,9 +82,7 @@ const RefinementList = ({
                 <label className="flex items-center gap-x-2">
                   <input
                     type="checkbox"
-                    defaultChecked={refinementList.collection_id?.includes(
-                      c.id
-                    )}
+                    defaultChecked={refinementList.collection_id?.includes(c.id)}
                     onChange={(e) => handleCollectionChange(e, c.id)}
                     className=""
                   />
