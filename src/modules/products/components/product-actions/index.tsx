@@ -16,7 +16,7 @@ type ProductActionsProps = {
 }
 
 const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
-    console.log(product);
+    // console.log(product);
 
     let { updateOptions, addToCart, options, inStock, variant } =
         useProductActions()
@@ -35,7 +35,8 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
 
     return (
         <>
-            <div className=" d-flex align-items-center">
+            <div className=" d-flex align-items-center mb-3">
+
                 <span className="shop">
                     <Link href="/">Home</Link>
                 </span>
@@ -43,23 +44,30 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
                     &#62;
                 </span>
 
-                <span className="text-xs text-gray-400 fw-bold">
+                <span className="text-xs text-gray-500 fw-bold">
                     <Link href="/shop">shop</Link>
                 </span>
 
                 <span className='mx-2 d-flex align-items-center text-xs text-gray-400 fw-bold'>
                     &#62;
                 </span>
-                <span className="text-xs text-gray-400 fw-bold">{product.title}</span>
+
+                {product.collection && (
+                    <Link href={`/collections/${product.collection.id}`}>
+                        <a className="text-small-regular text-xs text-gray-500 fw-bold">
+                            {product.collection.title}
+                        </a>
+                    </Link>
+                )}
+
+                <span className='mx-2 d-flex align-items-center text-xs text-gray-400 fw-bold'>
+                    &#62;
+                </span>
+
+                <span className="text-xs text-gray-600 ">{product.title}</span>
             </div>
+
             <div className="flex flex-col gap-y-2">
-                {/* {product.collection && (
-                <Link href={`/collections/${product.collection.id}`}>
-                    <a className="text-small-regular text-gray-700 ">
-                        {product.collection.title}
-                    </a>
-                </Link>
-            )} */}
 
                 {/* product-title */}
                 <h3 className="text-xl-regular product-title fw-bold">

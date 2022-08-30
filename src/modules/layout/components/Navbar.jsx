@@ -5,7 +5,7 @@ import Image from "next/image"
 export default function Navbar() {
     return (
         <>
-            <nav className="navbar navbar-expand-lg text-dark pt-3">
+            <nav className="navbar navbar-expand-lg text-dark ">
                 <div className="container p-0">
                     <div >
                         <Link href="/">
