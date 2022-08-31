@@ -16,7 +16,9 @@ export default function
             <div className="col-5">
               <div className={`${Style.contact} contact d-flex justify-start`}>
                 <div className={` contact-questions`}>
-                  <span><i className="fa-solid fa-headphones-simple"></i></span>
+                  <span className="text">
+                    <i className="fa-solid fa-headphones-simple"></i>
+                  </span>
                   <span className="ms-2">Got Questions?</span>
                 </div>
                 <div className="contact-number">

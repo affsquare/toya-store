@@ -11,6 +11,7 @@ import { useInView } from "react-intersection-observer"
 import { useInfiniteQuery } from "react-query"
 import VerticalPreview from './../vertical-preview/index';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useSelector } from "react-redux"
 
 
 type InfiniteProductsType = {
@@ -18,6 +19,9 @@ type InfiniteProductsType = {
 }
 
 const InfiniteProducts = ({ params }: InfiniteProductsType) => {
+
+  const productsStore = useSelector((st: any) => st?.products)
+
   const { cart } = useCart()
 
   const { ref, inView } = useInView()
@@ -28,6 +32,7 @@ const InfiniteProducts = ({ params }: InfiniteProductsType) => {
     if (cart?.id) {
       p.cart_id = cart.id
     }
+
 
     p.is_giftcard = false
 
@@ -40,7 +45,7 @@ const InfiniteProducts = ({ params }: InfiniteProductsType) => {
   const { data, hasNextPage, fetchNextPage, isLoading, isFetchingNextPage } =
     useInfiniteQuery(
       [`infinite-products-store`, queryParams, cart],
-      ({ pageParam }) => fetchProductsList({ pageParam, queryParams }),
+      ({ pageParam }) => fetchProductsList({ pageParam, queryParams: queryParams, order: productsStore?.order }),
       {
         getNextPageParam: (lastPage) => lastPage.nextPage,
       }
@@ -77,7 +82,6 @@ const InfiniteProducts = ({ params }: InfiniteProductsType) => {
             {previews.map((p) => (
               <>
                 <li className="position-relative" key={p.id}  >
-                
                   <ProductPreview {...p} />
                 </li>
               </>

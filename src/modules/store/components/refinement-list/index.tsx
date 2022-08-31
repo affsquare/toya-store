@@ -4,7 +4,9 @@ import { useCollections } from "medusa-react"
 import { ChangeEvent, useEffect, useState } from "react"
 import { useMobileMenu } from "@lib/context/mobile-menu-context"
 import InfiniteProducts from "@modules/products/components/infinite-products"
-
+import { addFilter, addOrder, removeOrder, resetFilters, resetOrder } from "../../../../store/reducers/products"
+import { useDispatch, useSelector } from "react-redux"
+import { useCallback } from "react"
 type RefinementListProps = {
   refinementList: StoreGetProductsParams
   setRefinementList: (refinementList: StoreGetProductsParams) => void
@@ -14,7 +16,12 @@ const RefinementList = ({
   refinementList,
   setRefinementList,
 }: RefinementListProps) => {
-  const { collections, isLoading } = useCollections()
+
+  const { collections, isLoading } = useCollections();
+
+  const dispatcher = useDispatch();
+
+  const productStore = useSelector((st: any) => st.products)
 
   const handleCollectionChange = (
     e: ChangeEvent<HTMLInputElement>,
@@ -40,14 +47,12 @@ const RefinementList = ({
         ...refinementList,
         collection_id: collectionIds.filter((c) => c !== id),
       })
-
       return
     }
 
     return
   }
 
-  /* ///////////// */
   const {
     close,
     screen: [_, setScreen],
@@ -57,16 +62,26 @@ const RefinementList = ({
   const setScreenSearch = () => setScreen("search")
 
   const [products, setProducts] = useState([])
-
-  async function getProducts(fillter:any) {
-    let response = await fetch(`http://ec2-18-133-173-186.eu-west-2.compute.amazonaws.com:9000/store/products${fillter}`);
+  const apiURL = `http://ec2-3-9-43-164.eu-west-2.compute.amazonaws.com:9000`
+  async function getProducts(fillter: any) {
+    let response = await fetch(`${apiURL}/store/products${fillter}`);
     // let productsContainer;
     if (response.status == 200) {
       const productsContainer = await response.json();
       setProducts(productsContainer.products)
       console.log(products, fillter);
-      
+
     }
+  }
+
+  const handleChnageOrder = () => {
+    if (!productStore?.orders?.["date"]) {
+      dispatcher(addOrder({ key: "date", value: 'DESC' }))
+      setRefinementList({ ...refinementList, order: productStore.orders })
+    } else {
+      dispatcher(removeOrder({ key: "date" }))
+    }
+
   }
 
   useEffect(() => {
@@ -75,16 +90,24 @@ const RefinementList = ({
 
   return (
     <>
-
-      <h1></h1>
-      <div className="pe-5 py-4  small:pr-0 small:pl-0 small:min-w-[250px]">
-        <div className="flex gap-x-3  small:flex-col small:items-center small:gap-y-3">
+      {/* {products.map((p:any)=>(
+        <div className="col-md-3">
+            <div className="product">
+              <img src={p.thumbnail} alt="" />
+              <div className="cont">
+                <h5>{p.title}</h5>
+              </div>
+            </div>
+        </div>
+      ))} */}
+      <div className="flex flex-column pe-5 py-4  small:pr-0 small:pl-0 small:min-w-[250px]">
+        <div className="">
           <span className=" text-uppercase filter mb-4">
             <i className="fa-solid fa-bars-staggered fa-xl me-2"></i>
             <span> Filter</span>
           </span>
 
-          <div className="space-y-6 flex-1 flex flex-col justify-between ">
+          <div className="space-y-6 flex-1 flex flex-col justify-between  ">
             {process.env.FEATURE_SEARCH_ENABLED && (
               <button
                 className="bg-gray-50 flex items-center ps-3 py-2 gap-x-2 text-danger"
@@ -98,7 +121,7 @@ const RefinementList = ({
             )}
           </div>
 
-          <ul className="text-base-regular flex items-center gap-x-4 small:grid small:grid-cols-1 small:gap-y-2">
+          <ul className="text-base-regular items-center gap-x-4 mt-4">
             {collections?.map((c) => (
               <li key={c.id}>
                 <label className="flex items-center gap-x-2">
@@ -115,7 +138,7 @@ const RefinementList = ({
             ))}
           </ul>
 
-          <ul className="text-base-regular flex items-center gap-x-4 small:grid small:grid-cols-1 small:gap-y-2">
+          <ul className="text-base-regular items-center gap-x-4 mt-2">
             {/* {products.map((p:any) => ( */}
 
             <li >
@@ -123,7 +146,8 @@ const RefinementList = ({
                 <input
                   type="checkbox"
                   // defaultChecked={refinementList.collection_id?.includes(p.id)}
-                  onChange={() => getProducts("")
+                  onChange={() =>
+                    dispatcher(resetOrder(null))
                   }
                   className=""
                 />
@@ -137,7 +161,7 @@ const RefinementList = ({
                 <input
                   type="checkbox"
                   // defaultChecked={refinementList.collection_id?.includes(c.id)}
-                  onClick={() => getProducts("?order[poularity]")}
+                  onChange={e => handleChnageOrder()}
                   className=""
                 />
                 Sort by popularity
@@ -149,19 +173,19 @@ const RefinementList = ({
                 <input
                   type="checkbox"
                   // defaultChecked={refinementList.collection_id?.includes(c.id)}
-                  onChange={() => { getProducts("?order[date]=ASC")}}
+                  onChange={e => handleChnageOrder()}
                   className=""
                 />
                 Sort by newness
               </label>
-            </li> 
+            </li>
 
             <li >
               <label className="flex items-center gap-x-2">
                 <input
                   type="checkbox"
                   // defaultChecked={refinementList.collection_id?.includes(c.id)}
-                  onChange={(e) => getProducts("?order[price]=ASC")}
+                  onChange={e => handleChnageOrder()}
                   className=""
                 />
                 Sort by price: low to high
@@ -173,7 +197,14 @@ const RefinementList = ({
                 <input
                   type="checkbox"
                   // defaultChecked={refinementList.collection_id?.includes(c.id)}
-                  onChange={(e) => getProducts("?order[price]=DESC")}
+                  onChange={(e) => {
+                    handleChnageOrder()
+                    // if (!productStore?.orders?.["price"]) {
+                    //   dispatcher(addOrder({ key: "price", value: 'ASC' }))
+                    // } else {
+                    //   dispatcher(removeOrder({ key: "price" }))
+                    // }
+                  }}
                   className=""
                 />
                 Sort by price: high to low

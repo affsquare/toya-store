@@ -15,38 +15,47 @@ import { AppPropsWithLayout } from "types/global"
 import { useLayoutEffect } from 'react';
 import Layout from './../modules/layout/templates/index';
 import { IS_BROWSER } from '@lib/constants';
+import { Provider } from "react-redux"
+import { store as localStore } from "../store"
+import { useEffect } from 'react';
 
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? ((page) => page);
-  useLayoutEffect(() => {
-    import("../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js")
-  })
 
+  // const getLayout = Component.getLayout ?? ((page) => page);
+
+  useEffect(() => {
+    require("../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js");
+  }, []);
 
   return (
-    <MedusaProvider
-      baseUrl={MEDUSA_BACKEND_URL}
-      queryClientProviderProps={{
-        client: queryClient,
-      }}
-    >
-      <Hydrate state={pageProps.dehydratedState}>
-        <CartDropdownProvider>
-          <MobileMenuProvider>
-            <CartProvider>
-              <StoreProvider>
-                <AccountProvider>
-                  <Layout>
-                    <Component {...pageProps} />
-                  </Layout>
-                </AccountProvider>
-              </StoreProvider>
-            </CartProvider>
-          </MobileMenuProvider>
-        </CartDropdownProvider>
-      </Hydrate>
-    </MedusaProvider>
+    <Provider store={localStore}>
+      <MedusaProvider
+        baseUrl={MEDUSA_BACKEND_URL}
+        queryClientProviderProps={{
+          client: queryClient,
+        }}
+      >
+
+        <Hydrate state={pageProps.dehydratedState}>
+          <CartDropdownProvider>
+            <MobileMenuProvider>
+              <CartProvider>
+                <StoreProvider>
+                  <AccountProvider>
+                    <Layout>
+
+                      <Component {...pageProps} />
+                    </Layout>
+                  </AccountProvider>
+                </StoreProvider>
+              </CartProvider>
+            </MobileMenuProvider>
+          </CartDropdownProvider>
+        </Hydrate>
+
+      </MedusaProvider>
+    </Provider>
   )
 }
 

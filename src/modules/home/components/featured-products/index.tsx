@@ -19,20 +19,22 @@ const FeaturedProducts = () => {
                 <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img src="toya20-coupon-banner.jpg" className="d-block w-100" alt="toya-coupon-20" />
+                            <img src="toya20-coupon-banner.jpg" className=" w-100" alt="toya-coupon-20" />
                         </div>
                         <div className="carousel-item">
-                            <img src="toya20-coupon-banner.jpg" className="d-block w-100" alt="toya-coupon-20" />
+                            <img src="toya20-coupon-banner.jpg" className=" w-100" alt="toya-coupon-20" />
+                        </div>
+                        <div className="carousel-item">
+                            <img src="toya20-coupon-banner.jpg" className="w-100" alt="toya-coupon-20" />
                         </div>
                     </div>
                 </div>
-                
-            
 
-            {/* Categories Component */}
-            <Categories />
 
-            {/* <div className="flex flex-col items-center text-center mb-16">
+                {/* Categories Component */}
+                <Categories />
+
+                {/* <div className="flex flex-col items-center text-center mb-16">
                     <span className="text-base-regular text-gray-600 mb-6">
                         Latest product
                     </span>
@@ -55,32 +57,32 @@ const FeaturedProducts = () => {
                     ))}
                 </ul> */}
 
-            {/* Best Seller Component */}
-            <BestSeller />
+                {/* Best Seller Component */}
+                <BestSeller />
 
-            {/* Enjoy-Time-Saving */}
-            <section className="enjoy-time-saving my-5">
-                <div className="img-component overflow-hidden">
-                    <img src="MAN-BANNER-2048x711.webp" alt="" />
-                </div>
-            </section>
+                {/* Enjoy-Time-Saving */}
+                <section className="enjoy-time-saving my-5">
+                    <div className="img-component overflow-hidden">
+                        <img src="MAN-BANNER-2048x711.webp" alt="" />
+                    </div>
+                </section>
 
-            {/* Mens Care Products Component */}
-            <MenCareProducts />
+                {/* Mens Care Products Component */}
+                <MenCareProducts />
 
-            {/* Sale Up */}
-            <section className="sale-up my-5">
-                <div className="img-component overflow-hidden">
-                    <img src="toya20-slider-eng.webp" alt="" />
-                </div>
-            </section>
+                {/* Sale Up */}
+                <section className="sale-up my-5">
+                    <div className="img-component overflow-hidden">
+                        <img src="toya20-slider-eng.webp" alt="" />
+                    </div>
+                </section>
 
-            {/* Influencers Reviews */}
-            <InfluencersReviews />
+                {/* Influencers Reviews */}
+                <InfluencersReviews />
 
-            {/* Blogs Components */}
-            <Blogs />
-        </div>
+                {/* Blogs Components */}
+                <Blogs />
+            </div>
         </div >
     )
 }
