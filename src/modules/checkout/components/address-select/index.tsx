@@ -91,11 +91,11 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
                       <span className="text-left text-base-semi">
                         {address.first_name} {address.last_name}
                       </span>
-                      {address.company && (
+                      {/* {address.company && (
                         <span className="text-small-regular text-gray-700">
                           {address.company}
                         </span>
-                      )}
+                      )} */}
                       <div className="flex flex-col text-left text-base-regular mt-2">
                         <span>
                           {address.address_1}
@@ -106,10 +106,10 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
                         <span>
                           {address.postal_code}, {address.city}
                         </span>
-                        <span>
+                        {/* <span>
                           {address.province && `${address.province}, `}
                           {address.country_code?.toUpperCase()}
-                        </span>
+                        </span> */}
                       </div>
                     </div>
                   </div>

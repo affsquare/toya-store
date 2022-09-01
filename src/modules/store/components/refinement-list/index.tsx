@@ -75,13 +75,12 @@ const RefinementList = ({
   }
 
   const handleChnageOrder = () => {
-    if (!productStore?.orders?.["date"]) {
-      dispatcher(addOrder({ key: "date", value: 'DESC' }))
+    if (!productStore?.orders?.["price"]) {
+      dispatcher(addOrder({ key: "price", value: 'DESC' }))
       setRefinementList({ ...refinementList, order: productStore.orders })
     } else {
-      dispatcher(removeOrder({ key: "date" }))
+      dispatcher(removeOrder({ key: "price" }))
     }
-
   }
 
   useEffect(() => {
@@ -161,7 +160,9 @@ const RefinementList = ({
                 <input
                   type="checkbox"
                   // defaultChecked={refinementList.collection_id?.includes(c.id)}
-                  onChange={e => handleChnageOrder()}
+                  onChange={e => {
+
+                  }}
                   className=""
                 />
                 Sort by popularity
@@ -173,7 +174,10 @@ const RefinementList = ({
                 <input
                   type="checkbox"
                   // defaultChecked={refinementList.collection_id?.includes(c.id)}
-                  onChange={e => handleChnageOrder()}
+                  onChange={(e) => {
+
+                  }
+                  }
                   className=""
                 />
                 Sort by newness
@@ -185,7 +189,10 @@ const RefinementList = ({
                 <input
                   type="checkbox"
                   // defaultChecked={refinementList.collection_id?.includes(c.id)}
-                  onChange={e => handleChnageOrder()}
+                  onChange={(e) => {
+
+                  }
+                  }
                   className=""
                 />
                 Sort by price: low to high
@@ -197,13 +204,8 @@ const RefinementList = ({
                 <input
                   type="checkbox"
                   // defaultChecked={refinementList.collection_id?.includes(c.id)}
-                  onChange={(e) => {
+                  onClick={(e) => {
                     handleChnageOrder()
-                    // if (!productStore?.orders?.["price"]) {
-                    //   dispatcher(addOrder({ key: "price", value: 'ASC' }))
-                    // } else {
-                    //   dispatcher(removeOrder({ key: "price" }))
-                    // }
                   }}
                   className=""
                 />

@@ -110,11 +110,11 @@ const EditAddress: React.FC<EditAddressProps> = ({
           <span className="text-left text-base-semi">
             {address.first_name} {address.last_name}
           </span>
-          {address.company && (
+          {/* {address.company && (
             <span className="text-small-regular text-gray-700">
               {address.company}
             </span>
-          )}
+          )} */}
           <div className="flex flex-col text-left text-base-regular mt-2">
             <span>
               {address.address_1}
@@ -171,22 +171,18 @@ const EditAddress: React.FC<EditAddressProps> = ({
                 autoComplete="family-name"
               />
             </div>
-            <Input label="Company" {...register("company")} errors={errors} />
-            <Input
-              label="Address"
-              {...register("address_1", {
-                required: "Address is required",
-              })}
-              required
-              errors={errors}
-              autoComplete="address-line1"
-            />
-            <Input
+            <div className="">
+              <span className="text-xs">Country / Region </span>
+              <h6 className="fw-bold text-gray-400 text-sm">Egypt</h6>
+            </div>
+            {/* <Input label="Company" {...register("company")} errors={errors} /> */}
+
+            {/* <Input
               label="Apartment, suite, etc."
               {...register("address_2")}
               errors={errors}
               autoComplete="address-line2"
-            />
+            /> */}
             <div className="grid grid-cols-[144px_1fr] gap-x-2">
               <Input
                 label="Postal code"
@@ -207,15 +203,24 @@ const EditAddress: React.FC<EditAddressProps> = ({
                 autoComplete="locality"
               />
             </div>
-            <Input
+            {/* <Input
               label="Province / State"
               {...register("province")}
               errors={errors}
               autoComplete="address-level1"
-            />
-            <CountrySelect
+            /> */}
+            {/* <CountrySelect
               {...register("country_code", { required: true })}
               autoComplete="country"
+            /> */}
+            <Input
+              label="Street address"
+              {...register("address_1", {
+                required: "Address is required",
+              })}
+              required
+              errors={errors}
+              autoComplete="address-line1"
             />
             <Input
               label="Phone"

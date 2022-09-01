@@ -1,7 +1,7 @@
 import { CheckoutFormValues } from "@lib/context/checkout-context"
 import ConnectForm from "@modules/common/components/connect-form"
 import Input from "@modules/common/components/input"
-import CountrySelect from "../country-select"
+// import CountrySelect from "../country-select"
 
 const BillingAddress = () => {
   return (
@@ -28,29 +28,6 @@ const BillingAddress = () => {
               touched={touchedFields}
             />
           </div>
-          <Input
-            label="Company"
-            {...register("billing_address.company")}
-            autoComplete="organization"
-            errors={errors}
-            touched={touchedFields}
-          />
-          <Input
-            label="Address"
-            {...register("billing_address.address_1", {
-              required: "Address is required",
-            })}
-            autoComplete="address-line1"
-            errors={errors}
-            touched={touchedFields}
-          />
-          <Input
-            label="Apartments, suite, etc."
-            {...register("billing_address.address_2")}
-            autoComplete="address-line2"
-            errors={errors}
-            touched={touchedFields}
-          />
           <div className="grid grid-cols-[144px_1fr] gap-x-2">
             <Input
               label="Postal code"
@@ -71,21 +48,37 @@ const BillingAddress = () => {
               touched={touchedFields}
             />
           </div>
-          <CountrySelect
+          {/* <Input
+            label="Company"
+            {...register("billing_address.company")}
+            autoComplete="organization"
+            errors={errors}
+            touched={touchedFields}
+          /> */}
+
+          {/* <Input
+            label="Apartments, suite, etc."
+            {...register("billing_address.address_2")}
+            autoComplete="address-line2"
+            errors={errors}
+            touched={touchedFields}
+          /> */}
+
+          {/* <CountrySelect
             {...register("billing_address.country_code", {
               required: "Country is required",
             })}
             autoComplete="country"
             errors={errors}
             touched={touchedFields}
-          />
-          <Input
+          /> */}
+          {/* <Input
             label="State / Province"
             {...register("billing_address.province")}
             autoComplete="address-level1"
             errors={errors}
             touched={touchedFields}
-          />
+          /> */}
           <Input
             label="Phone"
             {...register("billing_address.phone")}
@@ -93,7 +86,17 @@ const BillingAddress = () => {
             errors={errors}
             touched={touchedFields}
           />
+          <Input
+            label="Address"
+            {...register("billing_address.address_1", {
+              required: "Address is required",
+            })}
+            autoComplete="address-line1"
+            errors={errors}
+            touched={touchedFields}
+          />
         </div>
+
       )}
     </ConnectForm>
   )

@@ -24,7 +24,7 @@ const Addresses = () => {
       {isEdit ? (
         <div className="px-8 pb-8">
           <ShippingAddress />
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <Checkbox
               label="Same as billing address"
               checked={checked}
@@ -41,7 +41,7 @@ const Addresses = () => {
               </div>
               <BillingAddress />
             </div>
-          )}
+          )} */}
           <Button
             className="max-w-[200px] mt-6"
             onClick={handleSubmit(setAddresses)}
@@ -49,7 +49,9 @@ const Addresses = () => {
             Continue to delivery
           </Button>
         </div>
-      ) : (
+      ) 
+      : 
+      (
         <div>
           <div className="bg-gray-50 px-8 py-6 text-small-regular">
             {cart && cart.shipping_address ? (
@@ -71,28 +73,30 @@ const Addresses = () => {
                       {cart.shipping_address.postal_code},{" "}
                       {cart.shipping_address.city}
                     </span>
-                    <span>
+                    {/* <span>
                       {cart.shipping_address.country_code?.toUpperCase()}
-                    </span>
+                    </span> */}
                     <div className="mt-4 flex flex-col">
                       <span>{cart.shipping_address.phone}</span>
                       <span>{cart.email}</span>
                     </div>
-                    {checked && (
+                    {/* {checked && (
                       <div className="flex items-center gap-x-2 mt-6">
                         <div className="flex items-center justify-center border border-gray-700 bg-gray-100 w-4 h-4">
                           ✓
                         </div>
                         <span>Same as billing address</span>
                       </div>
-                    )}
+                    )} */}
                   </div>
                   <div>
                     <button onClick={setEdit}>Edit</button>
                   </div>
                 </div>
               </div>
-            ) : (
+            ) 
+            : 
+            (
               <div className="">
                 <Spinner />
               </div>
@@ -126,9 +130,9 @@ const Addresses = () => {
                           {cart.billing_address.postal_code},{" "}
                           {cart.billing_address.city}
                         </span>
-                        <span>
+                        {/* <span>
                           {cart.billing_address.country_code?.toUpperCase()}
-                        </span>
+                        </span> */}
 
                         <div className="mt-4 flex flex-col">
                           <span>{cart.billing_address.phone}</span>

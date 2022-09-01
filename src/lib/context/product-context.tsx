@@ -11,6 +11,7 @@ import React, {
 } from "react"
 import { Product, Variant } from "types/medusa"
 import { useStore } from "./store-context"
+import  ProductPreview  from '@modules/products/components/product-preview';
 
 interface ProductContext {
   formattedPrice: string
@@ -26,8 +27,7 @@ interface ProductContext {
   addToCart: () => void
 }
 
-const ProductActionContext = createContext<ProductContext | null>(null)
-
+export const ProductActionContext = createContext<ProductContext | null>(null)
 
 
 interface ProductProviderProps {

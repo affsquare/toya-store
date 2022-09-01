@@ -20,18 +20,9 @@ const ShippingAddress = () => {
       )}
       <ConnectForm<CheckoutFormValues>>
         {({ register, formState: { errors, touchedFields } }) => (
-          <div className="grid grid-cols-1 gap-y-2">
-            <Input
-              label="Email"
-              {...register("email", {
-                required: "Email is required",
-                pattern: emailRegex,
-              })}
-              autoComplete="email"
-              errors={errors}
-              touched={touchedFields}
-            />
-            <div className="grid grid-cols-2 gap-x-2">
+          <div className="grid grid-cols-1 gap-y-4">
+
+            <div className="grid grid-cols-2 gap-x-10">
               <Input
                 label="First name"
                 {...register("shipping_address.first_name", {
@@ -51,30 +42,27 @@ const ShippingAddress = () => {
                 touched={touchedFields}
               />
             </div>
-            <Input
+            <div className="">
+              <span className="text-xs">Country / Region </span>
+              <h6 className="fw-bold text-gray-400 text-sm">Egypt</h6>
+            </div>
+
+            {/* <Input
               label="Company"
               {...register("shipping_address.company")}
               autoComplete="organization"
               errors={errors}
               touched={touchedFields}
-            />
-            <Input
-              label="Address"
-              {...register("shipping_address.address_1", {
-                required: "Address is required",
+            /> */}
+            {/* <CountrySelect
+              {...register("shipping_address.country_code", {
+                required: "Country is required",
               })}
-              autoComplete="address-line1"
+              autoComplete="country"
               errors={errors}
               touched={touchedFields}
-            />
-            <Input
-              label="Apartments, suite, etc."
-              {...register("shipping_address.address_2")}
-              autoComplete="address-line2"
-              errors={errors}
-              touched={touchedFields}
-            />
-            <div className="grid grid-cols-[122px_1fr] gap-x-2">
+            /> */}
+            <div className="grid grid-cols-[122px_1fr] gap-x-10">
               <Input
                 label="Postal code"
                 {...register("shipping_address.postal_code", {
@@ -94,25 +82,46 @@ const ShippingAddress = () => {
                 touched={touchedFields}
               />
             </div>
-            <CountrySelect
-              {...register("shipping_address.country_code", {
-                required: "Country is required",
+            <Input
+              label="Street Address"
+              {...register("shipping_address.address_1", {
+                required: "Address is required",
               })}
-              autoComplete="country"
+              autoComplete="address-line1"
               errors={errors}
               touched={touchedFields}
             />
-            <Input
+            {/* <Input
+              label="Apartments, suite, etc."
+              {...register("shipping_address.address_2")}
+              autoComplete="address-line2"
+              errors={errors}
+              touched={touchedFields}
+            /> */}
+
+
+            {/* <Input
               label="State / Province"
               {...register("shipping_address.province")}
               autoComplete="address-level1"
               errors={errors}
               touched={touchedFields}
-            />
+            /> */}
+
             <Input
               label="Phone"
               {...register("shipping_address.phone")}
               autoComplete="tel"
+              errors={errors}
+              touched={touchedFields}
+            />
+            <Input
+              label="Email"
+              {...register("email", {
+                required: "Email is required",
+                pattern: emailRegex,
+              })}
+              autoComplete="email"
               errors={errors}
               touched={touchedFields}
             />

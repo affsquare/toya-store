@@ -43,7 +43,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             name={name}
             placeholder=" "
             className={clsx(
-              "pt-4 pb-1 block w-full px-4 mt-0 bg-transparent border appearance-none focus:outline-none focus:ring-0 focus:border-gray-400 border-gray-200",
+              "pt-4 pb-1 block w-full  mt-0 bg-transparent border-b appearance-none focus:outline-none focus:ring-0 focus:border-gray-400 ",
               {
                 "border-rose-500 focus:border-rose-500": hasError,
               }
@@ -55,7 +55,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             htmlFor={name}
             onClick={() => inputRef.current?.focus()}
             className={clsx(
-              "mx-3 px-1 transition-all absolute duration-300 top-3 -z-1 origin-0 text-gray-500",
+              "  transition-all absolute duration-300 top-3 -z-1 origin-0 text-gray-500",
               {
                 "!text-rose-500": hasError,
               }

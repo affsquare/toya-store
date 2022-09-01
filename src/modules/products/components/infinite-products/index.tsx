@@ -12,13 +12,15 @@ import { useInfiniteQuery } from "react-query"
 import VerticalPreview from './../vertical-preview/index';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useSelector } from "react-redux"
+import { useProductActions } from '@lib/context/product-context';
 
 
 type InfiniteProductsType = {
-  params: StoreGetProductsParams
+  params: StoreGetProductsParams,
 }
 
-const InfiniteProducts = ({ params }: InfiniteProductsType) => {
+
+const InfiniteProducts = ({ params } : InfiniteProductsType) => {
 
   const productsStore = useSelector((st: any) => st?.products)
 
@@ -62,7 +64,7 @@ const InfiniteProducts = ({ params }: InfiniteProductsType) => {
 
   /* ////////////////////// */
 
-  // const { addToCart } = useProductActions()
+
   const [views, setViews] = useState(true)
   return (
     <>

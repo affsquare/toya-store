@@ -7,7 +7,7 @@ type CheckboxProps = {
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
-  checked = false,
+  checked = true,
   onChange,
   label,
 }) => {

@@ -5,6 +5,7 @@ import Link from "next/link"
 import CheckoutLoader from "../components/checkout-loader"
 import CheckoutForm from "./checkout-form"
 import CheckoutSummary from "./checkout-summary"
+import Cart from './../../common/icons/cart';
 
 const CheckoutTemplate = () => {
   return (
@@ -18,6 +19,7 @@ const CheckoutTemplate = () => {
                 <span className="mt-px hidden small:block">
                   Back to shopping cart
                 </span>
+                
                 <span className="mt-px block small:hidden">Back</span>
               </a>
             </Link>

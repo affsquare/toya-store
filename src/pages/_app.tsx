@@ -18,6 +18,7 @@ import { IS_BROWSER } from '@lib/constants';
 import { Provider } from "react-redux"
 import { store as localStore } from "../store"
 import { useEffect } from 'react';
+import { ProductActionContext } from "@lib/context/product-context"
 
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
@@ -36,24 +37,24 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
           client: queryClient,
         }}
       >
+        {/* <ProductActionContext.Provider value={}> */}
+          <Hydrate state={pageProps.dehydratedState}>
+            <CartDropdownProvider>
+              <MobileMenuProvider>
+                <CartProvider>
+                  <StoreProvider>
+                    <AccountProvider>
+                      <Layout>
 
-        <Hydrate state={pageProps.dehydratedState}>
-          <CartDropdownProvider>
-            <MobileMenuProvider>
-              <CartProvider>
-                <StoreProvider>
-                  <AccountProvider>
-                    <Layout>
-
-                      <Component {...pageProps} />
-                    </Layout>
-                  </AccountProvider>
-                </StoreProvider>
-              </CartProvider>
-            </MobileMenuProvider>
-          </CartDropdownProvider>
-        </Hydrate>
-
+                        <Component {...pageProps} />
+                      </Layout>
+                    </AccountProvider>
+                  </StoreProvider>
+                </CartProvider>
+              </MobileMenuProvider>
+            </CartDropdownProvider>
+          </Hydrate>
+        {/* </ProductActionContext.Provider> */}
       </MedusaProvider>
     </Provider>
   )

@@ -5,11 +5,13 @@ import Thumbnail from "../thumbnail"
 import { useContext, useState } from "react"
 import { useProductActions } from '@lib/context/product-context';
 
+
 const ProductPreview = ({
     title,
     handle,
     thumbnail,
     price,
+    
 }: ProductPreviewType) => {
 
 
@@ -19,14 +21,14 @@ const ProductPreview = ({
 
     return (
         <Link href={`/products/${handle}`}>
-            
+
             <a  >
                 <div className="position-relative transition-all ease-in-out duration-300" onMouseEnter={() => setAddToCart(true)} onMouseLeave={() => setAddToCart(false)}>
                     <div className="position-relative ">
 
                         <Thumbnail thumbnail={thumbnail} size="full" />
 
-                        {addToCart_ ? <button onClick={(e)=>{
+                        {addToCart_ ? <button onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
                             console.log("hello")

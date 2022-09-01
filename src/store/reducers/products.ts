@@ -44,19 +44,20 @@ const ProductsSlice = createSlice({
         addOrder(state, action) {
             const { key, value } = action.payload;
             const tmp: IOrder = state.orders;
-
             tmp[key] = value;
-            console.log(tmp)
+
+            console.log(key, "Add")
             state = {
                 ...state,
-                filters: tmp
+                orders: tmp
             }
         },
         removeOrder(state, action) {
             const { key } = action.payload;
             const tmp: IOrder = state.orders;
             delete tmp[key];
-            console.log(tmp)
+
+            console.log(key, "remove")
             state = {
                 ...state,
                 orders: tmp
