@@ -7,6 +7,7 @@ import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js"
 import { useElements, useStripe } from "@stripe/react-stripe-js"
 import { useCart } from "medusa-react"
 import React, { useEffect, useState } from "react"
+import { Variant } from 'types/medusa';
 
 type PaymentButtonProps = {
   paymentSession?: PaymentSession | null
@@ -54,7 +55,7 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({ paymentSession }) => {
         <PayPalPaymentButton notReady={notReady} session={paymentSession} />
       )
     default:
-      return <Button disabled>Select a payment method</Button>
+      return <Button disabled variant="cart" >Complete Your Information</Button>
   }
 }
 
@@ -234,9 +235,12 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
   }
 
   return (
-    <Button disabled={submitting || notReady} onClick={handlePayment}>
-      {submitting ? <Spinner /> : "Checkout"}
-    </Button>
+    <div className="">
+
+      <Button disabled={submitting || notReady} onClick={handlePayment} variant = "cart">
+        {submitting ? <Spinner /> : "PLace Order"}
+      </Button>
+    </div>
   )
 }
 

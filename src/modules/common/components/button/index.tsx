@@ -4,7 +4,7 @@ import React from "react"
 
 type ButtonProps = {
   isLoading?: boolean
-  variant?: "primary" | "secondary"
+  variant?: "primary" | "secondary" | "cart"
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button = ({
@@ -18,12 +18,15 @@ const Button = ({
     <button
       {...props}
       className={clsx(
-        "w-full uppercase flex items-center justify-center min-h-[40px]  py-[10px] text-small-regular border transition-colors duration-200 disabled:opacity-50",
+        "w-full uppercase flex items-center justify-center min-h-[42px]  py-[10px] text-small-regular  transition-colors duration-200 disabled:opacity-50",
         {
-          "cart-btn rounded px-2":
+          "cart-btn tracking-wider px-2 ":
             variant === "primary",
           "text-gray-900 bg-transparent border-gray-920 hover:bg-gray-100 px-2 rounded-1" :
             variant === "secondary",
+            "cart-btn  px-2 tracking-wider py-3 text-base":
+            variant === "cart",
+            
         },
         className
       )}

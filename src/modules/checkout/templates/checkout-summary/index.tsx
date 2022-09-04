@@ -13,14 +13,18 @@ const CheckoutSummary = () => {
 
   return (
     <div className="sticky top-0 flex flex-col-reverse small:flex-col gap-y-8">
-      <div className="w-full bg-white p-6 flex flex-col gap-y-6">
-        <CartTotals cart={cart} />
-        <PaymentButton paymentSession={cart?.payment_session} />
-      </div>
+
       <div className="p-6 bg-white">
         <DiscountCode cart={cart} />
       </div>
       <GiftCard cart={cart} />
+      <div className="w-full bg-white p-6 flex flex-col gap-y-6">
+        <CartTotals cart={cart} />
+
+      </div>
+      <div className="">
+        <PaymentButton paymentSession={cart?.payment_session} />
+      </div>
     </div>
   )
 }

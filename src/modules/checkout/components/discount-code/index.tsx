@@ -121,9 +121,9 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                 })}
                 errors={errors}
               />
-              <div>
+              <div className="flex items-end">
                 <Button
-                  className="!min-h-[0] h-[54px] w-[80px]"
+                  className="!min-h-[0] h-[40px] w-[80px] "
                   disabled={isLoading}
                   isLoading={isLoading}
                 >

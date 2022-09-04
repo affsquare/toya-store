@@ -1,7 +1,9 @@
 import Addresses from "@modules/checkout/components/addresses"
 import Payment from "@modules/checkout/components/payment"
 import Shipping from "@modules/checkout/components/shipping"
+import OrderCompletedTemplate from "@modules/order/templates/order-completed-template"
 import { useCart } from "medusa-react"
+import Thumbnail from './../../../products/components/thumbnail/index';
 
 const CheckoutForm = () => {
   const { cart } = useCart()
@@ -9,7 +11,7 @@ const CheckoutForm = () => {
   if (!cart?.id) {
     return null
   }
-
+  
   return (
     <div>
       <div className="w-full grid grid-cols-1 gap-y-8">
@@ -21,9 +23,11 @@ const CheckoutForm = () => {
           <Shipping cart={cart} />
         </div>
 
-        <div>
+        
+        {/* <div>
           <Payment />
-        </div>
+        </div> */}
+
       </div>
     </div>
   )

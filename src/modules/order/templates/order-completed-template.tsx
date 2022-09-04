@@ -18,7 +18,15 @@ const OrderCompletedTemplate: React.FC<OrderCompletedTemplateProps> = ({
     <div className="bg-gray-50 py-6 min-h-[calc(100vh-64px)]">
       <div className="content-container flex justify-center">
         <div className="max-w-4xl h-full bg-white w-full">
-          <OrderDetails order={order} />
+          <div className="flex items-center justify-between">
+            <OrderDetails order={order} />
+            <div className="flex items-center me-3">
+              <div className="bg-green-600 rounded-full min-w-[30px] h-7 flex items-center justify-center text-white text-small-regular me-2">
+                ✓
+              </div>
+              <span>Your Order Is Confirmed</span>
+            </div>
+          </div>
           <Items
             items={order.items}
             region={order.region}

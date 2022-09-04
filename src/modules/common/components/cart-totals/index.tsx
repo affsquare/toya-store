@@ -44,17 +44,18 @@ const CartTotals: React.FC<CartTotalsProps> = ({ cart }) => {
               <span>- {getAmount(gift_card_total)}</span>
             </div>
           )}
-          <div className="flex items-center justify-between">
-            <span className="fw-bold text-gray-500 ">Shipping</span>
-            <span>{getAmount(shipping_total)}</span>
+          <div className="flex items-center justify-between ">
+            <span className="fw-bold text-gray-500 text-base">Shipping</span>
+            <span className="h6">Free Shipping</span>
+            {/* <span>{getAmount(shipping_total)}</span> */}
           </div>
-          <div className="flex items-center justify-between">
+          {/* <div className="flex items-center justify-between">
             <span className="fw-bold text-gray-500 ">Taxes</span>
             <span>{getAmount(tax_total)}</span>
-          </div>
+          </div> */}
         </div>
         <div className="h-px w-full border-b border-gray-200 border-dashed my-4 " />
-        <div className="flex items-center justify-between text-base-regular bg-black text-white mb-2 p-2 rounded fw-bold ">
+        <div className="flex items-center justify-between text-lg bg-black text-white mb-2 px-3 py-3  ">
           <span >Total</span>
           <span>{getAmount(total)}</span>
         </div>

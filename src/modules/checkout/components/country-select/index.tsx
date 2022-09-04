@@ -5,7 +5,7 @@ import { useCart, useRegions } from "medusa-react"
 import { forwardRef, useImperativeHandle, useMemo, useRef } from "react"
 
 const CountrySelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
-  ({ placeholder = "Country", ...props }, ref) => {
+  ({ placeholder = "country", ...props }, ref) => {
     const innerRef = useRef<HTMLSelectElement>(null)
 
     useImperativeHandle<HTMLSelectElement | null, HTMLSelectElement | null>(
@@ -16,9 +16,29 @@ const CountrySelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
     const { regions } = useRegions()
     const { cart } = useCart()
 
+      const governorate =[
+      {
+        value:"ca",
+        label:"cairo",
+      },
+      {
+        value:"alex",
+        label:"alexandria",
+      },
+      {
+        value:"gi",
+        label:"Giza",
+      },
+      {
+        value:"as",
+        label:"Aswan",
+      },
+    ]
+
     const countryOptions = useMemo(() => {
       const currentRegion = regions?.find((r) => r.id === cart?.region_id)
-
+      console.log(currentRegion);
+      
       if (!currentRegion) {
         return []
       }
@@ -29,12 +49,19 @@ const CountrySelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       }))
     }, [regions, cart])
 
+  
+
     return (
       <NativeSelect ref={innerRef} placeholder={placeholder} {...props}>
         {countryOptions.map(({ value, label }, index) => (
-          <option key={index} value={value}>
-            {label}
-          </option>
+          <>
+          {/* {console.log(governorate)} */}
+          {/* {console.log(countryOptions)} */}
+            <option key={index} value={value}>
+              {label}
+            </option>
+          </>
+
         ))}
       </NativeSelect>
     )

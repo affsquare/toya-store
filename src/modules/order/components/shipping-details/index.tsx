@@ -11,9 +11,9 @@ const ShippingDetails = ({
 }: ShippingDetailsProps) => {
   return (
     <div className="text-base-regular">
-      <h2 className="text-base-semi">Delivery</h2>
+      <h2 className="text-base-semi fw-bold">Delivery</h2>
       <div className="my-2">
-        <h3 className="text-small-regular text-gray-700">Address</h3>
+        {/* <h3 className="text-small-regular text-gray-700">Address</h3> */}
         <div className="flex flex-col">
           <span>{`${address.first_name} ${address.last_name}`}</span>
           <span>{`${address.address_1}${
@@ -24,12 +24,13 @@ const ShippingDetails = ({
         </div>
       </div>
       <div className="my-2">
-        <h3 className="text-small-regular text-gray-700">Delivery method</h3>
-        <div>
+        <h3 className=" text-gray-700 fw-bold">Delivery method</h3>
+        <span>Free Shipping</span>
+        {/* <div>
           {shippingMethods.map((sm) => {
             return <div key={sm.id}>{sm.shipping_option.name}</div>
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   )
