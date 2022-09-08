@@ -487,6 +487,9 @@ input[type=checkbox] {
   accent-color: rgba(174, 100, 76, 1);
 }
 
+a.dropdown-toggle:hover{
+  color: #212529;
+}
 /* Start Product Preview */
 .title {
   font-size: 15.4px;

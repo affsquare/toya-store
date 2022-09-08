@@ -18,7 +18,8 @@ const LineItemPrice = ({
   style = "default",
 }: LineItemPriceProps) => {
   const hasReducedPrice = variant.calculated_price < variant.original_price
-
+  // console.log(variant);
+  
   return (
     <div className="flex flex-col text-gray-700 ">
       <span

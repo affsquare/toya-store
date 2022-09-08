@@ -25,11 +25,15 @@ const useEnrichedLineItems = (lineItems?: LineItem[], cartId?: string) => {
     }
   }, [lineItems, cart?.items, cart?.id, cartId])
 
+
+// console.log(cart?.items);
+
   const { products } = useProducts(queryParams, {
     enabled: !!lineItems || !!cart?.items?.length,
     keepPreviousData: true,
   })
 
+  
   // We enrich the line items with the product and variant information
   const items = useMemo(() => {
     const currItems = lineItems || cart?.items
@@ -37,7 +41,7 @@ const useEnrichedLineItems = (lineItems?: LineItem[], cartId?: string) => {
     if (!currItems?.length || !products) {
       return []
     }
-
+  
     const enrichedItems: Omit<LineItem, "beforeInsert">[] = []
 
     for (const item of currItems) {
@@ -69,7 +73,7 @@ const useEnrichedLineItems = (lineItems?: LineItem[], cartId?: string) => {
     return enrichedItems
   }, [cart?.items, lineItems, products])
 
-  return items
+  return cart?.items
 }
 
 export default useEnrichedLineItems

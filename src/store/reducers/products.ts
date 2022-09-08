@@ -46,7 +46,6 @@ const ProductsSlice = createSlice({
             const tmp: IOrder = state.orders;
             tmp[key] = value;
 
-            console.log(key, "Add")
             state = {
                 ...state,
                 orders: tmp
@@ -57,7 +56,6 @@ const ProductsSlice = createSlice({
             const tmp: IOrder = state.orders;
             delete tmp[key];
 
-            console.log(key, "remove")
             state = {
                 ...state,
                 orders: tmp

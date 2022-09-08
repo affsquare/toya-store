@@ -1,16 +1,41 @@
 import clsx from "clsx"
 import Link from "next/link"
-import { ProductPreviewType } from "types/global"
+// import { ProductPreviewType } from "types/global"
 import Thumbnail from "../thumbnail"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import getSymbolFromCurrency from 'currency-symbol-map'
+
+type ProductPreviewType = {
+    id: string
+    title: string
+    handle: string | null
+    thumbnail: string | null
+    variants: any
+    description:string
+}
 
 const VerticalPreview = ({
     title,
     handle,
     thumbnail,
-    price,
+    variants,
+    description
 }: ProductPreviewType) => {
 
+    
+    
+    const [price, setPrice] = useState<any>(0)
+
+    function handellVariants() {
+        variants.map((v: any, index: any) => (
+            setPrice(v.prices[1])
+        ))
+
+    }
+
+    useEffect(() => {
+        handellVariants()
+    },)
 
     const [addToCart_, setAddToCart] = useState(false)
     // const { addToCart } = useProductActions()
@@ -22,7 +47,7 @@ const VerticalPreview = ({
                     <Thumbnail thumbnail={thumbnail} size="small" />
 
                     {/* Add To Cart Buttton */}
-                    <div className="text-base-regular ms-3 relative">
+                    <div className="text-base-regular ms-3 relative w-75">
                         <span className="title">{title}</span>
                         <div className="flex items-center gap-x-2 mt-1">
                             {price ? (
@@ -37,19 +62,23 @@ const VerticalPreview = ({
                                             "text-rose-500": price.price_type === "sale",
                                         })}
                                     >
-                                        {price.calculated_price}
+                                        {price.amount} {getSymbolFromCurrency(`${price.currency_code}`)}
                                     </span>
                                 </>
                             ) : (
                                 <div className="w-20 h-6 animate-pulse bg-gray-100"></div>
                             )}
                         </div>
+
+                        <p className="text-muted mt-2">{description}</p>
+
+
                         <button onClick={(e) => {
                             e.preventDefault()
                             e.stopPropagation()
                             console.log("hello")
                         }
-                        } className="toya-bg text-white rounded-0 absolute bottom-0 end-0 py-1 px-2 ">
+                        } className="toya-bg text-white rounded absolute bottom-0 end-0 py-2 px-5 text-uppercase tracking-wider">
                             {"Add to cart"}
                         </button>
                     </div>

@@ -100,8 +100,6 @@ const Shipping: React.FC<ShippingProps> = ({ cart }) => {
   return (
     <>
 
-      
-
 
 
       {/* <StepContainer

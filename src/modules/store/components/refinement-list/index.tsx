@@ -7,6 +7,7 @@ import InfiniteProducts from "@modules/products/components/infinite-products"
 import { addFilter, addOrder, removeOrder, resetFilters, resetOrder } from "../../../../store/reducers/products"
 import { useDispatch, useSelector } from "react-redux"
 import { useCallback } from "react"
+import Thumbnail from "@modules/products/components/thumbnail"
 type RefinementListProps = {
   refinementList: StoreGetProductsParams
   setRefinementList: (refinementList: StoreGetProductsParams) => void
@@ -17,12 +18,12 @@ const RefinementList = ({
   setRefinementList,
 }: RefinementListProps) => {
 
-  const { collections, isLoading } = useCollections();
-
+  
   const dispatcher = useDispatch();
-
+  
   const productStore = useSelector((st: any) => st.products)
-
+  
+  const { collections, isLoading } = useCollections();
   const handleCollectionChange = (
     e: ChangeEvent<HTMLInputElement>,
     id: string
@@ -38,7 +39,6 @@ const RefinementList = ({
         ...refinementList,
         collection_id: [...collectionIds, id],
       })
-
       return
     }
 
@@ -61,44 +61,55 @@ const RefinementList = ({
   const setScreenCountry = () => setScreen("country")
   const setScreenSearch = () => setScreen("search")
 
-  const [products, setProducts] = useState([])
-  const apiURL = `http://ec2-3-9-43-164.eu-west-2.compute.amazonaws.com:9000`
-  async function getProducts(fillter: any) {
-    let response = await fetch(`${apiURL}/store/products${fillter}`);
-    // let productsContainer;
-    if (response.status == 200) {
-      const productsContainer = await response.json();
-      setProducts(productsContainer.products)
-      console.log(products, fillter);
+  // const [products, setProducts] = useState([])
 
-    }
-  }
+  // const apiURL = `http://ec2-3-9-43-164.eu-west-2.compute.amazonaws.com:9000`
+  // async function getProducts(fillter: any) {
+  //   let response = await fetch(`${apiURL}/store/products${fillter}`);
 
-  const handleChnageOrder = () => {
-    if (!productStore?.orders?.["price"]) {
-      dispatcher(addOrder({ key: "price", value: 'DESC' }))
-      setRefinementList({ ...refinementList, order: productStore.orders })
-    } else {
-      dispatcher(removeOrder({ key: "price" }))
-    }
-  }
+  //   if (response.status == 200) {
+  //     const productsContainer = await response.json();
+  //     setProducts(productsContainer.products)
+  //     // console.log(products, fillter);
+  //   }
+  // }
 
-  useEffect(() => {
-    getProducts("")
-  }, [])
+  // useEffect(() => {
+  //   getProducts("")
+    
+  // }, [])
+  
+  // async function handelFillters() {
+  //   await getProducts("?order[price]=DESC")
+  //   // console.log(products);
+  //   products.map((p)=>{
+  //     return
+  //       // console.log(p.collection_id)
+        
+  //       // setRefinementList(
+  //       //   {...refinementList, p}
+  //       // )
+      
+  //   })
+  // }
+
+  // const handleChnageOrder = () => {
+  //   if (!productStore?.orders?.["price"]) {
+  //     dispatcher(addOrder({ key: "price", value: 'DESC' }))
+  //     setRefinementList({ ...refinementList, order: productStore.orders })
+  //     // console.log(refinementList, "yes");
+
+  //   } else {
+  //     dispatcher(removeOrder({ key: "price" }))
+
+  //     // console.log(refinementList, "no");
+  //   }
+  // }
+
+
 
   return (
     <>
-      {/* {products.map((p:any)=>(
-        <div className="col-md-3">
-            <div className="product">
-              <img src={p.thumbnail} alt="" />
-              <div className="cont">
-                <h5>{p.title}</h5>
-              </div>
-            </div>
-        </div>
-      ))} */}
       <div className="flex flex-column pe-5 py-4  small:pr-0 small:pl-0 small:min-w-[250px]">
         <div className="">
           <span className=" text-uppercase filter mb-4">
@@ -137,8 +148,7 @@ const RefinementList = ({
             ))}
           </ul>
 
-          <ul className="text-base-regular items-center gap-x-4 mt-2">
-            {/* {products.map((p:any) => ( */}
+          {/* <ul className="text-base-regular items-center gap-x-4 mt-2">
 
             <li >
               <label className="flex items-center gap-x-2">
@@ -153,7 +163,7 @@ const RefinementList = ({
                 Default Sorting
               </label>
             </li>
-            {/* // ))} */}
+            
 
             <li >
               <label className="flex items-center gap-x-2">
@@ -206,6 +216,7 @@ const RefinementList = ({
                   // defaultChecked={refinementList.collection_id?.includes(c.id)}
                   onClick={(e) => {
                     handleChnageOrder()
+                    
                   }}
                   className=""
                 />
@@ -213,7 +224,7 @@ const RefinementList = ({
               </label>
             </li>
 
-          </ul>
+          </ul> */}
 
         </div>
       </div>

@@ -16,22 +16,28 @@ type ProductActionsProps = {
 }
 
 const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
-    // console.log(product);
+
 
     let { updateOptions, addToCart, options, inStock, variant } =
         useProductActions()
 
-    const price = useProductPrice({ id: product.id, variantId: variant?.id })
+    // const price = useProductPrice({ id: product.id, variantId: variant?.id })
 
-    const selectedPrice = useMemo(() => {
-        const { variantPrice, cheapestPrice } = price
+    // const selectedPrice = useMemo(() => {
+    //     const { variantPrice, cheapestPrice } = price
 
-        return variantPrice || cheapestPrice || null
-    }, [price])
+    //     return variantPrice || cheapestPrice || null
+    // }, [price])
 
 
     const { updateItem, deleteItem } = useStore()
     let [itemQuentity, setItemQuentity] = useState(1);
+    // const [price, setPrice] = useState(0)
+
+    const price: any = product.variants.map((p: any) => {
+        return (p.prices[1])
+    }
+    )
 
     return (
         <>
@@ -76,7 +82,8 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
 
                 {/* Product-Price  */}
                 <div className="my-3 ">
-                    {selectedPrice ? (
+                    <h3>{price.amount} {price.currency_code}</h3>
+                    {/* {selectedPrice ? (
                         <div className="flex flex-col price ">
                             <span
                                 className={clsx("text-xl-semi", {
@@ -101,7 +108,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
                         </div>
                     ) : (
                         <div></div>
-                    )}
+                    )} */}
                 </div>
 
                 {/* product-description */}
@@ -130,14 +137,12 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
                         <div className="plus-min d-flex flex-column justify-content-center">
                             <div onClick={() => {
                                 setItemQuentity(itemQuentity += 1)
-
                             }
                             } className="btn d-flex justify-center items-center"><Plus /></div>
                             <div onClick={() => {
                                 if (itemQuentity > 1) {
                                     setItemQuentity(itemQuentity -= 1)
                                 }
-
                             }
                             } className="btn d-flex justify-center items-center"><Minus /></div>
                         </div>

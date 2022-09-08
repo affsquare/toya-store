@@ -7,6 +7,7 @@ import ProductInfo from "@modules/products/templates/product-info"
 import React, { useRef } from "react"
 import ImageGallery from "../components/image-gallary"
 import MobileActions from "../components/mobile-actions"
+import  ProductPreview  from '@modules/products/components/product-preview';
 
 type ProductTemplateProps = {
   product: Product
@@ -39,6 +40,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
         <RelatedProducts product={product} />
       </div>
       <MobileActions product={product} show={!inView} />
+      
     </ProductProvider>
   )
 }

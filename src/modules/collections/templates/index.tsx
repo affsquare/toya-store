@@ -4,10 +4,13 @@ import repeat from "@lib/util/repeat"
 import ProductPreview from "@modules/products/components/product-preview"
 import SkeletonProductPreview from "@modules/skeletons/components/skeleton-product-preview"
 import { fetchCollectionProducts } from "@pages/collections/[id]"
+import axios, { Axios } from "axios"
 import { useCart } from "medusa-react"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer"
 import { useInfiniteQuery } from "react-query"
+
+
 
 type CollectionTemplateProps = {
   collection: {
@@ -46,12 +49,15 @@ const CollectionTemplate: React.FC<CollectionTemplateProps> = ({
     region: cart?.region,
   })
 
+
+
   useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView, hasNextPage])
+
 
   return (
     <div className="content-container py-6">
@@ -61,6 +67,8 @@ const CollectionTemplate: React.FC<CollectionTemplateProps> = ({
       <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8">
         {previews.map((p) => (
           <li key={p.id}>
+            {console.log({ ...p })
+            }
             <ProductPreview {...p} />
           </li>
         ))}

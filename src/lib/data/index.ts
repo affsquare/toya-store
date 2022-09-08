@@ -113,15 +113,21 @@ export const getCollectionData = async (id: string) => {
 type FetchProductListParams = {
   pageParam?: number
   queryParams: StoreGetProductsParams
+  filter?: Record<string, string>
+  order?: Record<string, "DESC" | "ASC">
 }
 
 export const fetchProductsList = async ({
   pageParam = 0,
   queryParams,
+  filter,
+  order
 }: FetchProductListParams) => {
   const { products, count, offset } = await medusaClient.products.list({
     limit: 12,
     offset: pageParam,
+    order,
+    filter,
     ...queryParams,
   })
 

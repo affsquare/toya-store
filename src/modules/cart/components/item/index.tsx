@@ -11,6 +11,7 @@ import MyVerticallyCenteredModal from './../MyVerticallyCenteredModal';
 import Plus from "@modules/common/icons/plus"
 import Minus from "@modules/common/icons/minus"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { formatAmount } from "medusa-react"
 
 type ItemProps = {
     item: Omit<LineItem, "beforeInsert">
@@ -37,6 +38,8 @@ const Item = ({ item, region }: ItemProps) => {
 
     const [modalShow, setModalShow] = useState(false);
 
+
+
     return (
         <>
             <div className="row items-center bg-gray-50">
@@ -55,11 +58,16 @@ const Item = ({ item, region }: ItemProps) => {
                 {/* Price */}
                 <div className="col-sm-2">
                     <div className="my-2 my-md-0">
-                        <LineItemPrice
+                        {/* <LineItemPrice
                             variant={item.variant as CalculatedVariant}
                             quantity={item.quantity}
                             region={region}
-                        />
+                        /> */}
+                        {formatAmount({
+                            amount: item.unit_price * item.quantity,
+                            region: region,
+                            includeTaxes: false,
+                        })}
                     </div>
                 </div>
 
@@ -96,7 +104,7 @@ const Item = ({ item, region }: ItemProps) => {
                 {/* Icons */}
                 <div className="col-sm-3 col-md-2">
                     <div className="d-flex items-center justify-between">
-                        <div className="heart me-sm-2 me-1 " role="button" onClick={() => {setSolidHeart(!solidHeart)}}>
+                        <div className="heart me-sm-2 me-1 " role="button" onClick={() => { setSolidHeart(!solidHeart) }}>
                             <HeartIcon active={solidHeart} />
                         </div>
                         <button

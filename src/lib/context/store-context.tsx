@@ -140,8 +140,10 @@ export const StoreProvider = ({ children }: StoreProps) => {
     }
   }
 
-  const createNewCart = async (regionId?: string) => {
+  const createNewCart = async (regionId?: any) => {
     console.log("new cart", regionId)
+
+    
     await createCart.mutateAsync(
       { region_id: regionId },
       {
@@ -151,6 +153,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
           ensureRegion(cart.region)
         },
         onError: (error) => {
+          console.error(error,"-----------------------------------")
           if (process.env.NODE_ENV === "development") {
             console.error(error)
           }
@@ -237,6 +240,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
         },
         onError: (error) => {
           handleError(error)
+          console.log("error");
         },
       }
     )

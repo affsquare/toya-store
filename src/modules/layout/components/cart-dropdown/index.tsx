@@ -20,6 +20,8 @@ const CartDropdown = () => {
   const { deleteItem } = useStore()
   const { state, open, close } = useCartDropdown()
   const [show, setShow] = useState(false);
+
+
   return (
     <>
       <div className="h-full z-50" >
@@ -92,16 +94,26 @@ const CartDropdown = () => {
                                       <a>{item.title}</a>
                                     </Link>
                                   </h3>
-                                  <LineItemOptions variant={item.variant} />
+                                  {/* <LineItemOptions variant={item.variant} /> */}
                                   <span>Quantity: {item.quantity}</span>
+                                  <div>price: {formatAmount({
+                                    amount: item.unit_price * item.quantity,
+                                    region: cart.region,
+                                    includeTaxes: false,
+                                  })}</div>
+                                  
+
                                 </div>
-                                <div className="flex justify-end">
-                                  <LineItemPrice
+                                {/* {console.log(cart.region)} */}
+
+                                <div className="flex justify-end bg-danger">
+
+                                  {/* <LineItemPrice
                                     region={cart.region}
                                     variant={item.variant as CalculatedVariant}
                                     quantity={item.quantity}
                                     style="tight"
-                                  />
+                                  /> */}
                                 </div>
                               </div>
                             </div>

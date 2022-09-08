@@ -11,7 +11,6 @@ import React, {
 } from "react"
 import { Product, Variant } from "types/medusa"
 import { useStore } from "./store-context"
-import  ProductPreview  from '@modules/products/components/product-preview';
 
 interface ProductContext {
   formattedPrice: string
@@ -24,11 +23,10 @@ interface ProductContext {
   updateOptions: (options: Record<string, string>) => void
   increaseQuantity: () => void
   decreaseQuantity: () => void
-  addToCart: () => void
+  addToCart: (quentity: number) => void
 }
 
 export const ProductActionContext = createContext<ProductContext | null>(null)
-
 
 interface ProductProviderProps {
   children?: React.ReactNode
@@ -46,7 +44,7 @@ export const ProductProvider = ({
 
   const { addItem } = useStore()
   const { cart } = useCart()
-  const { variants } = product
+  const { variants } = product;
 
   useEffect(() => {
     // initialize the option state
@@ -120,7 +118,7 @@ export const ProductProvider = ({
     setOptions({ ...options, ...update })
   }
 
-  const addToCart = (quantity?: any) => {
+  const addToCart = (quantity: any) => {
     if (variant) {
       addItem({
         variantId: variant.id,
@@ -149,26 +147,30 @@ export const ProductProvider = ({
     }
   }
 
+
+
   return (
-      <ProductActionContext.Provider
-        value={{
-          quantity,
-          maxQuantityMet,
-          disabled,
-          inStock,
-          options,
-          variant,
-          addToCart,
-          updateOptions,
-          decreaseQuantity,
-          increaseQuantity,
-          formattedPrice,
-        }}
-      >
-        {children}
-      </ProductActionContext.Provider>
+    <ProductActionContext.Provider
+      value={{
+        quantity,
+        maxQuantityMet,
+        disabled,
+        inStock,
+        options,
+        variant,
+        addToCart,
+        updateOptions,
+        decreaseQuantity,
+        increaseQuantity,
+        formattedPrice,
+      }}
+    >
+      {children}
+    </ProductActionContext.Provider>
   )
 }
+
+
 
 export const useProductActions = () => {
   const context = useContext(ProductActionContext)
