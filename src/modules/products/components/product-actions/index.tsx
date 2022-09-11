@@ -10,6 +10,7 @@ import { useStore } from '@lib/context/store-context';
 import Plus from "@modules/common/icons/plus"
 import Minus from "@modules/common/icons/minus"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import getSymbolFromCurrency from "currency-symbol-map"
 
 type ProductActionsProps = {
     product: Product
@@ -35,9 +36,13 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
     // const [price, setPrice] = useState(0)
 
     const price: any = product.variants.map((p: any) => {
-        return (p.prices[1])
+        return (p.prices[0])
     }
     )
+
+    function numberWithCommas(x: any) {
+        return x.toString().replace(/\b(\d{1,2})(\d{2})/g, '$1.$2');
+    }
 
     return (
         <>
@@ -81,8 +86,9 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
                 </h3>
 
                 {/* Product-Price  */}
-                <div className="my-3 ">
-                    <h3>{price.amount} {price.currency_code}</h3>
+                <div className="my-3 toya-color text-xl-semi fw-bold">
+                    <h3> {numberWithCommas(price[0].amount)} {getSymbolFromCurrency(`${price[0].currency_code}`)}</h3>
+
                     {/* {selectedPrice ? (
                         <div className="flex flex-col price ">
                             <span

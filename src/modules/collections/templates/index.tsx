@@ -6,10 +6,13 @@ import SkeletonProductPreview from "@modules/skeletons/components/skeleton-produ
 import { fetchCollectionProducts } from "@pages/collections/[id]"
 import axios, { Axios } from "axios"
 import { useCart } from "medusa-react"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { useInView } from "react-intersection-observer"
 import { useInfiniteQuery } from "react-query"
 
+const httpClient = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
+})
 
 
 type CollectionTemplateProps = {
@@ -17,6 +20,12 @@ type CollectionTemplateProps = {
     id: string
     title: string
   }
+}
+
+interface IFilterSorter {
+  search?: string;
+  filter?: Record<string, string>;
+  order?: Record<string, "ASC" | "DESC">
 }
 
 const CollectionTemplate: React.FC<CollectionTemplateProps> = ({
@@ -59,21 +68,38 @@ const CollectionTemplate: React.FC<CollectionTemplateProps> = ({
   }, [inView, hasNextPage])
 
 
+
+  /* ///////////////////////////////////////////////////////////////// */
+
+  const [products, setProducts] = useState([]);
+  function getCollections(colectionId:any) {
+
+    httpClient.get(`/store/products?filter[collection]=${colectionId}`).then(({ data }) => {
+      setProducts(data?.products)
+      // console.log(data.products);
+    
+    })
+  }
+
+  useEffect(() => {
+    getCollections(collection.id)
+    
+  })
+  
   return (
-    <div className="content-container py-6">
+    <div className="container py-6">
       <div className="mb-8 text-2xl-semi">
         <h1>{collection.title}</h1>
       </div>
       <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8">
-        {previews.map((p) => (
+        {products?.map((p:any) => (
           <li key={p.id}>
-            {console.log({ ...p })
-            }
+            
             <ProductPreview {...p} />
           </li>
         ))}
         {isLoading &&
-          !previews.length &&
+          !products?.length &&
           repeat(8).map((index) => (
             <li key={index}>
               <SkeletonProductPreview />

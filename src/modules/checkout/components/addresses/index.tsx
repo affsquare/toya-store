@@ -9,6 +9,7 @@ import OrderDetailsTemplate from './../../../account/templates/order-details-tem
 import Thumbnail from './../../../products/components/thumbnail/index';
 import LineItemOptions from "@modules/common/components/line-item-options"
 import Link from "next/link"
+import getSymbolFromCurrency from "currency-symbol-map"
 
 type OrderCompletedTemplateProps = {
   order: Order
@@ -27,6 +28,7 @@ const Addresses = () => {
   function numberWithCommas(x: any) {
     return x.toString().replace(/\b(\d{1,2})(\d{2})/g, '$1.$2');
   }
+
   return (
     <div className="bg-white">
       <div className=" flex items-center gap-x-4 px-8 pb-6 pt-8 font-semibold">
@@ -116,7 +118,8 @@ const Addresses = () => {
                     cart.items.map((i) => {
                       return (
                         <>
-                        
+                          {console.log(i)
+                          }
                           <div className="items flex  items-center">
                             <div className="img w">
                               <Thumbnail thumbnail={i.thumbnail} size={"xsmall"} />
@@ -129,7 +132,7 @@ const Addresses = () => {
                               </Link>
                               <span>quantity: {i.quantity}</span>
                               <span>details: {i.description}</span>
-                              <span className="toya-color">price: &#x20AC; {numberWithCommas(i.total)}</span>
+                              <span className="toya-color">price: {getSymbolFromCurrency(`eur`)} {numberWithCommas(i.total)}</span>
                             </div>
 
                           </div>

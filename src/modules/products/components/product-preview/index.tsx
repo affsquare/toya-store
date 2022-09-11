@@ -4,13 +4,14 @@ import Link from "next/link"
 import Thumbnail from "../thumbnail"
 import { useEffect, useState } from "react"
 import getSymbolFromCurrency from 'currency-symbol-map'
+import { ProductProvider, useProductActions } from "@lib/context/product-context"
+import { Product } from 'types/medusa';
 
 type ProductPreviewType = {
     id?: string
     title?: string
     handle?: string | null
     thumbnail?: string | null
-
     variants?: any
     collection?: any
 }
@@ -22,6 +23,7 @@ const ProductPreview = ({
     thumbnail,
     variants,
     collection,
+
 }: ProductPreviewType) => {
     // console.log(collection);
 
@@ -38,17 +40,15 @@ const ProductPreview = ({
         handellVariants()
     },)
 
-    // function handellPrice (handellVariants:any) {
-    //     handellVariants.map((v: any) => (
-    //         console.log(v.amount)
-    //     ))
-    // }
-
-
-
     const [addToCart_, setAddToCart] = useState(false)
+    //let { addToCart } = useProductActions()
+
+    function numberWithCommas(x: any) {
+        return x.toString().replace(/\b(\d{1,2})(\d{2})/g, '$1.$2');
+    }
 
     return (
+
         <Link href={`/products/${id}`}>
 
             <a  >
@@ -60,13 +60,14 @@ const ProductPreview = ({
                         {addToCart_ ? <button onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
+                            //addToCart(1);
                         }
                         } className="toya-bg text-white position-absolute rounded-0 start-0 bottom-0  py-1 px-2">
                             {"Add to cart"}
                         </button> : ""}
-                        {
 
-                        }
+
+
                     </div>
 
                     <div className="text-base-regular mt-2 ">
@@ -84,7 +85,7 @@ const ProductPreview = ({
                                 <>
                                     {price.price_type === "sale" && (
                                         <span className="line-through text-gray-500">
-                                            {price.original_price}
+                                            {numberWithCommas(price.original_price)}
                                         </span>
                                     )}
                                     <span
@@ -92,7 +93,7 @@ const ProductPreview = ({
                                             "text-rose-500": price.price_type === "sale",
                                         })}
                                     >
-                                        {price.amount} {getSymbolFromCurrency(`${price.currency_code}`)}
+                                        {numberWithCommas(price.amount)} {getSymbolFromCurrency(`${price.currency_code}`)}
                                     </span>
                                 </>
                             ) : (

@@ -72,6 +72,8 @@ const CollectionPage: NextPageWithLayout<PrefetchedPageProps> = ({
     return <SkeletonCollectionPage />
   }
 
+  console.log(data);
+  
   if (isSuccess) {
     return (
       <>

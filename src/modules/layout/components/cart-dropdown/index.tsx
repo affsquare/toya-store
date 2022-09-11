@@ -101,8 +101,6 @@ const CartDropdown = () => {
                                     region: cart.region,
                                     includeTaxes: false,
                                   })}</div>
-                                  
-
                                 </div>
                                 {/* {console.log(cart.region)} */}
 

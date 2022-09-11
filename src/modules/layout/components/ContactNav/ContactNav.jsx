@@ -2,6 +2,9 @@ import Style from "./ContactNav.module.css"
 
 import DesktopSearchModal from "@modules/search/templates/desktop-search-modal"
 import Link from "next/link"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import dynamic from "next/dynamic"
+
 
 export default function
   ContactNav() {
@@ -15,10 +18,9 @@ export default function
             {/* contact */}
             <div className="col-5">
               <div className={`${Style.contact} contact d-flex justify-start`}>
-                <div className={` contact-questions`}>
-                  <span className="text">
-                    <i className="fa-solid fa-headphones-simple"></i>
-                  </span>
+                <div className="contact-questions d-flex align-items-center">
+                    {/* <i className="fa-solid fa-headphones-simple"></i> */}
+                  <FontAwesomeIcon icon={['fas', 'headphones-simple']} />
                   <span className="ms-2">Got Questions?</span>
                 </div>
                 <div className="contact-number">

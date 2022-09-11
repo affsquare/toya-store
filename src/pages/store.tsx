@@ -21,6 +21,7 @@ import { useInView } from "react-intersection-observer"
 import { Product, Region } from "@medusajs/medusa"
 import { Variant } from 'types/medusa';
 import SkeletonProductPreview from "@modules/skeletons/components/skeleton-product-preview"
+import { useProductActions } from './../lib/context/product-context';
 
 const httpClient = axios.create({
     baseURL: process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
@@ -44,17 +45,25 @@ type UsePreviewProps<T> = {
 
 const Store: NextPageWithLayout = () => {
 
+    const { cart } = useCart()
+
+    const { ref, inView } = useInView()
+
+
     const [search, setSearchScreen] = useState()
+
     const [collections, setCollections] = useState([])
+
     const [sorter, setSorter] = useState("Default Sorting")
+
     const [views, setViews] = useState(true)
+
     // const [isLoading, setIsLoading] = useState(false);
     const [products, setProducts] = useState([]);
 
     const [params, setParams] = useState<StoreGetProductsParams>({})
+
     const productsStore = useSelector((st: any) => st?.products)
-    const { cart } = useCart()
-    const { ref, inView } = useInView()
 
     const [qb, setQb] = useState<IFilterSorter>({
         filter: {},
@@ -77,10 +86,7 @@ const Store: NextPageWithLayout = () => {
     //     }
     // }, [cart?.id, params])
 
-    const { data, isLoading, isFetchingNextPage } =
-        useInfiniteQuery(
-            []
-        )
+
 
     // useEffect(() => {
     //     if (inView && hasNextPage) {
@@ -92,42 +98,43 @@ const Store: NextPageWithLayout = () => {
     /*  */
     const query = useMemo(() => {
 
-        let filterAsString = "";
-        let orderAsString = "";
+        let queries: string[] = [];
+
 
         if (qb.filter) {
-            filterAsString += Object.keys((qb.filter as object)).map((k) => `filter[${k}]=${qb.filter?.[k]}`)
-            // console.log(filterAsString)
-
+            queries = queries.concat(
+                Object.keys((qb.filter as object)).map((k) => `filter[${k}]=${qb.filter?.[k]}`)
+            )
         }
 
         if (qb.order) {
             let map_ = Object.keys((qb.order as object)).map((k) => `order[${k}]=${qb.order?.[k]}`)
-            // console.log(map_)
-        }
-
-        let fullUrl: string | undefined = "";
-        let appender = "";
-
-        if (filterAsString) {
-            fullUrl += filterAsString;
-        }
-
-        if (orderAsString) {
-            fullUrl += orderAsString;
-        }
-
-        if (qb.search) {
-            fullUrl += qb.search;
+            queries = queries.concat(map_)
         }
 
 
-        return fullUrl;
+        return queries.join("&");
     }, [qb])
 
+    const { data, isLoading, isFetchingNextPage } =
+        useInfiniteQuery(
+            [`infinite-products-store`],
+            async function () {
+                const { data } = await httpClient.get(`/store/products?${query}`);
+                //setProducts(data?.products || []);
+                return {
+                    
+                    response: {
+                        count: data?.products?.length || 0,
+                        products: data?.products || []
+                    }
+                }
+            }
+        )
+
+    // console.log(data)
 
     useEffect(() => {
-
         httpClient.get("/store/collections").then(({ data }) => {
             setCollections(data?.collections)
         })
@@ -153,6 +160,7 @@ const Store: NextPageWithLayout = () => {
         }).catch(console.log)
     }, [])
 
+    const [checked, setChecked] = useState(false)
 
     return (
         <>
@@ -165,7 +173,7 @@ const Store: NextPageWithLayout = () => {
                                 <i className="fa-solid fa-bars-staggered fa-xl me-2"></i>
                                 <span> Filter</span>
                             </span>
-
+                            {/* Search */}
                             <div className="space-y-6 flex-1 flex flex-col justify-between  ">
                                 {process.env.FEATURE_SEARCH_ENABLED && (
                                     <button
@@ -179,21 +187,36 @@ const Store: NextPageWithLayout = () => {
                                     </button>
                                 )}
                             </div>
-
+                            {/* Collections */}
                             <ul className="text-base-regular items-center gap-x-4 mt-4">
                                 {collections?.map((c: any, i) => (
                                     <li key={i}>
                                         <label className="flex items-center gap-x-2">
                                             <input
                                                 type="checkbox"
-                                                defaultChecked={false}
-                                                onChange={(e) => {
-                                                    setQb({
-                                                        ...qb,
-                                                        filter: {
-                                                            "collection": c.id
-                                                        }
-                                                    })
+                                                // defaultChecked={false}
+                                                onClick={(e) => {
+                                                    // setChecked(true)
+                                                    if (!checked) {
+                                                        setQb({
+                                                            ...qb,
+                                                            filter: {
+                                                                "collection": c.id
+                                                            }
+                                                        })
+                                                        setChecked(!checked)
+                                                    } else {
+                                                        // const qb_ = qb;
+                                                        // delete qb_?.['filter']?.['collection']
+                                                        // setQb(qb)
+                                                        setQb({
+                                                            ...qb,
+                                                            filter: {
+                                                                "collection":""
+                                                            }
+                                                        })
+                                                        setChecked(!checked)
+                                                    }
                                                 }}
 
                                                 className=""
