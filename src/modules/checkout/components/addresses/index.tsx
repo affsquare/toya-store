@@ -10,6 +10,8 @@ import Thumbnail from './../../../products/components/thumbnail/index';
 import LineItemOptions from "@modules/common/components/line-item-options"
 import Link from "next/link"
 import getSymbolFromCurrency from "currency-symbol-map"
+import { formatAmount } from 'medusa-react';
+import CartTotals from "@modules/common/components/cart-totals"
 
 type OrderCompletedTemplateProps = {
   order: Order
@@ -69,17 +71,15 @@ const Addresses = () => {
         :
         (
           <div>
-            <div className="bg-gray-50 px-8 py-6 text-small-regular">
+            <div className=" px-8 py-6 text-small-regular">
               {cart && cart.shipping_address ? (
                 <>
-                  <div className="flex items-start gap-x-8 mb-3">
+                  <div className="bg-gray-50 flex items-start gap-x-8 mb-3 p-3">
                     <div className="bg-green-600 rounded-full min-w-[24px] h-6 flex items-center justify-center text-white text-small-regular">
                       ✓
                     </div>
                     <div className="flex items-start justify-between w-full">
                       <div className="flex flex-col">
-                        {console.log(cart.shipping_address)
-                        }
                         <span>
                           {cart.shipping_address.first_name}{" "}
                           {cart.shipping_address.last_name}
@@ -92,9 +92,9 @@ const Addresses = () => {
                           {cart.shipping_address.postal_code},{" "}
                           {cart.shipping_address.city}
                         </span>
-                        {/* <span>
+                        <span>
                           {cart.shipping_address.country_code?.toUpperCase()}
-                        </span> */}
+                        </span>
                         <div className="mt-4 flex flex-col">
                           <span>{cart.shipping_address.phone}</span>
                           <span>{cart.email}</span>
@@ -115,11 +115,9 @@ const Addresses = () => {
 
                   </div>
                   {
-                    cart.items.map((i) => {
+                    cart.items.map((i: any) => {
                       return (
                         <>
-                          {console.log(i)
-                          }
                           <div className="items flex  items-center">
                             <div className="img w">
                               <Thumbnail thumbnail={i.thumbnail} size={"xsmall"} />
@@ -128,20 +126,29 @@ const Addresses = () => {
                               <Link
                                 href={`/products/${i.variant.product.handle}`}
                               >
-                                <a>{i.title}</a>
+                                <a className="mb-1">{i.title}</a>
                               </Link>
-                              <span>quantity: {i.quantity}</span>
-                              <span>details: {i.description}</span>
-                              <span className="toya-color">price: {getSymbolFromCurrency(`eur`)} {numberWithCommas(i.total)}</span>
+                              <span className="mb-1">quantity: {i.quantity}</span>
+                              <span className="mb-2">details: {i.description}</span>
+                              {/* <span className="toya-color">price: {getSymbolFromCurrency(`eur`)} {numberWithCommas(i.total)}</span> */}
+                              <span className="toya-color">price:
+                                {formatAmount({
+                                  amount: i.total,
+                                  region: cart.region,
+                                  includeTaxes: false,
+                                })}
+                              </span>
                             </div>
-
                           </div>
 
                         </>
-
                       )
                     })
                   }
+                  {/* <div className="w-full bg-white p-6 flex flex-col gap-y-6">
+                    <CartTotals cart={cart} />
+
+                  </div> */}
                 </>
               )
                 :

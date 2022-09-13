@@ -30,7 +30,7 @@ const httpClient = axios.create({
 interface IFilterSorter {
     search?: string;
     filter?: Record<string, string>;
-    order?: Record<string, "ASC" | "DESC">
+    order?: Record<string, "ASC" | "DESC" | number>
 }
 
 type UsePreviewProps<T> = {
@@ -100,7 +100,6 @@ const Store: NextPageWithLayout = () => {
 
         let queries: string[] = [];
 
-
         if (qb.filter) {
             queries = queries.concat(
                 Object.keys((qb.filter as object)).map((k) => `filter[${k}]=${qb.filter?.[k]}`)
@@ -112,24 +111,35 @@ const Store: NextPageWithLayout = () => {
             queries = queries.concat(map_)
         }
 
+        if (qb.search) {
+            const deepSearch = queries.findIndex((k) => k.includes("search"));
+
+            if (deepSearch !== -1) {
+                queries[deepSearch] = `search=${qb?.search}`;
+            }
+
+            else {
+                queries.push(`search=${qb?.search}`);
+            }
+        }
 
         return queries.join("&");
     }, [qb])
 
     const { data, isLoading, isFetchingNextPage } =
         useInfiniteQuery(
-            [`infinite-products-store`],
-            async function () {
-                const { data } = await httpClient.get(`/store/products?${query}`);
-                //setProducts(data?.products || []);
-                return {
-                    
-                    response: {
-                        count: data?.products?.length || 0,
-                        products: data?.products || []
-                    }
-                }
-            }
+            [`infinite-products-store`]
+            // async function () {
+            //     const { data } = await httpClient.get(`/store/products?${query}`);
+            //     //setProducts(data?.products || []);
+            //     return {
+
+            //         response: {
+            //             count: data?.products?.length || 0,
+            //             products: data?.products || []
+            //         }
+            //     }
+            // }
         )
 
     // console.log(data)
@@ -174,56 +184,82 @@ const Store: NextPageWithLayout = () => {
                                 <span> Filter</span>
                             </span>
                             {/* Search */}
-                            <div className="space-y-6 flex-1 flex flex-col justify-between  ">
+                            {/* <div className="space-y-6 flex-1 flex flex-col justify-between  ">
                                 {process.env.FEATURE_SEARCH_ENABLED && (
-                                    <button
-                                        className="bg-gray-50 flex items-center ps-3 py-2 gap-x-2 text-danger"
-                                        onClick={() => { }}
-                                    >
-                                        <Search size={24} />
-                                        <span placeholder="Search products" className="text-base-regular">
-                                            Search products
-                                        </span>
-                                    </button>
+                                <button
+                                    className="bg-gray-50 flex items-center ps-3 py-2 gap-x-2 text-danger"
+                                    onClick={() => { }}
+                                >
+                                    <Search size={24} />
+                                    <span placeholder="Search products" className="text-base-regular">
+                                        Search products
+                                    </span>
+                                </button>
                                 )}
-                            </div>
+                            </div> */}
                             {/* Collections */}
                             <ul className="text-base-regular items-center gap-x-4 mt-4">
+                                <li>
+                                    <label className="flex items-center gap-x-2">
+                                        <input
+                                            name="collections"
+                                            type="radio"
+                                            onClick={() => {
+                                                setQb({
+                                                    ...qb,
+                                                    filter: {
+                                                        "collection": ""
+                                                    }
+                                                })
+                                            }}
+                                        />
+                                        All Categories
+                                    </label>
+                                </li>
                                 {collections?.map((c: any, i) => (
-                                    <li key={i}>
-                                        <label className="flex items-center gap-x-2">
-                                            <input
-                                                type="checkbox"
-                                                // defaultChecked={false}
-                                                onClick={(e) => {
-                                                    // setChecked(true)
-                                                    if (!checked) {
+                                    <>
+
+                                        <li key={i}>
+                                            <label className="flex items-center gap-x-2">
+                                                <input
+                                                    name="collections"
+                                                    type="radio"
+                                                    onClick={(e) => {
                                                         setQb({
                                                             ...qb,
                                                             filter: {
                                                                 "collection": c.id
                                                             }
                                                         })
-                                                        setChecked(!checked)
-                                                    } else {
-                                                        // const qb_ = qb;
-                                                        // delete qb_?.['filter']?.['collection']
-                                                        // setQb(qb)
-                                                        setQb({
-                                                            ...qb,
-                                                            filter: {
-                                                                "collection":""
-                                                            }
-                                                        })
-                                                        setChecked(!checked)
-                                                    }
-                                                }}
+                                                        // if (!checked) {
+                                                        //     setQb({
+                                                        //         ...qb,
+                                                        //         filter: {
+                                                        //             "collection": c.id
+                                                        //         }
+                                                        //     })
+                                                        //     // setChecked(!checked)
+                                                        // }
+                                                        // else {
+                                                        //     // const qb_ = qb;
+                                                        //     // delete qb_?.['filter']?.['collection']
+                                                        //     // setQb(qb)
+                                                        //     setQb({
+                                                        //         ...qb,
+                                                        //         filter: {
+                                                        //             "collection": ""
+                                                        //         }
+                                                        //     })
+                                                        //     // setChecked(!checked)
+                                                        // }
+                                                    }}
 
-                                                className=""
-                                            />
-                                            {c?.title}
-                                        </label>
-                                    </li>
+                                                    className=""
+                                                />
+                                                {c?.title}
+                                            </label>
+                                        </li>
+                                    </>
                                 ))}
                             </ul>
                         </div>
@@ -233,12 +269,24 @@ const Store: NextPageWithLayout = () => {
 
                         <div className="flex-1 container">
                             <div className="mb-4 flex justify-between">
+
+                                {/* Sort List */}
                                 <div className="nav-item dropdown bg-light px-3 py-2 rounded-pill">
                                     <a className=" dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         {sorter}
                                     </a>
                                     <ul className="dropdown-menu bg-light">
-                                        <li onClick={() => { getProducts(""); setSorter("Default Sorting") }} className="dropdown-item" role={"button"}> Default Sorting </li>
+                                        <li onClick={() => {
+                                            setQb({
+                                                ...qb,
+                                                order: {
+                                                    ...qb.order,
+                                                    "": "ASC"
+                                                }
+                                            });
+                                            setSorter("Default Sorting")
+                                        }} className="dropdown-item" role={"button"}> Default Sorting </li>
+
                                         <li onClick={() => {
                                             setQb({
                                                 ...qb,
@@ -249,6 +297,7 @@ const Store: NextPageWithLayout = () => {
                                             })
                                             setSorter("Sort by popularity")
                                         }} className="dropdown-item" role={"button"}> Sort by popularity  </li>
+
                                         <li onClick={() => {
                                             setQb({
                                                 ...qb,
@@ -259,6 +308,7 @@ const Store: NextPageWithLayout = () => {
                                             })
                                             setSorter("Sort by newness")
                                         }} className="dropdown-item" role={"button"}>Sort by newness  </li>
+
                                         <li onClick={() => {
                                             setQb({
                                                 ...qb,
@@ -269,6 +319,7 @@ const Store: NextPageWithLayout = () => {
                                             })
                                             setSorter("Sort by price: low to high")
                                         }} className="dropdown-item" role={"button"}> Sort by price: low to high  </li>
+
                                         <li onClick={() => {
                                             setQb({
                                                 ...qb,
@@ -279,8 +330,20 @@ const Store: NextPageWithLayout = () => {
                                             })
                                             setSorter("Sort by price: high to low")
                                         }} className="dropdown-item" role={"button"}> Sort by price: high to low  </li>
+
                                     </ul>
                                 </div>
+
+                                {/* Search */}
+                                <div className="search flex items-center justify-center bg-light px-3 py-2 rounded-pill w-4/12">
+
+                                    <input onChange={(e) => setQb({
+                                        ...qb,
+                                        search: e.target.value
+                                    })} className=" w-100 focus:border-0 bg-transparent focus:outline-none" id="search" type="search" placeholder="Search products"/>
+                                    <label htmlFor="search" className=""><FontAwesomeIcon icon={["fas", "magnifying-glass"]} /> </label>
+                                </div>
+
                                 <div className="flex justify-end items-center">
                                     <span className="text-gray-600 font-semibold">Views:</span>
                                     <span>

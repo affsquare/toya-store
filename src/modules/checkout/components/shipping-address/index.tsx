@@ -93,21 +93,21 @@ const ShippingAddress = () => {
                             touched={touchedFields}
                         />
                         {/* <Input
-              label="Apartments, suite, etc."
-              {...register("shipping_address.address_2")}
-              autoComplete="address-line2"
-              errors={errors}
-              touched={touchedFields}
-            /> */}
+                            label="Apartments, suite, etc."
+                            {...register("shipping_address.address_2")}
+                            autoComplete="address-line2"
+                            errors={errors}
+                            touched={touchedFields}
+                            /> */}
 
 
                         {/* <Input
-              label="State / Province"
-              {...register("shipping_address.province")}
-              autoComplete="address-level1"
-              errors={errors}
-              touched={touchedFields}
-            /> */}
+                            label="State / Province"
+                            {...register("shipping_address.province")}
+                            autoComplete="address-level1"
+                            errors={errors}
+                            touched={touchedFields}
+                            /> */}
 
                         <Input
                             label="Phone"

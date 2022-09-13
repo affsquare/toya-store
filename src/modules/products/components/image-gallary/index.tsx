@@ -1,6 +1,8 @@
 import { Image as MedusaImage } from "@medusajs/medusa"
 import Image from "next/image"
 import { useRef } from "react"
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 type ImageGalleryProps = {
   images: MedusaImage[]
@@ -22,14 +24,16 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
 
   return (
     <div className="flex items-start relative">
+      
+    
       {/* Full Images */}
-      <div className="flex flex-col flex-1 small:mx-16 gap-y-4">
+      <div className="flex flex-col items-center flex-1 small:mx-16 gap-y-4">
         {images.map((image, index) => {
           return (
             <div
               ref={(image) => imageRefs.current.push(image)}
               key={image.id}
-              className="relative aspect-[29/34] w-full"
+              className="relative aspect-[29/34] w-75"
               id={image.id}
             >
               <Image
@@ -45,7 +49,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
         })}
       </div>
       {/* Small Images */}
-      <div className="hidden small:flex flex-col gap-y-4 sticky top-20">
+      {/* <div className="hidden small:flex flex-col gap-y-4 sticky top-20">
         {images.map((image, index) => {
           return (
             <button
@@ -66,7 +70,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
             </button>
           )
         })}
-      </div>
+      </div> */}
 
     </div>
   )

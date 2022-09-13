@@ -51,12 +51,16 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
                 <span className="shop">
                     <Link href="/">Home</Link>
                 </span>
-                <span className='mx-2 d-flex align-items-center text-xs text-gray-400 fw-bold hover:toya-color'>
+                <span className='mx-2 d-flex align-items-center text-xs text-gray-400 fw-bold '>
                     &#62;
                 </span>
 
-                <span className="text-xs text-gray-500 fw-bold">
-                    <Link href="/shop">shop</Link>
+                <span className="text-xs text-gray-500 fw-bold ">
+                    <Link href="/shop">
+                        <a className="hover:text-orange-800">
+                            shop
+                        </a>
+                    </Link>
                 </span>
 
                 <span className='mx-2 d-flex align-items-center text-xs text-gray-400 fw-bold'>
@@ -65,7 +69,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
 
                 {product.collection && (
                     <Link href={`/collections/${product.collection.id}`}>
-                        <a className="text-small-regular text-xs text-gray-500 fw-bold">
+                        <a className="text-small-regular text-xs text-gray-500 fw-bold hover:text-orange-800">
                             {product.collection.title}
                         </a>
                     </Link>

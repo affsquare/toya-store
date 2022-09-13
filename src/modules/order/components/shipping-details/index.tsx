@@ -20,7 +20,7 @@ const ShippingDetails = ({
             address.address_2 && ", " + address.address_2
           }`}</span>
           <span>{`${address.city}, ${address.province} ${address.postal_code}`}</span>
-          {/* <span>{address.country_code?.toUpperCase()}</span> */}
+          <span>{address.country_code?.toUpperCase()}</span>
         </div>
       </div>
       <div className="my-2">

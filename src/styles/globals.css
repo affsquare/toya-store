@@ -483,12 +483,23 @@ a.back-to-chart:hover,
   color: #5a5a5a;
 }
 
-input[type=checkbox] {
+input[type=radio] {
   accent-color: rgba(174, 100, 76, 1);
 }
 
 a.dropdown-toggle:hover{
   color: #212529;
+}
+
+.dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 1em;
+  vertical-align: 0.1em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
 }
 /* Start Product Preview */
 .title {
