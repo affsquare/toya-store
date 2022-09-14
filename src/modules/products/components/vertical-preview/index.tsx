@@ -70,7 +70,7 @@ const VerticalPreview = ({
                                 <>
                                     {price.price_type === "sale" && (
                                         <span className="line-through text-gray-500">
-                                            {numberWithCommas(price.original_price)}
+                                            {price.original_price}
                                         </span>
                                     )}
                                     <span
@@ -78,7 +78,7 @@ const VerticalPreview = ({
                                             "text-rose-500": price.price_type === "sale",
                                         })}
                                     >
-                                        {numberWithCommas(price.amount)} {getSymbolFromCurrency(`${price.currency_code}`)}
+                                        {price.amount} {getSymbolFromCurrency(`${price.currency_code}`)}
                                     </span>
                                 </>
                             ) : (

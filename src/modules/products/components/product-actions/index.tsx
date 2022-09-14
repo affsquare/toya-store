@@ -91,7 +91,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
 
                 {/* Product-Price  */}
                 <div className="my-3 toya-color text-xl-semi fw-bold">
-                    <h3> {numberWithCommas(price[0].amount)} {getSymbolFromCurrency(`${price[0].currency_code}`)}</h3>
+                    <h3> {price[0].amount} {getSymbolFromCurrency(`${price[0].currency_code}`)}</h3>
 
                     {/* {selectedPrice ? (
                         <div className="flex flex-col price ">

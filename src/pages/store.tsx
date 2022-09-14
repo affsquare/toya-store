@@ -172,6 +172,10 @@ const Store: NextPageWithLayout = () => {
 
     const [checked, setChecked] = useState(false)
 
+    const [fromPrice, setFromPrice] = useState(0)
+    const [toPrice, setToPrice] = useState(0)
+
+
     return (
         <>
             <Head title="Store" description="Explore all of our products." />
@@ -197,9 +201,10 @@ const Store: NextPageWithLayout = () => {
                                 </button>
                                 )}
                             </div> */}
+
                             {/* Collections */}
                             <ul className="text-base-regular items-center gap-x-4 mt-4">
-                                <li>
+                                <li className="mb-2">
                                     <label className="flex items-center gap-x-2">
                                         <input
                                             name="collections"
@@ -212,14 +217,14 @@ const Store: NextPageWithLayout = () => {
                                                     }
                                                 })
                                             }}
+                                            
                                         />
                                         All Categories
                                     </label>
                                 </li>
                                 {collections?.map((c: any, i) => (
                                     <>
-
-                                        <li key={i}>
+                                        <li key={i} className="mb-2">
                                             <label className="flex items-center gap-x-2">
                                                 <input
                                                     name="collections"
@@ -254,13 +259,46 @@ const Store: NextPageWithLayout = () => {
                                                         // }
                                                     }}
 
-                                                    className=""
+                                                    
                                                 />
                                                 {c?.title}
                                             </label>
                                         </li>
                                     </>
                                 ))}
+                                <li className="mt-5 ">
+                                    <label className="text-gray-500" htmlFor="fromPrice">price Range</label>
+                                    <div className="mt-2 row ">
+
+                                        <div className="col-md-4">
+                                            <input
+                                                onInput={(e: any) => {
+                                                    setFromPrice(e.target.value)
+                                                }
+                                                }
+                                                id="fromPrice" className="px-1 border-b-2 border-gray-400 w-100 focus:outline-0 focus:border-orange-900" type="number" placeholder="From" />
+                                        </div>
+
+                                        <div className="col-md-4">
+                                            <input
+                                                onChange={(e: any) => {
+                                                    setQb({
+                                                        ...qb,
+                                                        order: {
+                                                            ...qb.order,
+                                                            "price": "DESC"
+                                                        },
+                                                        filter: {
+                                                            "price": `${fromPrice},${e.target.value}`
+                                                        }
+                                                    })
+                                                    
+                                                    
+                                                }}
+                                                className="px-1 border-b-2 border-gray-400 w-100 focus:outline-0 focus:border-orange-900" type="number" placeholder="To" />
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -340,7 +378,7 @@ const Store: NextPageWithLayout = () => {
                                     <input onChange={(e) => setQb({
                                         ...qb,
                                         search: e.target.value
-                                    })} className=" w-100 focus:border-0 bg-transparent focus:outline-none" id="search" type="search" placeholder="Search products"/>
+                                    })} className=" w-100 focus:border-0 bg-transparent focus:outline-none" id="search" type="search" placeholder="Search products" />
                                     <label htmlFor="search" className=""><FontAwesomeIcon icon={["fas", "magnifying-glass"]} /> </label>
                                 </div>
 
@@ -361,6 +399,7 @@ const Store: NextPageWithLayout = () => {
                                     {
                                         products?.map((p: any) => (
                                             <>
+                                            
                                                 <li className="position-relative" key={p.id}  >
                                                     <ProductPreview {...p} />
                                                 </li>
