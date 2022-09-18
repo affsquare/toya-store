@@ -15,9 +15,35 @@
   border: 1px solid rgba(174, 100, 76, 1)
 }
 
-input:-webkit-autofill{
+input:-webkit-autofill {
   border: none !important;
   border-bottom: 1px solid #e5e7eb !important;
+}
+
+/* Contact Page */
+
+.form-control {
+  border: none !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid #d1d6db !important;
+}
+
+.form-control:focus {
+  outline: none !important;
+  border: none !important;
+  color: #212529;
+  background-color: #fff;
+  border: 1px solid #d1d6db !important;
+  /* border-right:1px solid #d1d6db !important;
+  border-left:1px solid #d1d6db !important; */
+
+  box-shadow: none !important;
+}
+
+.contact-form {
+  border: 1px solid #d1d6db;
+  border-radius: 5px;
+  padding: 50px
 }
 
 @tailwind base;
@@ -137,7 +163,7 @@ input:-webkit-autofill{
 }
 
 /* Start CartDropdown*/
-.cartDown-height{
+.cartDown-height {
   max-height: calc(100% - 200px)
 }
 
@@ -203,6 +229,7 @@ span.checkout:hover {
     max-width: 1280px !important;
   }
 }
+
 @media (max-width: 1140px) {
   .contHead {
     display: none;
@@ -212,7 +239,8 @@ span.checkout:hover {
 
 @media (max-width: 1023px) {
 
-  .navbar-expand-lg .navbar-collapse, .contHead {
+  .navbar-expand-lg .navbar-collapse,
+  .contHead {
     display: none !important;
   }
 }
@@ -487,7 +515,7 @@ input[type=radio] {
   accent-color: rgba(174, 100, 76, 1);
 }
 
-a.dropdown-toggle:hover{
+a.dropdown-toggle:hover {
   color: #212529;
 }
 
@@ -501,6 +529,7 @@ a.dropdown-toggle:hover{
   border-bottom: 0;
   border-left: 0.3em solid transparent;
 }
+
 /* Start Product Preview */
 .title {
   font-size: 15.4px;
@@ -589,41 +618,42 @@ input[type=number] {
 /* Start carousel */
 .react-multiple-carousel__arrow {
   background: #fff !important;
-  
+
 }
 
 .react-multiple-carousel__arrow::before {
   color: #000 !important;
   font-size: 25px !important;
   font-weight: bolder !important;
-  
+
 }
 
 .react-multiple-carousel__arrow--right {
-  right: calc(1% + 1px)!important;
+  right: calc(1% + 1px) !important;
 }
 
 .react-multiple-carousel__arrow--right::before {
-  content: "\2192"!important;
+  content: "\2192" !important;
 }
 
 .react-multiple-carousel__arrow--left {
-  left: calc(1% + 1px)!important;
+  left: calc(1% + 1px) !important;
 }
 
 .react-multiple-carousel__arrow--left::before {
-  content: "\2190"!important;
+  content: "\2190" !important;
 }
 
-button.react-multiple-carousel__arrow{
+button.react-multiple-carousel__arrow {
   display: none !important;
 }
 
-.carasol-slider:hover button.react-multiple-carousel__arrow{
+.carasol-slider:hover button.react-multiple-carousel__arrow {
   display: block !important;
 }
 
-ul.react-multi-carousel-track li{
+ul.react-multi-carousel-track li {
   padding: 0px 10px !important;
 }
+
 /* End carousel */
