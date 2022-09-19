@@ -43,7 +43,7 @@ input:-webkit-autofill {
 .contact-form {
   border: 1px solid #d1d6db;
   border-radius: 5px;
-  padding: 50px
+  /* padding: 50px */
 }
 
 @tailwind base;
