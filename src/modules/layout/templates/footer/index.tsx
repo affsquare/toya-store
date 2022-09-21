@@ -42,9 +42,9 @@ const Footer = () => {
                 <div className="contact-Nav w-100 py-5">
                     {/* Contact info */}
                     <div className="footer-contact d-flex justify-content-between ">
-                        <div className="contact d-flex ">
-                            <div className="contact-questions">
-                                <span><i className="fa-solid fa-headphones-simple"></i></span>
+                        <div className="contact d-flex items-center">
+                            <div className="contact-questions flex items-center">
+                                <span><i className="icon-headphone-svgrepo-com"></i></span>
                                 <span className="ms-2">Got Questions?</span>
                             </div>
                             <div className="contact-number">

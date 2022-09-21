@@ -20,7 +20,7 @@ export default function
               <div className={`${Style.contact} contact d-flex justify-start`}>
                 <div className="contact-questions d-flex align-items-center">
                     {/* <i className="fa-solid fa-headphones-simple"></i> */}
-                  <FontAwesomeIcon icon={['fas', 'headphones-simple']} />
+                    <span class="icon-headphone-svgrepo-com"></span>
                   <span className="ms-2">Got Questions?</span>
                 </div>
                 <div className="contact-number">
@@ -29,14 +29,15 @@ export default function
               </div>
             </div>
 
-            {/*Login & social Icons */}
+            {/* Login & social Icons */}
+
             <div className="col-3">
               <div className="Login-social d-flex justify-content-end align-items-center">
                 {/* Login */}
                 <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
                   <div className="hidden small:flex items-center gap-x-6 h-full">
                     {process.env.FEATURE_SEARCH_ENABLED && <DesktopSearchModal />}
-                    <Link href="/account">
+                    <Link href="/account/login">
                       <a>
                         <div className={`${Style.Login} Login px-3 d-flex justify-content-end align-items-center`}>
                           <span className={`${Style.icon}`}><i className="fa-regular fa-user"></i></span>

@@ -183,8 +183,8 @@ const Store: NextPageWithLayout = () => {
                 <div className="flex ">
                     <div className="flex flex-column pe-5 py-4  small:pr-0 small:pl-0 small:min-w-[250px]">
                         <div className="">
-                            <span className=" text-uppercase filter mb-4">
-                                <i className="fa-solid fa-bars-staggered fa-xl me-2"></i>
+                            <span className=" text-uppercase filter mb-4 flex items-center">
+                                <span className="icon-filter-left-svgrepo-com"></span>
                                 <span> Filter</span>
                             </span>
                             {/* Search */}
@@ -217,7 +217,7 @@ const Store: NextPageWithLayout = () => {
                                                     }
                                                 })
                                             }}
-                                            
+
                                         />
                                         All Categories
                                     </label>
@@ -259,7 +259,6 @@ const Store: NextPageWithLayout = () => {
                                                         // }
                                                     }}
 
-                                                    
                                                 />
                                                 {c?.title}
                                             </label>
@@ -292,8 +291,8 @@ const Store: NextPageWithLayout = () => {
                                                             "price": `${fromPrice},${e.target.value}`
                                                         }
                                                     })
-                                                    
-                                                    
+
+
                                                 }}
                                                 className="px-1 border-b-2 border-gray-400 w-100 focus:outline-0 focus:border-orange-900" type="number" placeholder="To" />
                                         </div>
@@ -310,7 +309,7 @@ const Store: NextPageWithLayout = () => {
 
                                 {/* Sort List */}
                                 <div className="nav-item dropdown bg-light px-3 py-2 rounded-pill">
-                                    <a className=" dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a className=" dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  >
                                         {sorter}
                                     </a>
                                     <ul className="dropdown-menu bg-light">
@@ -384,8 +383,8 @@ const Store: NextPageWithLayout = () => {
 
                                 <div className="flex justify-end items-center">
                                     <span className="text-gray-600 font-semibold">Views:</span>
-                                    <span>
-                                        <FontAwesomeIcon icon={["fas", "grip-vertical"]} onClick={() => setViews(true)} size={"lg"} className="mx-3 " />
+                                    <span className=" flex items-center">
+                                        <span className="icon-grid-svgrepo-com" onClick={() => setViews(true)}></span>
                                         <FontAwesomeIcon icon={["fas", "list"]} onClick={() => setViews(false)} size={"lg"} />
                                     </span>
                                 </div>
@@ -399,7 +398,7 @@ const Store: NextPageWithLayout = () => {
                                     {
                                         products?.map((p: any) => (
                                             <>
-                                            
+
                                                 <li className="position-relative" key={p.id}  >
                                                     <ProductPreview {...p} />
                                                 </li>
