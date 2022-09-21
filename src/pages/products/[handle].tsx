@@ -1,45 +1,13 @@
 import ProductTemplate from '@modules/products/templates'
 import axios from 'axios'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import {MEDUSA_BACKEND_URL} from "../../lib/config"
 
 
-const httpClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
-})
 
 function productsDetails({product}:any) {
 
-  const router = useRouter()
-  const productId = router.query.handle
-
-  // async function fetchData (){
-  //   const data:any = await axios.get(`http://ec2-3-9-43-164.eu-west-2.compute.amazonaws.com:9000/store/products/${productId}`)  
-  //   console.log(data);
-    
-  // }
-
-//   const [products, setProducts] = useState({})
-    
-//     const apiURL = `http://ec2-3-9-43-164.eu-west-2.compute.amazonaws.com:9000` // Api Url
-
-//     //Sort Function
-//     async function getProducts() {
-//         let response = await fetch(`${apiURL}/store/products${productId}`);
-
-//         if (response.status == 200) {
-//             const {data} = await response.json();
-//             setProducts(data)
-//             console.log(products);
-            
-//         }
-//     }
-  
-// useEffect(() => {
-//   // fetchData()
-//   getProducts()
-// })
 const productDetalis = product.product
 
   return (
@@ -65,7 +33,9 @@ const productDetalis = product.product
 
 export default productsDetails
 
-const baseURL= process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
+
+
+const baseURL= MEDUSA_BACKEND_URL
 
 export async function getServerSideProps(context:any) {
 // const data:any = axios.get(`http://ec2-3-9-43-164.eu-west-2.compute.amazonaws.com:9000/store/products/${context.params.handle}`)  

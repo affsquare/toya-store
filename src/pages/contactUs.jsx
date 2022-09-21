@@ -17,12 +17,12 @@ export default function ContactUs() {
                             <div className="contact-info mb-5">
                                 {/* <h3 className="h2 mb-4">We would love to hear from you!</h3>
                                 <p className="text-lead">At Toya Naturals Corporation, we proudly stand behind our quality products and our quality controls. If you are not satisfied with the condition of the product you purchased from us or from one of our authorized sellers in Egypt or KSA, please contact us to request a replacement product, if available, or compensation for the total value of the product. Complete the contact form for the fastest response. We aim to respond within 1 working day. For any skincare or hair care concerns, please use our free tool #AskToya to get tips directly from certified dermatologists.</p> */}
-                                <iframe className="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13806.923719881304!2d31.383530011057246!3d30.10189147362744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458166a85d5c62b%3A0x92f695655d5df1c!2z2LTZitix2KfYqtmI2YbYjCDYtNmK2LHYp9iq2YjZhiDYp9mE2YXYt9in2LHYjCDZgtiz2YUg2KfZhNmG2LLZh9ip2Iwg2YXYrdin2YHYuNipINin2YTZgtin2YfYsdip4oCs!5e0!3m2!1sar!2seg!4v1663508004249!5m2!1sar!2seg" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                <iframe className="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13806.923719881304!2d31.383530011057246!3d30.10189147362744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458166a85d5c62b%3A0x92f695655d5df1c!2z2LTZitix2KfYqtmI2YbYjCDYtNmK2LHYp9iq2YjZhiDYp9mE2YXYt9in2LHYjCDZgtiz2YUg2KfZhNmG2LLZh9ip2Iwg2YXYrdin2YHYuNipINin2YTZgtin2YfYsdip4oCs!5e0!3m2!1sar!2seg!4v1663508004249!5m2!1sar!2seg" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
                                 <p className="text-lead my-4"><span className="toya-color me-2"><FontAwesomeIcon icon={["fas", "clock-rotate-left"]} />  </span><span className="fw-bold">Working hours :</span>  We aim to respond within 24hrs.</p>
                                 <p className="text-lead mb-4">
                                     <span className="toya-color me-2">
-                                        <span class="icon-mobile-svgrepo-com"></span>
+                                        <span className="icon-mobile-svgrepo-com"></span>
                                     </span>
                                     <span className="fw-bold">Phone :</span>
                                     +201101899338

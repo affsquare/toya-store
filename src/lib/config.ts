@@ -8,9 +8,9 @@ let MEDUSA_BACKEND_URL = "http://ec2-3-9-43-164.eu-west-2.compute.amazonaws.com:
 // let MEDUSA_BACKEND_URL = "http://192.168.1.10:9000"
 
 
-if (process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL) {
+/*if (process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL) {
   MEDUSA_BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
-}
+}*/
 
 const queryClient = new QueryClient({
   defaultOptions: {

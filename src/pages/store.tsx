@@ -22,9 +22,10 @@ import { Product, Region } from "@medusajs/medusa"
 import { Variant } from 'types/medusa';
 import SkeletonProductPreview from "@modules/skeletons/components/skeleton-product-preview"
 import { useProductActions } from './../lib/context/product-context';
+import { MEDUSA_BACKEND_URL } from "../lib/config"
 
 const httpClient = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
+    baseURL: MEDUSA_BACKEND_URL
 })
 
 interface IFilterSorter {

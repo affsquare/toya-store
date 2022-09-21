@@ -9,9 +9,10 @@ import { useCart } from "medusa-react"
 import React, { useEffect, useMemo, useState } from "react"
 import { useInView } from "react-intersection-observer"
 import { useInfiniteQuery } from "react-query"
+import {MEDUSA_BACKEND_URL} from "../../../lib/config"
 
 const httpClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
+  baseURL: MEDUSA_BACKEND_URL
 })
 
 

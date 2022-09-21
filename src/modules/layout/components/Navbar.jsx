@@ -3,10 +3,11 @@ import Link from 'next/link'
 import Image from "next/image"
 import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
-
+import { MEDUSA_BACKEND_URL } from "../../../lib/config"
 export default function Navbar() {
+
     const httpClient = axios.create({
-        baseURL: process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
+        baseURL: MEDUSA_BACKEND_URL
     })
 
     const [collections, setCollections] = useState([])
@@ -100,7 +101,7 @@ export default function Navbar() {
                                                         <div>{c?.title}</div>
                                                     </div>
                                                 </Link>
-                                                
+
                                             </li>
                                         </>
                                     ))}

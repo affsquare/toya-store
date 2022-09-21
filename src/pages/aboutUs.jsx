@@ -17,7 +17,7 @@ export default function AboutUs() {
                 </a>
               </Link>
               <h2 className="h1 toya-color mb-4">Our Brand</h2>
-              <p className="text-lead">An Egyptian-made and owned brand. It was officially founded by Consultant dermatologists in 2018; however, the development of the products started earlier. Toya was born from a belief that the Pharaohs were beauty-obsessed, they sourced ingredients from nature to meet their skincare needs, and now people want to return to their roots and only use natural products, especially on their skin. That's why we're committed to delivering premium organic skincare formulas that were created 7000 years ago to preserve your youth.</p>
+              <p className="text-lead">An Egyptian-made and owned brand. It was officially founded by Consultant dermatologists in 2018; however, the development of the products started earlier. Toya was born from a belief that the Pharaohs were beauty-obsessed, they sourced ingredients from nature to meet their skincare needs, and now people want to return to their roots and only use natural products, especially on their skin. That&apos;s why we&apos;re committed to delivering premium organic skincare formulas that were created 7000 years ago to preserve your youth.</p>
             </div>
           </div>
           <div className="col-md-6">
@@ -36,7 +36,7 @@ export default function AboutUs() {
           <div className="col-md-6 flex items-center order-0 order-md-1">
             <div className=" approach-info w-11/12 w-md-75">
               <h2 className="h1 toya-color mb-4">Our Approach</h2>
-              <p className="text-lead">An Egyptian-made and owned brand. It was officially founded by Consultant dermatologists in 2018; however, the development of the products started earlier. Toya was born from a belief that the Pharaohs were beauty-obsessed, they sourced ingredients from nature to meet their skincare needs, and now people want to return to their roots and only use natural products, especially on their skin. That's why we're committed to delivering premium organic skincare formulas that were created 7000 years ago to preserve your youth.</p>
+              <p className="text-lead">An Egyptian-made and owned brand. It was officially founded by Consultant dermatologists in 2018; however, the development of the products started earlier. Toya was born from a belief that the Pharaohs were beauty-obsessed, they sourced ingredients from nature to meet their skincare needs, and now people want to return to their roots and only use natural products, especially on their skin. That&apos;s why we&apos;re committed to delivering premium organic skincare formulas that were created 7000 years ago to preserve your youth.</p>
             </div>
           </div>
 
