@@ -31,7 +31,7 @@ const ProductPreview = ({
     const [price, setPrice] = useState<any>(0)
 
     function handellVariants() {
-        variants.map((v: any, index: any) => (
+        variants?.map((v: any, index: any) => (
             setPrice(v.prices[0])
         ))
     }

@@ -1,11 +1,11 @@
 /*start iconmoon */
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?n193g5');
-  src:  url('fonts/icomoon.eot?n193g5#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?n193g5') format('truetype'),
-    url('fonts/icomoon.woff?n193g5') format('woff'),
-    url('fonts/icomoon.svg?n193g5#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?l06amw');
+  src:  url('fonts/icomoon.eot?l06amw#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?l06amw') format('truetype'),
+    url('fonts/icomoon.woff?l06amw') format('woff'),
+    url('fonts/icomoon.svg?l06amw#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -26,6 +26,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-copyright-svgrepo-com-2:before {
+  content: "\e907";
+}
+.icon-linkedin-logo-svgrepo-com:before {
+  content: "\e904";
+}
+.icon-facebook-svgrepo-com:before {
+  content: "\e905";
+}
+.icon-twitter-logo-shape-svgrepo-com:before {
+  content: "\e908";
+}
+.icon-whatsapp-logo-variant-svgrepo-com:before {
+  content: "\e90d";
+}
+.icon-telegram-svgrepo-com:before {
+  content: "\e909";
+}
 .icon-mobile-svgrepo-com:before {
   content: "\e902";
   color: rgba(174, 100, 76, 1);
@@ -45,6 +63,20 @@
   content: "\e901";
   font-size: 1.3em;
   margin: 0 10px;
+}
+.icon-instagram:before {
+  content: "\e906";
+}
+.icon-list:before {
+  content: "\e90a";
+  font-size: 1.3em;
+  font-weight: bolder;
+}
+.icon-mail:before {
+  content: "\e90b";
+}
+.icon-truck:before {
+  content: "\e90c";
 }
 
 /* end iconmoon */

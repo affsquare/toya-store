@@ -44,7 +44,7 @@ const Footer = () => {
                     <div className="footer-contact d-flex justify-content-between ">
                         <div className="contact d-flex items-center">
                             <div className="contact-questions flex items-center">
-                                <span><i className="icon-headphone-svgrepo-com"></i></span>
+                                <span className="icon-headphone-svgrepo-com"></span>
                                 <span className="ms-2">Got Questions?</span>
                             </div>
                             <div className="contact-number">
@@ -53,14 +53,13 @@ const Footer = () => {
                         </div>
                         {/* Social Icons */}
                         <div className="social">
-                            <span className="pe-3"><i className="fa-brands fa-facebook-f"></i></span>
-                            <span className=""><i className="fa-brands fa-instagram"></i></span>
+                            <span className="pe-3"><span className="icon-facebook-svgrepo-com"></span></span>
+                            <span className="icon-instagram"></span>
                         </div>
                         {/* Copy right */}
                         <div className="copy-right d-flex align-items-center">
-                            <i className="fa-regular fa-copyright me-2"></i>
+                            <span className="icon-copyright-svgrepo-com-2 me-2"></span>
                             <p>2022 Toya Naturals</p>
-
                         </div>
                     </div>
                 </div>

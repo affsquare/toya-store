@@ -386,7 +386,7 @@ const Store: NextPageWithLayout = () => {
                                     <span className="text-gray-600 font-semibold">Views:</span>
                                     <span className=" flex items-center">
                                         <span className="icon-grid-svgrepo-com" onClick={() => setViews(true)}></span>
-                                        <FontAwesomeIcon icon={["fas", "list"]} onClick={() => setViews(false)} size={"lg"} />
+                                        <span className="icon-list" onClick={() => setViews(false)}></span>
                                     </span>
                                 </div>
 

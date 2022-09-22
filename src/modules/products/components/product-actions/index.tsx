@@ -166,7 +166,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
 
                 {/* shipping */}
                 <div className="shipping d-flex items-center mt-2">
-                    <FontAwesomeIcon icon={["fas", "truck"]} />
+                    <span className="icon-truck"></span>
                     <p className="ms-3 text-muted">Congratulations! You've got free shipping.</p>
                 </div>
 
@@ -179,12 +179,12 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
                 {/* Share Icons*/}
                 <div className="socialIcons text-muted fw-bold">
                     <span className="me-2">Share</span>
-                    <FontAwesomeIcon icon={["fab", "facebook-f"]} role="button" className="mx-2" />
-                    <FontAwesomeIcon icon={["far", "envelope"]} role="button" className="mx-2 " />
-                    <FontAwesomeIcon icon={["fab", "twitter"]} role="button" className="mx-2 " />
-                    <FontAwesomeIcon icon={["fab", "telegram"]} role="button" className="mx-2 " />
-                    <FontAwesomeIcon icon={["fab", "whatsapp"]} role="button" className="mx-2 " />
-                    <FontAwesomeIcon icon={["fab", "linkedin-in"]} role="button" className="mx-2 " />
+                    <span className="icon-facebook-svgrepo-com mx-2"></span>
+                    <span className="icon-mail mx-2"></span>
+                    <span className="icon-twitter-logo-shape-svgrepo-com mx-2"></span>
+                    <span className="icon-telegram-svgrepo-com mx-2"></span>
+                    <span className="icon-whatsapp-logo-variant-svgrepo-com"></span>
+                    <span className="icon-linkedin-logo-svgrepo-com mx-2"></span>
 
                 </div>
 
