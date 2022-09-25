@@ -4,7 +4,11 @@ import Image from "next/image"
 import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { MEDUSA_BACKEND_URL } from "../../../lib/config"
+import { useRouter } from 'next/router';
+
 export default function Navbar() {
+
+    const router = useRouter();
 
     const httpClient = axios.create({
         baseURL: MEDUSA_BACKEND_URL
@@ -75,16 +79,16 @@ export default function Navbar() {
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li className="nav-item main-nav px-3 fw-bold">
+                            <li className={router.pathname == "/" ? "activeLink px-3 fw-bold" : "nav-item main-nav px-3 fw-bold"}>
                                 <Link className="nav-link" href="/">Home</Link>
                             </li>
-                            <li className="nav-item main-nav px-3 fw-bold">
+                            <li className={router.pathname == "/aboutUs" ? "activeLink px-3 fw-bold" : "nav-item main-nav px-3 fw-bold"} >
                                 <Link className="nav-link" href="/aboutUs">About Us</Link>
                             </li>
-                            <li className="nav-item main-nav px-3 fw-bold">
+                            <li className={router.pathname == "/contactUs" ? "activeLink px-3 fw-bold" : "nav-item main-nav px-3 fw-bold"}>
                                 <Link className="nav-link" href="/contactUs">Contact Us</Link>
                             </li>
-                            <li className="nav-item main-nav px-3 fw-bold">
+                            <li className={router.pathname == "/shop" ? "activeLink px-3 fw-bold" : "nav-item main-nav px-3 fw-bold"}>
                                 <Link className="nav-link" href="/shop">Shop</Link>
                             </li>
                             <li class="dropdown">
@@ -92,7 +96,7 @@ export default function Navbar() {
                                     Categories
                                 </a>
 
-                                <ul class="dropdown-menu">
+                                <ul className="dropdown-menu">
                                     {collections?.map((c, i) => (
                                         <>
                                             <li key={i} className="dropdown-item">
@@ -105,16 +109,14 @@ export default function Navbar() {
                                             </li>
                                         </>
                                     ))}
-                                    {/* <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li> */}
+                                    
                                 </ul>
 
                             </li>
-                            <li className="nav-item main-nav px-3 fw-bold">
+                            <li className={router.pathname == "/blogs" ? "activeLink px-3 fw-bold" : "nav-item main-nav px-3 fw-bold"}>
                                 <Link className="nav-link" href="/blogs">Blogs</Link>
                             </li>
-                            <li className="nav-item main-nav px-3 fw-bold">
+                            <li className={router.pathname == "/askToya" ? "activeLink px-3 fw-bold" : "nav-item main-nav px-3 fw-bold"}>
                                 <Link className="nav-link" href="/askToya">Ask Toya</Link>
                             </li>
                         </ul>

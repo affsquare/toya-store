@@ -6,7 +6,9 @@ import Button from "@modules/common/components/button"
 import LineItemOptions from "@modules/common/components/line-item-options"
 import LineItemPrice from "@modules/common/components/line-item-price"
 import Cart from "@modules/common/icons/cart"
+import Edit from "@modules/common/icons/edit"
 import Trash from "@modules/common/icons/trash"
+import X from "@modules/common/icons/x"
 import Thumbnail from "@modules/products/components/thumbnail"
 import { formatAmount, useCart } from "medusa-react"
 import Link from "next/link"
@@ -66,7 +68,8 @@ const CartDropdown = () => {
             >
               <div className=" pt-4 flex items-center justify-between mb-5 px-3">
                 <h3 className="text-large-semi">Shopping Bag</h3>
-                <div role="button" onClick={close} className="text-large-semi"><i className="fa-solid fa-xmark fa-1x"></i></div>
+                <X onClick={close} role="button" />
+                
               </div>
               {cart && items?.length ? (
                 <>
@@ -135,7 +138,7 @@ const CartDropdown = () => {
                       <div>
                         <span className=" text-uppercase fw-bold ">Subtotal:</span>
                         <span className="font-normal d-flex align-items-center text-xs">
-                          <i className="fa-solid fa-circle-info me-1"></i> <span>include: taxes</span>
+                          <span className="icon-info me-1"></span> <span>include: taxes</span>
                         </span>
                       </div>
                       <span className="text-xl toya-color">

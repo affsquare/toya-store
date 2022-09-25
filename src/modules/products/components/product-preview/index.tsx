@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import getSymbolFromCurrency from 'currency-symbol-map'
 import { ProductProvider, useProductActions } from "@lib/context/product-context"
 import { Product } from 'types/medusa';
+import { formatAmount } from "medusa-react"
 
 type ProductPreviewType = {
     id?: string
@@ -27,6 +28,8 @@ const ProductPreview = ({
 }: ProductPreviewType) => {
     // console.log(collection);
 
+    // console.log(variants);
+    
 
     const [price, setPrice] = useState<any>(0)
 
@@ -66,8 +69,6 @@ const ProductPreview = ({
                             {"Add to cart"}
                         </button> : ""}
 
-
-
                     </div>
 
                     <div className="text-base-regular mt-2 ">
@@ -94,6 +95,11 @@ const ProductPreview = ({
                                         })}
                                     >
                                         {price.amount} {getSymbolFromCurrency(`${price.currency_code}`)}
+                                        {/* {formatAmount({
+                                            amount: item.unit_price * item.quantity,
+                                            region: region,
+                                            includeTaxes: false,
+                                        })} */}
                                     </span>
                                 </>
                             ) : (

@@ -379,7 +379,7 @@ const Store: NextPageWithLayout = () => {
                                         ...qb,
                                         search: e.target.value
                                     })} className=" w-100 focus:border-0 bg-transparent focus:outline-none" id="search" type="search" placeholder="Search products" />
-                                    <label htmlFor="search" className=""><FontAwesomeIcon icon={["fas", "magnifying-glass"]} /> </label>
+                                    <label htmlFor="search" className=""><Search /> </label>
                                 </div>
 
                                 <div className="flex justify-end items-center">

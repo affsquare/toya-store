@@ -183,7 +183,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
                     <span className="icon-mail mx-2"></span>
                     <span className="icon-twitter-logo-shape-svgrepo-com mx-2"></span>
                     <span className="icon-telegram-svgrepo-com mx-2"></span>
-                    <span className="icon-whatsapp-logo-variant-svgrepo-com"></span>
+                    <span className="icon-whatsapp-logo-variant-svgrepo-com mx-2"></span>
                     <span className="icon-linkedin-logo-svgrepo-com mx-2"></span>
 
                 </div>

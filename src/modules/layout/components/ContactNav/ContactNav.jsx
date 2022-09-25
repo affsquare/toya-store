@@ -19,9 +19,10 @@ export default function
             <div className="col-5">
               <div className={`${Style.contact} contact d-flex justify-start`}>
                 <div className="contact-questions d-flex align-items-center">
-                  {/* <i className="fa-solid fa-headphones-simple"></i> */}
+
                   <span className="icon-headphone-svgrepo-com"></span>
                   <span className="ms-2">Got Questions?</span>
+
                 </div>
                 <div className="contact-number">
                   <span className="ms-3">+201101899338</span>
@@ -49,8 +50,8 @@ export default function
                 </div>
                 {/* Social Icons */}
                 <div className="social">
-                  <span className="icon-facebook-svgrepo-com"></span>
-                  <span className="ms-3 icon-instagram"></span>
+                <span className="icon-facebook-svgrepo-com"></span>
+                <span className="ms-3 icon-instagram"></span>
                 </div>
               </div>
             </div>

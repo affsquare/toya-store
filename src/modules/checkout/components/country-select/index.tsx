@@ -39,8 +39,6 @@ const CountrySelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       <NativeSelect ref={innerRef} placeholder={placeholder} {...props}>
         {countryOptions.map(({ value, label }, index) => (
           <>
-          {/* {console.log(governorate)} */}
-          {/* {console.log(countryOptions)} */}
             <option key={index} value={value}>
               {label}
             </option>
