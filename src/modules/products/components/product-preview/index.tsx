@@ -29,7 +29,7 @@ const ProductPreview = ({
     // console.log(collection);
 
     // console.log(variants);
-    
+
 
     const [price, setPrice] = useState<any>(0)
 
@@ -94,12 +94,12 @@ const ProductPreview = ({
                                             "text-rose-500": price.price_type === "sale",
                                         })}
                                     >
-                                        {price.amount} {getSymbolFromCurrency(`${price.currency_code}`)}
-                                        {/* {formatAmount({
-                                            amount: item.unit_price * item.quantity,
-                                            region: region,
+                                        <span className="me-1 uppercase">{price.currency_code}</span>
+                                        {formatAmount({
+                                            amount: price.amount,
+                                            region: price.currency_code,
                                             includeTaxes: false,
-                                        })} */}
+                                        })}
                                     </span>
                                 </>
                             ) : (

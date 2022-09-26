@@ -19,7 +19,8 @@ const CountrySelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
 
     const countryOptions = useMemo(() => {
       const currentRegion = regions?.find((r) => r.id === cart?.region_id)
-      console.log(currentRegion);
+
+
       
       if (!currentRegion) {
         return []
@@ -32,13 +33,11 @@ const CountrySelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
     }, [regions, cart])
 
   
-
-    
-
     return (
       <NativeSelect ref={innerRef} placeholder={placeholder} {...props}>
         {countryOptions.map(({ value, label }, index) => (
           <>
+
             <option key={index} value={value}>
               {label}
             </option>

@@ -18,19 +18,19 @@ export default function AskToya() {
               <div className="toya-form border p-4 p-lg-5">
 
                   <label htmlFor="name" className='text-sm'>Name</label>
-                  <input id='name' type="text" name='name' placeholder='Name' className='w-100 border py-1 px-2 mt-2 rounded-1' />
+                  <input id='name' type="text" name='name' placeholder='Name' className='w-100 border py-1 px-2 mt-2 rounded-1 focus:outline-0' />
 
                   <label htmlFor="email" className='mt-3 text-sm'>Email</label>
-                  <input id='email' type="email" name='email' placeholder='Email' className='w-100 border py-1 px-2 mt-2 rounded-1' />
+                  <input id='email' type="email" name='email' placeholder='Email' className='w-100 border py-1 px-2 mt-2 rounded-1 focus:outline-0' />
 
                   <label htmlFor="phone" className='mt-3 text-sm'>Phone Number</label>
-                  <input id='phone' type="number" name='phone' placeholder='Phone Number' className='w-100 border py-1 px-2 mt-2 rounded-1' />
+                  <input id='phone' type="number" name='phone' placeholder='Phone Number' className='w-100 border py-1 px-2 mt-2 rounded-1 focus:outline-0' />
 
                   <label htmlFor="upload" className='mt-3 text-sm'>Upload Photo</label>
-                  <input id='upload' type="file" name='photo' className='d-block mt-2'/>
+                  <input id='upload' type="file" name='photo' className='d-block mt-2 focus:outline-0'/>
 
                   <label htmlFor="message" className='mt-3 text-sm'>Message</label>
-                  <textarea name="message" className='border d-block w-100 p-2 mt-2' id="message" cols="30" rows="6" placeholder='message'></textarea>
+                  <textarea name="message" className='border d-block w-100 p-2 mt-2 focus:outline-0' id="message" cols="30" rows="6" placeholder='message'></textarea>
 
                   <button type='submit' className='btn toya-bg text-white mt-4 w-100 fw-bold'>Send</button>
 
@@ -38,7 +38,7 @@ export default function AskToya() {
             </div>
             <div className="col-md-4 flex justify-center">
 
-                <img src="/Ask-toya.png" alt="Ask-toya" className='w-100  h-100 mt-4 mt-md-0 ' />
+                <img src="/Ask-toya.png" alt="Ask-toya" className='w-100  h-100 mt-4 mt-md-0 d-none d-md-block  ' />
 
             </div>
           </div>

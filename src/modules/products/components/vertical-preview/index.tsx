@@ -4,6 +4,7 @@ import Link from "next/link"
 import Thumbnail from "../thumbnail"
 import { useEffect, useState } from "react"
 import getSymbolFromCurrency from 'currency-symbol-map'
+import { formatAmount } from 'medusa-react';
 
 type ProductPreviewType = {
     id: string
@@ -27,6 +28,8 @@ const VerticalPreview = ({
 
 
     const [price, setPrice] = useState<any>(0)
+
+    // console.log(price);
 
     function handellVariants() {
         variants.map((v: any, index: any) => (
@@ -78,7 +81,12 @@ const VerticalPreview = ({
                                             "text-rose-500": price.price_type === "sale",
                                         })}
                                     >
-                                        {price.amount} {getSymbolFromCurrency(`${price.currency_code}`)}
+                                        <span className="me-1 uppercase">{price.currency_code}</span>
+                                        {formatAmount({
+                                            amount: price.amount,
+                                            region: price.currency_code,
+                                            includeTaxes: false,
+                                        })}
                                     </span>
                                 </>
                             ) : (

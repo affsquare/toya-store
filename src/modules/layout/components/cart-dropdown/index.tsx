@@ -92,7 +92,7 @@ const CartDropdown = () => {
                                 <div>
                                   <h3 className="text-base-regular overflow-ellipsis overflow-hidden whitespace-nowrap mr-4 w-[130px]">
                                     <Link
-                                      href={`/products/${item.variant.product.handle}`}
+                                      href={`/products/${item.variant.product.id}`}
                                     >
                                       <a>{item.title}</a>
                                     </Link>
@@ -105,7 +105,6 @@ const CartDropdown = () => {
                                     includeTaxes: false,
                                   })}</div>
                                 </div>
-                                {/* {console.log(cart.region)} */}
 
                                 <div className="flex justify-end bg-danger">
 

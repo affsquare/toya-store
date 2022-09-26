@@ -16,11 +16,11 @@ export default function Navbar() {
 
     const [collections, setCollections] = useState([])
 
-    useEffect(() => {
-        httpClient.get("/store/collections").then(({ data }) => {
-            setCollections(data?.collections)
-        })
-    })
+    // useEffect(() => {
+    //     httpClient.get("/store/collections").then(({ data }) => {
+    //         setCollections(data?.collections)
+    //     })
+    // })
 
     const [qb, setQb] = useState({
         filter: {},
@@ -91,8 +91,8 @@ export default function Navbar() {
                             <li className={router.pathname == "/shop" ? "activeLink px-3 fw-bold" : "nav-item main-nav px-3 fw-bold"}>
                                 <Link className="nav-link" href="/shop">Shop</Link>
                             </li>
-                            <li class="dropdown">
-                                <a class="nav-item main-nav px-3 fw-bold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <li className="dropdown">
+                                <a className="nav-item main-nav px-3 fw-bold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Categories
                                 </a>
 

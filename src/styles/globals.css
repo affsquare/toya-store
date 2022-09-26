@@ -130,11 +130,6 @@ input:-webkit-autofill {
 }
 
 /* start Nav Bar */
-/* .actNav {
-  padding-bottom: 3px;
-  color: rgba(174, 100, 76, 1) !important;
-  border-bottom: 2px solid rgba(174, 100, 76, 1)
-} */
 
 .main-nav a:hover {
   padding-bottom: 3px;
@@ -156,13 +151,14 @@ a:hover {
 
 /* Contact Page */
 
-.form-control {
+
+.form-control, select {
   border: none !important;
   border-radius: 0 !important;
   border-bottom: 1px solid #d1d6db !important;
 }
 
-.form-control:focus {
+.form-control:focus, select:focus {
   outline: none !important;
   border: none !important;
   color: #212529;

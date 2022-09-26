@@ -18,12 +18,7 @@ const productDetalis = product.product
           image={productDetalis.thumbnail}
       /> */}
       <div className="cotainer">
-        {/* {
-          console.log(productDetalis)
-          
-        } */}
         
-          
         <ProductTemplate product={productDetalis} />
 
       </div>

@@ -59,7 +59,6 @@ const Store: NextPageWithLayout = () => {
 
     const [views, setViews] = useState(true)
 
-    // const [isLoading, setIsLoading] = useState(false);
     const [products, setProducts] = useState([]);
 
     const [params, setParams] = useState<StoreGetProductsParams>({})
@@ -143,7 +142,6 @@ const Store: NextPageWithLayout = () => {
             // }
         )
 
-    // console.log(data)
 
     useEffect(() => {
         httpClient.get("/store/collections").then(({ data }) => {
@@ -188,20 +186,6 @@ const Store: NextPageWithLayout = () => {
                                 <span className="icon-filter-left-svgrepo-com"></span>
                                 <span> Filter</span>
                             </span>
-                            {/* Search */}
-                            {/* <div className="space-y-6 flex-1 flex flex-col justify-between  ">
-                                {process.env.FEATURE_SEARCH_ENABLED && (
-                                <button
-                                    className="bg-gray-50 flex items-center ps-3 py-2 gap-x-2 text-danger"
-                                    onClick={() => { }}
-                                >
-                                    <Search size={24} />
-                                    <span placeholder="Search products" className="text-base-regular">
-                                        Search products
-                                    </span>
-                                </button>
-                                )}
-                            </div> */}
 
                             {/* Collections */}
                             <ul className="text-base-regular items-center gap-x-4 mt-4">
@@ -218,7 +202,6 @@ const Store: NextPageWithLayout = () => {
                                                     }
                                                 })
                                             }}
-
                                         />
                                         All Categories
                                     </label>
@@ -237,35 +220,15 @@ const Store: NextPageWithLayout = () => {
                                                                 "collection": c.id
                                                             }
                                                         })
-                                                        // if (!checked) {
-                                                        //     setQb({
-                                                        //         ...qb,
-                                                        //         filter: {
-                                                        //             "collection": c.id
-                                                        //         }
-                                                        //     })
-                                                        //     // setChecked(!checked)
-                                                        // }
-                                                        // else {
-                                                        //     // const qb_ = qb;
-                                                        //     // delete qb_?.['filter']?.['collection']
-                                                        //     // setQb(qb)
-                                                        //     setQb({
-                                                        //         ...qb,
-                                                        //         filter: {
-                                                        //             "collection": ""
-                                                        //         }
-                                                        //     })
-                                                        //     // setChecked(!checked)
-                                                        // }
                                                     }}
-
                                                 />
                                                 {c?.title}
                                             </label>
                                         </li>
                                     </>
                                 ))}
+
+                                {/* Price Filter */}
                                 <li className="mt-5 ">
                                     <label className="text-gray-500" htmlFor="fromPrice">price Range</label>
                                     <div className="mt-2 row ">
@@ -292,8 +255,6 @@ const Store: NextPageWithLayout = () => {
                                                             "price": `${fromPrice},${e.target.value}`
                                                         }
                                                     })
-
-
                                                 }}
                                                 className="px-1 border-b-2 border-gray-400 w-100 focus:outline-0 focus:border-orange-900" type="number" placeholder="To" />
                                         </div>
@@ -302,8 +263,6 @@ const Store: NextPageWithLayout = () => {
                             </ul>
                         </div>
                     </div>
-
-                    <>
 
                         <div className="flex-1 container">
                             <div className="mb-4 flex justify-between">
@@ -399,7 +358,6 @@ const Store: NextPageWithLayout = () => {
                                     {
                                         products?.map((p: any) => (
                                             <>
-
                                                 <li className="position-relative" key={p.id}  >
                                                     <ProductPreview {...p} />
                                                 </li>
@@ -457,7 +415,7 @@ const Store: NextPageWithLayout = () => {
                             </div>
 
                         </div>
-                    </>
+
                 </div>
             </div>
         </>

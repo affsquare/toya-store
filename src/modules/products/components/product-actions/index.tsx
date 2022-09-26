@@ -11,12 +11,14 @@ import Plus from "@modules/common/icons/plus"
 import Minus from "@modules/common/icons/minus"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import getSymbolFromCurrency from "currency-symbol-map"
+import { formatAmount } from "medusa-react"
 
 type ProductActionsProps = {
     product: Product
 }
 
 const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
+
 
 
     let { updateOptions, addToCart, options, inStock, variant } =
@@ -39,6 +41,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
         return (p.prices[0])
     }
     )
+
 
     function numberWithCommas(x: any) {
         return x.toString().replace(/\b(\d{1,2})(\d{2})/g, '$1.$2');
@@ -91,7 +94,14 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
 
                 {/* Product-Price  */}
                 <div className="my-3 toya-color text-xl-semi fw-bold">
-                    <h3> {price[0].amount} {getSymbolFromCurrency(`${price[0].currency_code}`)}</h3>
+                    <h3>
+                        <span className="ms-1 uppercase">{price[0].currency_code}</span>
+                        {formatAmount({
+                            amount: price[0].amount,
+                            region: price[0].currency_code,
+                            includeTaxes: false,
+                        })}
+                    </h3>
 
                     {/* {selectedPrice ? (
                         <div className="flex flex-col price ">
