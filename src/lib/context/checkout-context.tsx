@@ -28,7 +28,7 @@ type AddressValues = {
   company: string
   address_1: string
   address_2: string
-  city: string
+  cityId: string
   province: string
   postal_code: string
   country_code: string
@@ -36,7 +36,7 @@ type AddressValues = {
 }
 
 export type CheckoutFormValues = {
-  shipping_address: AddressValues
+  shipping_address: AddressValues 
   billing_address: AddressValues
   email: string
 }
@@ -50,7 +50,7 @@ interface CheckoutContext {
   editAddresses: StateType
   initPayment: () => Promise<void>
   setAddresses: (addresses: CheckoutFormValues) => void
-  setSavedAddress: (address: Address) => void
+  setSavedAddress: (address: Address | any) => void
   setShippingOption: (soId: string) => void
   setPaymentSession: (providerId: string) => void
   onPaymentCompleted: () => void
@@ -253,7 +253,7 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
     setValue("shipping_address", {
       address_1: address.address_1 || "",
       address_2: address.address_2 || "",
-      city: address.city || "",
+      cityId: address.cityId || "",
       country_code: address.country_code || "",
       first_name: address.first_name || "",
       last_name: address.last_name || "",
@@ -387,7 +387,7 @@ const mapFormValues = (
         cart?.shipping_address?.address_2 ||
         customerShippingAddress?.address_2 ||
         "",
-      city: cart?.shipping_address?.city || customerShippingAddress?.city || "",
+      cityId: cart?.shipping_address?.cityId || customerShippingAddress?.cityId || "",
       country_code:
         currentCountry ||
         cart?.shipping_address?.country_code ||
@@ -425,7 +425,7 @@ const mapFormValues = (
         cart?.billing_address?.address_2 ||
         customerBillingAddress?.address_2 ||
         "",
-      city: cart?.billing_address?.city || customerBillingAddress?.city || "",
+      cityId: cart?.billing_address?.cityId || customerBillingAddress?.cityId || "",
       country_code:
         cart?.shipping_address?.country_code ||
         customerBillingAddress?.country_code ||

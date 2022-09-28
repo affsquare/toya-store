@@ -1,6 +1,8 @@
 import { CheckoutFormValues } from "@lib/context/checkout-context"
 import ConnectForm from "@modules/common/components/connect-form"
 import Input from "@modules/common/components/input"
+import CitySelect from "../city-select"
+import CountrySelect from "../country-select"
 // import CountrySelect from "../country-select"
 
 const BillingAddress = () => {
@@ -38,8 +40,16 @@ const BillingAddress = () => {
               errors={errors}
               touched={touchedFields}
             />
-            <Input
+            {/* <Input
               label="City"
+              {...register("billing_address.city", {
+                required: "City is required",
+              })}
+              autoComplete="address-level2"
+              errors={errors}
+              touched={touchedFields}
+            /> */}
+            <CitySelect
               {...register("billing_address.city", {
                 required: "City is required",
               })}
@@ -64,14 +74,14 @@ const BillingAddress = () => {
             touched={touchedFields}
           /> */}
 
-          {/* <CountrySelect
+          <CountrySelect
             {...register("billing_address.country_code", {
               required: "Country is required",
             })}
             autoComplete="country"
             errors={errors}
             touched={touchedFields}
-          /> */}
+          />
           {/* <Input
             label="State / Province"
             {...register("billing_address.province")}

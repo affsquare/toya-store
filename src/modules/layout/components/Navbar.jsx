@@ -16,11 +16,11 @@ export default function Navbar() {
 
     const [collections, setCollections] = useState([])
 
-    // useEffect(() => {
-    //     httpClient.get("/store/collections").then(({ data }) => {
-    //         setCollections(data?.collections)
-    //     })
-    // })
+    useEffect(() => {
+        httpClient.get("/store/collections").then(({ data }) => {
+            setCollections(data?.collections)
+        })
+    },[])
 
     const [qb, setQb] = useState({
         filter: {},

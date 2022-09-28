@@ -31,6 +31,7 @@ const Addresses = () => {
     return x.toString().replace(/\b(\d{1,2})(\d{2})/g, '$1.$2');
   }
 
+  
   return (
     <div className="bg-white">
       <div className=" flex items-center gap-x-4 px-8 pb-6 pt-8 font-semibold">
@@ -90,7 +91,7 @@ const Addresses = () => {
                         </span>
                         <span>
                           {cart.shipping_address.postal_code},{" "}
-                          {cart.shipping_address.city}
+                          {cart.shipping_address?.city?.name }
                         </span>
                         <span>
                           {cart.shipping_address.country_code?.toUpperCase()}
@@ -99,6 +100,10 @@ const Addresses = () => {
                           <span>{cart.shipping_address.phone}</span>
                           <span>{cart.email}</span>
                         </div>
+                        {
+                          console.log(cart.shipping_address)
+                          
+                        }
                         {/* {checked && (
                       <div className="flex items-center gap-x-2 mt-6">
                         <div className="flex items-center justify-center border border-gray-700 bg-gray-100 w-4 h-4">

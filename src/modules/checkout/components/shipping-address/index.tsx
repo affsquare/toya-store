@@ -9,6 +9,7 @@ import CountrySelect from "../country-select"
 
 const ShippingAddress = () => {
     const { customer } = useMeCustomer()
+    
     return (
         <div>
             {customer && (customer.shipping_addresses?.length || 0) > 0 && (
@@ -72,15 +73,16 @@ const ShippingAddress = () => {
                                 touched={touchedFields}
                             />
 
-                            {/* <CitySelect
-                                {...register("shipping_address.city", {
+                            <CitySelect
+                                {...register("shipping_address.cityId", {
                                     required: "City is required",
                                 })}
                                 autoComplete="address-level2"
                                 errors={errors}
                                 touched={touchedFields}
-                            /> */}
-                            <Input
+                            />
+                            
+                            {/* <Input
                                 label="City"
                                 {...register("shipping_address.city", {
                                     required: "City is required",
@@ -88,7 +90,7 @@ const ShippingAddress = () => {
                                 autoComplete="address-level2"
                                 errors={errors}
                                 touched={touchedFields}
-                            />
+                            /> */}
                         </div>
                         <Input
                             label="Street Address"

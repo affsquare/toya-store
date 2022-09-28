@@ -1,7 +1,61 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { useState } from 'react';
+import { MEDUSA_BACKEND_URL } from '@lib/config';
+import axios from 'axios';
 
 export default function ContactUs() {
+
+    const httpClient = axios.create({
+        baseURL: MEDUSA_BACKEND_URL
+    })
+
+    //is loading Spinner
+    const [isLoading, setIsLoading] = useState(false)
+
+    //User Data
+    const [user, setUser] = useState({
+        name: '',
+        email: '',
+        phoneNumber: '',
+        body: ''
+    });
+
+    function resetForm(e) {
+        e.preventDefault();
+        e.target.reset();
+    }
+
+    //Get user Data From Form Inputs
+    function getUserData(e) {
+        let myUser = { ...user }; //Deep Copy
+        myUser[e.target.name] = e.target.value; // change data
+        setUser(myUser);
+    }
+
+    //Submit contact Form
+    async function submitLoginForm(e) {
+        //stop Browser reload on submit
+        e.preventDefault();
+        //show loading Spinner
+        // setIsLoading(true);
+        //post User Data To Data base
+        let { data, status } = await httpClient.post("/store/messages/post", user)
+        console.log(data.message);
+        //contact tmam
+        if (status === 200) {
+            //stop Loading Spinner
+            // setIsLoading(false);
+
+        }
+        //contact Error
+        else {
+            //stop Loading Spinner
+            // setIsLoading(false);
+        }
+        resetForm(e)
+
+    }
+
     return (
         <>
             <div className="container">
@@ -32,13 +86,16 @@ export default function ContactUs() {
                         </div>
                         <div className="col-md-6">
                             <div className="p-4 p-lg-5  contact-form ">
-                                {/* <h3 className="toya-color h4">Drop Us</h3> */}
                                 <h4 className="mt-3 mb-4  h6 toya-color">We will get back to you shortly.</h4>
-                                <input className="form-control mb-5 py-2" type="text" placeholder="Your Name" />
-                                <input className="form-control mb-5 py-2" type="email" placeholder="Your Email" />
-                                <input className="form-control mb-5 py-2" type="number" placeholder="Number" />
-                                <textarea className="form-control mb-5 " name="message" placeholder="Message" id="" cols="30" rows="3"></textarea>
-                                <button className="toya-bg text-white text-lg w-100 py-2 rounded-3"> Send</button>
+                                <form onSubmit={submitLoginForm}>
+                                    <input onChange={getUserData} className="form-control mb-5 py-2" type="text" placeholder="Your Name" name="name" />
+                                    <input onChange={getUserData} className="form-control mb-5 py-2" type="email" placeholder="Your Email" name="email" />
+                                    <input onChange={getUserData} className="form-control mb-5 py-2" type="number" placeholder="Number" name="phoneNumber" />
+                                    <textarea onChange={getUserData} className="form-control mb-5 " name="body" placeholder="Message" id="" cols="30" rows="3"></textarea>
+                                    <button className="toya-bg text-white text-lg w-100 py-2 rounded-3" type="submit">
+                                        {isLoading ? <i className='fas fa-spinner fa-spin'></i> : 'send'}
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>

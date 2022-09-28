@@ -21,11 +21,19 @@ const CitySelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             () => innerRef.current
         )
 
+        const [city, setCity] = useState([]);
+
+        useEffect(() => {
+            httpClient.get("/store/cities").then(({ data }) => {
+                setCity(data.cities)
+            })
+        }, [])
+
         const { regions } = useRegions()
         const { cart } = useCart()
 
 
-        const countryOptions = useMemo(() => {
+        const cityOptions = useMemo(() => {
             const currentRegion = regions?.find((r) => r.id === cart?.region_id)
 
 
@@ -33,28 +41,22 @@ const CitySelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
                 return []
             }
 
-            return currentRegion.countries.map((country) => ({
-                value: country.iso_2,
-                label: country.display_name,
+            return city.map((c:any) => ({
+                value: c.id,
+                // label: c.name,
             }))
         }, [regions, cart])
 
 
-        const [city, setCity] = useState([]);
-
-        useEffect(() => {
-            httpClient.get("/store/cities").then(({ data }) => {
-                setCity(data.cities)
-            })
-        })
-
-
         return (
             <NativeSelect ref={innerRef} placeholder={placeholder} {...props}>
-                {city?.map(({ name, code }, index) => (
+                {city?.map(({ name, id }, index) => (
                     <>
-
-                        <option key={index} value={code}>
+                        {/* {
+                            console.log(city)
+                            
+                        } */}
+                        <option key={index} value={id}>
                             {name}
                         </option>
                     </>

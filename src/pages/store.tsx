@@ -128,20 +128,8 @@ const Store: NextPageWithLayout = () => {
 
     const { data, isLoading, isFetchingNextPage } =
         useInfiniteQuery(
-            [`infinite-products-store`]
-            // async function () {
-            //     const { data } = await httpClient.get(`/store/products?${query}`);
-            //     //setProducts(data?.products || []);
-            //     return {
-
-            //         response: {
-            //             count: data?.products?.length || 0,
-            //             products: data?.products || []
-            //         }
-            //     }
-            // }
+            []
         )
-
 
     useEffect(() => {
         httpClient.get("/store/collections").then(({ data }) => {
@@ -162,18 +150,7 @@ const Store: NextPageWithLayout = () => {
     }, [qb])
 
 
-    /* Get All Products */
-    const getProducts = useCallback((sorter: string) => {
-        httpClient.get(`/store/products${sorter}`).then(({ data }) => {
-            setProducts(data?.products || [])
-        }).catch(console.log)
-    }, [])
-
-    const [checked, setChecked] = useState(false)
-
     const [fromPrice, setFromPrice] = useState(0)
-    const [toPrice, setToPrice] = useState(0)
-
 
     return (
         <>
@@ -354,7 +331,7 @@ const Store: NextPageWithLayout = () => {
                             {views ?
 
                                 /*cols Products Preview */
-                                <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
+                                <ul className="grid grid-cols-1 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
                                     {
                                         products?.map((p: any) => (
                                             <>

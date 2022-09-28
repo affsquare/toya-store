@@ -151,23 +151,23 @@ const AddAddress: React.FC = () => {
               errors={errors}
               autoComplete="address-line1"
             />
-            {/* <Input
+            <Input
               label="Apartment, suite, etc."
               {...register("address_2")}
               errors={errors}
               autoComplete="address-line2"
-            /> */}
+            />
 
-            {/* <Input
+            <Input
               label="Province / State"
               {...register("province")}
               errors={errors}
               autoComplete="address-level1"
-            /> */}
-            {/* <CountrySelect
+            />
+            <CountrySelect
               {...register("country_code", { required: true })}
               autoComplete="country"
-            /> */}
+            />
             <Input
               label="Phone"
               {...register("phone")}

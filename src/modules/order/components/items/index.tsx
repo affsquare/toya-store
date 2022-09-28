@@ -26,7 +26,10 @@ const Items = ({ items, region, cartId }: ItemsProps) => {
           return (
 
             <div className="grid grid-cols-[122px_1fr] gap-x-4" key={item.id}>
-
+              {
+                console.log(item)
+                
+              }
               <div className="w-[122px]">
                 <Thumbnail thumbnail={item.thumbnail} size="full" />
               </div>
@@ -36,7 +39,7 @@ const Items = ({ items, region, cartId }: ItemsProps) => {
                     <div>
                       <h3 className="text-base-regular overflow-ellipsis overflow-hidden whitespace-nowrap mr-4">
                         <Link
-                          href={`/products/${item.variant.product.handle}`}
+                          href={`/products/${item.id}`}
                         >
                           <a>{item.title}</a>
                         </Link>

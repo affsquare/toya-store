@@ -18,7 +18,7 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
   const { control, setSavedAddress } = useCheckout()
 
   const handleSelect = (id: string) => {
-    const savedAddress = addresses.find((a) => a.id === id)
+    const savedAddress = addresses.find((a:any) => a.id === id)
 
     if (savedAddress) {
       setSavedAddress(savedAddress)
@@ -78,7 +78,7 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
           leaveTo="opacity-0"
         >
           <Listbox.Options className="absolute z-20 w-full overflow-auto text-small-regular bg-white border border-gray-200 border-top-0 max-h-60 focus:outline-none sm:text-sm">
-            {addresses.map((address) => {
+            {addresses.map((address:any) => {
               return (
                 <Listbox.Option
                   key={address.id}
@@ -104,12 +104,12 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
                           )}
                         </span>
                         <span>
-                          {address.postal_code}, {address.city}
+                          {address.postal_code}, {address.cityId}
                         </span>
-                        {/* <span>
+                        <span>
                           {address.province && `${address.province}, `}
                           {address.country_code?.toUpperCase()}
-                        </span> */}
+                        </span>
                       </div>
                     </div>
                   </div>
