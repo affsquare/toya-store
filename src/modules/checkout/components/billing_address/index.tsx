@@ -50,7 +50,7 @@ const BillingAddress = () => {
               touched={touchedFields}
             /> */}
             <CitySelect
-              {...register("billing_address.city", {
+              {...register("billing_address.cityId", {
                 required: "City is required",
               })}
               autoComplete="address-level2"

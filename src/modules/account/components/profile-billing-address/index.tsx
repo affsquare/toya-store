@@ -124,7 +124,7 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({ customer }) => {
         </span>
         <span>
           {customer.billing_address.postal_code},{" "}
-          {customer.billing_address.city}
+          {customer.billing_address.cityId}
         </span>
         <span>{country}</span>
       </div>
@@ -227,7 +227,7 @@ const mapBillingAddressToFormData = ({ customer }: MyInformationProps) => {
       company: customer.billing_address?.company || undefined,
       address_1: customer.billing_address?.address_1 || undefined,
       address_2: customer.billing_address?.address_2 || undefined,
-      city: customer.billing_address?.city || undefined,
+      city: customer.billing_address?.cityId || undefined,
       province: customer.billing_address?.province || undefined,
       postal_code: customer.billing_address?.postal_code || undefined,
       country_code: customer.billing_address?.country_code || undefined,

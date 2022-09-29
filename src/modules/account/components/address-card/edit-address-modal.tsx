@@ -48,7 +48,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
     defaultValues: {
       first_name: address.first_name || undefined,
       last_name: address.last_name || undefined,
-      city: address.city || undefined,
+      city: address.cityId || undefined,
       address_1: address.address_1 || undefined,
       address_2: address.address_2 || undefined,
       country_code: address.country_code || undefined,
@@ -121,7 +121,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
               {address.address_2 && <span>, {address.address_2}</span>}
             </span>
             <span>
-              {address.postal_code}, {address.city}
+              {address.postal_code}, {address.cityId}
             </span>
             <span>
               {address.province && `${address.province}, `}
