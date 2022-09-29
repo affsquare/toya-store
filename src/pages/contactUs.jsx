@@ -39,13 +39,11 @@ export default function ContactUs() {
         //show loading Spinner
         // setIsLoading(true);
         //post User Data To Data base
-        let { data, status } = await httpClient.post("/store/messages/post", user)
-        console.log(data.message);
+        let { status } = await httpClient.post("/store/messages/post", user)
         //contact tmam
         if (status === 200) {
             //stop Loading Spinner
             // setIsLoading(false);
-
         }
         //contact Error
         else {

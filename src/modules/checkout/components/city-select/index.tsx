@@ -52,10 +52,6 @@ const CitySelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             <NativeSelect ref={innerRef} placeholder={placeholder} {...props}>
                 {city?.map(({ name, id }, index) => (
                     <>
-                        {/* {
-                            console.log(city)
-                            
-                        } */}
                         <option key={index} value={id}>
                             {name}
                         </option>

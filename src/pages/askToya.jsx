@@ -4,10 +4,12 @@ import axios from 'axios';
 import { MEDUSA_BACKEND_URL } from '@lib/config';
 
 export default function AskToya() {
-
+  
   const httpClient = axios.create({
     baseURL: MEDUSA_BACKEND_URL
   })
+
+  const [img, setImg] = useState(null)
 
   //is loading Spinner
   const [isLoading, setIsLoading] = useState(false)
@@ -18,7 +20,6 @@ export default function AskToya() {
     email: '',
     phoneNumber: '',
     body: '',
-    attachment: ''
   });
 
   function resetForm(e) {
@@ -33,30 +34,6 @@ export default function AskToya() {
     setUser(myUser);
   }
 
-
-  const [image, setImage] = useState('')
-
-  function handleImage(e) {
-    console.log(e.target.files);
-    // setImage(e.target.files[0])
-    setUser({
-      ...user,
-      attachment: e.target.files[0]
-    })
-    console.log(user);
-  }
-  // console.log(user);
-
-  // const file = new FormData()
-  // formData.append("attachment", image)
-
-  // setUser({
-  //   ...user,
-  //   attachment: formData
-  // })
-
-
-
   //Submit contact Form
   async function submitLoginForm(e) {
     //stop Browser reload on submit
@@ -64,25 +41,31 @@ export default function AskToya() {
     //show loading Spinner
     // setIsLoading(true);
     //post User Data To Data base
-    let { data, status } = await httpClient.post("/store/messages/ask", user)
-    console.log(data.message);
-    //contact tmam
+
+    const form = new FormData();
+
+    form.append("name", user.name);
+    form.append("email", user.email);
+    form.append("attachment", img, img?.name);
+    form.append("phoneNumber", user.phoneNumber);
+    form.append("body", user.body);
+
+    let { status } = await httpClient.post("/store/messages/ask", form, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      },
+    })
+
     if (status === 200) {
       //stop Loading Spinner
       // setIsLoading(false);
-      console.log("done");
     }
-    //contact Error
     else {
       //stop Loading Spinner
       // setIsLoading(false);
-      console.log("no");
     }
     resetForm(e)
-
   }
-
-
 
   return (
     <>
@@ -110,7 +93,10 @@ export default function AskToya() {
                   <input onChange={getUserData} id='phone' type="number" name='phoneNumber' placeholder='Phone Number' className='w-100 border py-1 px-2 mt-2 rounded-1 focus:outline-0' />
 
                   <label htmlFor="upload" className='mt-3 text-sm'>Upload Photo</label>
-                  <input onChange={handleImage} id='upload' type="file" name='attachment' className='d-block mt-2 focus:outline-0' />
+                  <input onChange={(e) => {
+                    //set(e.target.files.item);
+                    setImg(e.target.files[0])
+                  }} id='upload' type="file" name='attachment' className='d-block mt-2 focus:outline-0' />
 
                   <label htmlFor="message" className='mt-3 text-sm'>Message</label>
                   <textarea onChange={getUserData} name="body" className='border d-block w-100 p-2 mt-2 focus:outline-0' id="message" cols="30" rows="6" placeholder='message'></textarea>
