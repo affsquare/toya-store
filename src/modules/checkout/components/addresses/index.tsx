@@ -136,10 +136,10 @@ const Addresses = () => {
                               <span className="mb-1">quantity: {i.quantity}</span>
                               {/* <span className="mb-2">details: {i.description}</span> */}
                               <LineItemOptions variant={i.variant} />
-                              {
+                              {/* {
                                 console.log(i)
                                 
-                              }
+                              } */}
                               {/* <span className="toya-color">price: {getSymbolFromCurrency(`eur`)} {numberWithCommas(i.total)}</span> */}
                               <span className="toya-color">price:
                                 {formatAmount({
