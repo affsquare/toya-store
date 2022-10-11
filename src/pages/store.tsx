@@ -372,7 +372,7 @@ const Store: NextPageWithLayout = () => {
                                             repeat(8).map((index) => (
                                                 <li key={index}>
                                                     <SkeletonProductPreview />
-                                                </li>
+                                                </li>   
                                             ))}
                                         {/* {isFetchingNextPage &&
                                             repeat(getNumberOfSkeletons(data?.pages)).map((index) => (
