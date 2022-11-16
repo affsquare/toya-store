@@ -13,7 +13,7 @@ type OverviewProps = {
 
 const Overview = ({ orders, customer }: OverviewProps) => {
   return (
-    <div>
+    <div className="container">
       <div className="small:hidden">
         <div className="text-xl-semi mb-4 px-8">
           Hello {customer?.first_name}
@@ -173,11 +173,9 @@ const getProfileCompletion = (customer?: Omit<Customer, "password_hash">) => {
     count++
   }
 
-  if (customer.billing_address) {
-    count++
-  }
 
-  return (count / 4) * 100
+
+  return (count / 3) * 100
 }
 
 export default Overview

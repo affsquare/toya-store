@@ -8,7 +8,7 @@ import { NextPageWithLayout } from "types/global"
 const Profile: NextPageWithLayout = () => {
   return (
     <>
-      <Head title="Profile" description="View and edit your ACME profile." />
+      <Head title="Profile" description="View and edit your Toya profile." />
       <ProfileTemplate />
     </>
   )
@@ -16,9 +16,12 @@ const Profile: NextPageWithLayout = () => {
 
 Profile.getLayout = (page: ReactElement) => {
   return (
-    <Layout>
+    <>
       <AccountLayout>{page}</AccountLayout>
-    </Layout>
+    {/* <Layout>
+    </Layout> */}
+    </>
+    
   )
 }
 

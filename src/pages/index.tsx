@@ -5,12 +5,13 @@ import Layout from "@modules/layout/templates"
 import { ReactElement } from "react"
 import { NextPageWithLayout } from "types/global"
 
-const Home: NextPageWithLayout = () => {
+const Home = () => {
   return (
     <>
       <Head
         title="Home"
-        description="Shop all available models only at the ACME. Worldwide Shipping. Secure Payment."
+        description="Toya is the #1 best natural care products in Egypt. Enjoy Toya offers and discounts with the coupon Toya 10. Toya, your way for natural care.
+        "
       />
       {/* <Hero /> */}
       <FeaturedProducts />
@@ -18,8 +19,8 @@ const Home: NextPageWithLayout = () => {
   )
 }
 
-Home.getLayout = (page: ReactElement) => {
-  return <Layout>{page}</Layout>
-}
+// Home.getLayout = (page: ReactElement) => {
+//   return <Layout>{page}</Layout>
+// }
 
 export default Home

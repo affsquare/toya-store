@@ -1,6 +1,4 @@
-import NativeSelect, {
-  NativeSelectProps,
-} from "@modules/common/components/native-select"
+import NativeSelect, {NativeSelectProps} from "@modules/common/components/native-select"
 import { useCart, useRegions } from "medusa-react"
 import { forwardRef, useImperativeHandle, useMemo, useRef } from "react"
 
@@ -15,8 +13,6 @@ const CountrySelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
 
     const { regions } = useRegions()
     const { cart } = useCart()
-
-
     const countryOptions = useMemo(() => {
       const currentRegion = regions?.find((r) => r.id === cart?.region_id)
 
@@ -29,8 +25,6 @@ const CountrySelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
         label: country.display_name,
       }))
     }, [regions, cart])
-
-
     return (
       <NativeSelect ref={innerRef} placeholder={placeholder} {...props}>
         {countryOptions.map(({ value, label }, index) => (

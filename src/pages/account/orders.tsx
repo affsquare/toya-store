@@ -15,9 +15,11 @@ const Orders: NextPageWithLayout = () => {
 
 Orders.getLayout = (page) => {
   return (
-    <Layout>
+    <>
       <AccountLayout>{page}</AccountLayout>
-    </Layout>
+    {/* <Layout>
+    </Layout> */}
+    </>
   )
 }
 

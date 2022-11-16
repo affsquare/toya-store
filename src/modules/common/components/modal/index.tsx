@@ -44,7 +44,7 @@ const Modal: React.FC<ModalProps> & {
             >
               <Dialog.Panel
                 className={clsx(
-                  "w-full h-full transform overflow-hidden bg-white p-10 text-left align-middle shadow-xl transition-all max-h-[65vh]",
+                  "w-full h-full transform overflow-auto bg-white p-10 text-left align-middle shadow-xl transition-all max-h-[65vh] ",
                   {
                     "max-w-md": size === "small",
                     "max-w-xl": size === "medium",
@@ -66,7 +66,7 @@ const Title: React.FC = ({ children }) => {
   const { close } = useModal()
 
   return (
-    <Dialog.Title className="flex items-center justify-between">
+    <Dialog.Title className="flex items-center justify-between mb-3">
       <div className="text-large-semi">{children}</div>
       <div>
         <button onClick={close}>
@@ -86,7 +86,7 @@ const Description: React.FC = ({ children }) => {
 }
 
 const Body: React.FC = ({ children }) => {
-  return <div className="h-full">{children}</div>
+  return <div className="mb-4">{children}</div>
 }
 
 const Footer: React.FC = ({ children }) => {

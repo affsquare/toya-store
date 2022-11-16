@@ -27,9 +27,9 @@ const Addresses = () => {
   } = useCheckout()
 
 
-  function numberWithCommas(x: any) {
-    return x.toString().replace(/\b(\d{1,2})(\d{2})/g, '$1.$2');
-  }
+  // function numberWithCommas(x: any) {
+  //   return x.toString().replace(/\b(\d{1,2})(\d{2})/g, '$1.$2');
+  // }
 
   
   return (
@@ -73,7 +73,7 @@ const Addresses = () => {
         (
           <div>
             <div className=" px-8 py-6 text-small-regular">
-              {cart && cart.shipping_address ? (
+              {cart && cart?.shipping_address ? (
                 <>
                   <div className="bg-gray-50 flex items-start gap-x-8 mb-3 p-3">
                     <div className="bg-green-600 rounded-full min-w-[24px] h-6 flex items-center justify-center text-white text-small-regular">
@@ -82,26 +82,26 @@ const Addresses = () => {
                     <div className="flex items-start justify-between w-full">
                       <div className="flex flex-col">
                         <span>
-                          {cart.shipping_address.first_name}{" "}
-                          {cart.shipping_address.last_name}
+                          {cart?.shipping_address?.first_name}{" "}
+                          {cart?.shipping_address?.last_name}
                         </span>
                         <span>
-                          {cart.shipping_address.address_1}{" "}
-                          {cart.shipping_address.address_2}
+                          {cart?.shipping_address?.address_1}{" "}
+                          {cart?.shipping_address?.address_2}
                         </span>
                         <span>
-                          {cart.shipping_address.postal_code},{" "}
-                          {cart.shipping_address?.city?.name }
+                          {cart?.shipping_address?.postal_code},{" "}
+                          {cart?.shipping_address?.city?.name }
                         </span>
                         <span>
-                          {cart.shipping_address.country_code?.toUpperCase()}
+                          {cart?.shipping_address.country_code?.toUpperCase()}
                         </span>
                         <div className="mt-4 flex flex-col">
-                          <span>{cart.shipping_address.phone}</span>
-                          <span>{cart.email}</span>
+                          <span>{cart?.shipping_address?.phone}</span>
+                          <span>{cart?.email}</span>
                         </div>
                         {
-                          console.log(cart.shipping_address)
+                          console.log(cart?.shipping_address?.city)
                           
                         }
                         {/* {checked && (

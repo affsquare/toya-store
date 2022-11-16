@@ -1,6 +1,7 @@
 import { medusaClient } from "@lib/config"
 import { useAccount } from "@lib/context/account-context"
 import useToggleState from "@lib/hooks/use-toggle-state"
+import CitySelect from "@modules/checkout/components/city-select"
 import CountrySelect from "@modules/checkout/components/country-select"
 import Button from "@modules/common/components/button"
 import Input from "@modules/common/components/input"
@@ -57,19 +58,20 @@ const AddAddress: React.FC = () => {
     setError(undefined)
 
     const payload = {
-      first_name: data.first_name,
-      last_name: data.last_name,
-      company: data.company || "",
-      address_1: data.address_1,
-      address_2: data.address_2 || "",
-      city: data.city,
-      country_code: data.country_code,
-      province: data.province || "",
-      postal_code: data.postal_code,
-      phone: data.phone || "",
+      first_name: data?.first_name,
+      last_name: data?.last_name,
+      company: data?.company || "",
+      address_1: data?.address_1,
+      address_2: data?.address_2 || "",
+      city: data?.city,
+      country_code: data?.country_code,
+      province: data?.province || "",
+      postal_code: data?.postal_code,
+      phone: data?.phone || "",
       metadata: {},
     }
 
+    
     medusaClient.customers.addresses
       .addAddress({ address: payload })
       .then(() => {
@@ -94,7 +96,7 @@ const AddAddress: React.FC = () => {
       </button>
 
       <Modal isOpen={state} close={handleClose}>
-        <Modal.Title>Add address</Modal.Title>
+        <Modal.Title >Add address</Modal.Title>
         <Modal.Body>
           <div className="grid grid-cols-1 gap-y-10">
             <div className="grid grid-cols-2 gap-x-10">
@@ -117,10 +119,10 @@ const AddAddress: React.FC = () => {
                 autoComplete="family-name"
               />
             </div>
-            <div className="">
-              <span className="text-xs">Country / Region </span>
-              <h6 className="fw-bold text-gray-400 text-sm">Egypt</h6>
-            </div>
+            <CountrySelect
+              {...register("country_code", { required: true })}
+              autoComplete="country"
+            />
             <div className="grid grid-cols-[144px_1fr] gap-x-10">
               <Input
                 label="Postal code"
@@ -131,8 +133,16 @@ const AddAddress: React.FC = () => {
                 errors={errors}
                 autoComplete="postal-code"
               />
-              <Input
+              {/* <Input
                 label="City"
+                {...register("city", {
+                  required: "City is required",
+                })}
+                errors={errors}
+                required
+                autoComplete="locality"
+              /> */}
+              <CitySelect
                 {...register("city", {
                   required: "City is required",
                 })}
@@ -142,7 +152,7 @@ const AddAddress: React.FC = () => {
               />
             </div>
             {/* <Input label="Company" {...register("company")} errors={errors} /> */}
-            <Input
+            {/* <Input
               label="Street address"
               {...register("address_1", {
                 required: "Address is required",
@@ -156,18 +166,15 @@ const AddAddress: React.FC = () => {
               {...register("address_2")}
               errors={errors}
               autoComplete="address-line2"
-            />
-
+            /> */}
+          {/* 
             <Input
               label="Province / State"
               {...register("province")}
               errors={errors}
               autoComplete="address-level1"
-            />
-            <CountrySelect
-              {...register("country_code", { required: true })}
-              autoComplete="country"
-            />
+            /> */}
+
             <Input
               label="Phone"
               {...register("phone")}

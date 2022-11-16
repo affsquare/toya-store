@@ -85,9 +85,9 @@ const CollectionPage: NextPageWithLayout<PrefetchedPageProps> = ({
   return <></>
 }
 
-CollectionPage.getLayout = (page: ReactElement) => {
-  return <Layout>{page}</Layout>
-}
+// CollectionPage.getLayout = (page: ReactElement) => {
+//   return <Layout>{page}</Layout>
+// }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const ids = await getCollectionIds()

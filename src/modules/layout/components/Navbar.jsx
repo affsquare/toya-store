@@ -88,6 +88,9 @@ export default function Navbar() {
                             <li className={router.pathname == "/contactUs" ? "activeLink px-3 fw-bold" : "nav-item main-nav px-3 fw-bold"}>
                                 <Link className="nav-link" href="/contactUs">Contact Us</Link>
                             </li>
+                            <li className={router.pathname == "/offers" ? "activeLink px-3 fw-bold" : "nav-item main-nav px-3 fw-bold"}>
+                                <Link className="nav-link" href="/offers">Offers</Link>
+                            </li>
                             <li className={router.pathname == "/shop" ? "activeLink px-3 fw-bold" : "nav-item main-nav px-3 fw-bold"}>
                                 <Link className="nav-link" href="/shop">Shop</Link>
                             </li>

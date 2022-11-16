@@ -21,7 +21,7 @@ import { useInView } from "react-intersection-observer"
 import { Product, Region } from "@medusajs/medusa"
 import { Variant } from 'types/medusa';
 import SkeletonProductPreview from "@modules/skeletons/components/skeleton-product-preview"
-import { useProductActions } from './../lib/context/product-context';
+import { useProductActions } from '../lib/context/product-context';
 import { MEDUSA_BACKEND_URL } from "../lib/config"
 
 const httpClient = axios.create({
@@ -34,7 +34,7 @@ interface IFilterSorter {
     order?: Record<string, "ASC" | "DESC" | number>
 }
 
-const Store: NextPageWithLayout = () => {
+const Offers = () => {
 
     const { cart } = useCart()
 
@@ -61,31 +61,6 @@ const Store: NextPageWithLayout = () => {
         search: ""
     })
 
-    // const queryParams = useMemo(() => {
-    //     const p: StoreGetProductsParams = {}
-
-    //     if (cart?.id) {
-    //         p.cart_id = cart.id
-    //     }
-
-    //     p.is_giftcard = false
-
-    //     return {
-    //         ...p,
-    //         ...params,
-    //     }
-    // }, [cart?.id, params])
-
-
-
-    // useEffect(() => {
-    //     if (inView && hasNextPage) {
-    //         fetchNextPage()
-    //     }
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [inView, hasNextPage])
-
-    /*  */
     const query = useMemo(() => {
 
         let queries: string[] = [];
@@ -389,6 +364,6 @@ const Store: NextPageWithLayout = () => {
     )
 }
 
-Store.getLayout = (page) => <Layout>{page}</Layout>
+// Offers.getLayout = (page) => <Layout>{page}</Layout>
 
-export default Store
+export default Offers

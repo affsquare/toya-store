@@ -3,17 +3,17 @@ import Head from "@modules/common/components/head"
 import Layout from "@modules/layout/templates"
 import { NextPageWithLayout } from "types/global"
 
-const Login: NextPageWithLayout = () => {
+const Login = () => {
   return (
     <>
-      <Head title="Sign in" description="Sign in to your ACME account." />
+      <Head title="Sign in" description="Sign in to your Toya account." />
       <LoginTemplate />
     </>
   )
 }
 
-Login.getLayout = (page) => {
-  return <Layout>{page}</Layout>
-}
+// Login.getLayout = (page) => {
+//   return <Layout>{page}</Layout>
+// }
 
 export default Login
