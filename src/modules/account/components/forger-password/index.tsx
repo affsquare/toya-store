@@ -6,42 +6,55 @@ import { useRouter } from "next/router"
 import { useState } from "react"
 import { FieldValues, useForm } from "react-hook-form"
 
-interface SignInCredentials extends FieldValues {
+interface ForgetPasswordCredentials extends FieldValues {
   email: string
-  password: string
 }
 
-const Login = () => {
-  const { loginView, refetchCustomer } = useAccount()
+const ForgetPassword = () => {
+  const { loginView , token , setOTP } = useAccount()
+  // const token  = OTP()
+
   const [_, setCurrentView] = loginView
+  // const [ d1, setD1] = useState(token);
+  
   const [authError, setAuthError] = useState<string | undefined>(undefined)
+  // const [OTP, setOTP] = useState<any>(token)
   const router = useRouter()
 
   const handleError = (_e: Error) => {
-    setAuthError("Invalid email or password")
+    setAuthError("Invalid email")
   }
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignInCredentials>()
+  } = useForm<ForgetPasswordCredentials>()
 
   const onSubmit = handleSubmit(async (credentials) => {
-    medusaClient.auth
-      .authenticate(credentials)
-      .then(() => {
-        refetchCustomer()
-        router.push("/account")
+    localStorage.setItem('email', JSON.stringify(credentials.email));
+    medusaClient.customers
+      .generatePasswordToken(credentials)
+      .then((data) => {
+        // setOTP(data.otp)
+      // console.log(setOTP);
+        setOTP(data.otp)
+        console.log(token);
+        // let ch = OTP(data.otp);
+        // console.log(ch);
+       
+        setCurrentView(LOGIN_VIEW.VERIFY_OTP)
       })
       .catch(handleError)
   })
+  console.log(token);
+
 
   return (
     <div className="max-w-sm w-full flex flex-col items-center">
-      <h1 className="text-large-semi uppercase mb-6">Welcome back</h1>
+      {/* <h1 className="text-large-semi uppercase mb-6">Welcome back</h1> */}
       <p className="text-center text-base-regular text-gray-700 mb-8">
-        Sign in to access an enhanced shopping experience.
+        Please enter your mail to send you reset code 
       </p>
       <form className="w-full" onSubmit={onSubmit}>
         <div className="flex flex-col w-full gap-y-2">
@@ -51,23 +64,7 @@ const Login = () => {
             autoComplete="email"
             errors={errors}
           />
-          <Input
-            label="Password"
-            {...register("password", { required: "Password is required" })}
-            type="password"
-            autoComplete="current-password"
-            errors={errors}
-          />
-           <span className="text-center text-gray-700 text-small-regular mt-6">
-       
-        <button
-          onClick={() => setCurrentView(LOGIN_VIEW.FORGET_PASSWORD)}
-          className="underline"
-        >
-          Forget Password ?
-        </button>
-        .
-      </span>
+         
         </div>
         {authError && (
           <div>
@@ -78,18 +75,9 @@ const Login = () => {
         )}
         <Button className="mt-6">Enter</Button>
       </form>
-      <span className="text-center text-gray-700 text-small-regular mt-6">
-        Not a member?{" "}
-        <button
-          onClick={() => setCurrentView(LOGIN_VIEW.REGISTER)}
-          className="underline"
-        >
-          Join us
-        </button>
-        .
-      </span>
+     
     </div>
   )
 }
 
-export default Login
+export default ForgetPassword
