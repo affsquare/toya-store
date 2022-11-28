@@ -21,7 +21,7 @@ import { useInView } from "react-intersection-observer"
 import { Product, Region } from "@medusajs/medusa"
 import { Variant } from 'types/medusa';
 import SkeletonProductPreview from "@modules/skeletons/components/skeleton-product-preview"
-import { useProductActions } from './../lib/context/product-context';
+import { ProductProvider, useProductActions } from './../lib/context/product-context';
 import { MEDUSA_BACKEND_URL } from "../lib/config"
 
 const httpClient = axios.create({
@@ -324,9 +324,12 @@ const Store: NextPageWithLayout = () => {
                                 <ul className="grid grid-cols-1 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
                                     {
                                         products?.map((p: any) => (
+                                            // console.log(p.variants)
                                             <>
                                                 <li className="position-relative" key={p.id}  >
+                                                    <ProductProvider product={p}>
                                                     <ProductPreview {...p} />
+                                                    </ProductProvider>
                                                 </li>
                                             </>
                                         ))

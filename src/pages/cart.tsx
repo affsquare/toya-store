@@ -4,7 +4,7 @@ import Layout from "@modules/layout/templates"
 import { ReactElement } from "react"
 import { NextPageWithLayout } from "types/global"
 
-const Cart: NextPageWithLayout = () => {
+const Cart = () => {
   return (
     <>
       <Head title="Shopping Bag" description="View your shopping bag" />
@@ -13,8 +13,8 @@ const Cart: NextPageWithLayout = () => {
   )
 }
 
-Cart.getLayout = (page: ReactElement) => {
-  return <Layout>{page}</Layout>
-}
+// Cart.getLayout = (page: ReactElement) => {
+//   return <Layout>{page}</Layout>
+// }
 
 export default Cart

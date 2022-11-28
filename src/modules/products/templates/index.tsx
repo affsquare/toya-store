@@ -7,7 +7,7 @@ import ProductInfo from "@modules/products/templates/product-info"
 import React, { useRef } from "react"
 import ImageGallery from "../components/image-gallary"
 import MobileActions from "../components/mobile-actions"
-import ProductPreview from '@modules/products/components/product-preview';
+// import ProductPreview from '@modules/products/components/product-preview';
 import { Image as MedusaImage } from "@medusajs/medusa"
 import Image from "next/image"
 

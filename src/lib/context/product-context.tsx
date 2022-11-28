@@ -44,7 +44,7 @@ export const ProductProvider = ({
 
   const { addItem } = useStore()
   const { cart } = useCart()
-  const { variants } = product;
+  const { variants } = product ;
 
   useEffect(() => {
     // initialize the option state
