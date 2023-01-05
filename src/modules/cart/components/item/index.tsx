@@ -12,6 +12,7 @@ import Plus from "@modules/common/icons/plus"
 import Minus from "@modules/common/icons/minus"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { formatAmount } from "medusa-react"
+import Link from "next/link"
 
 type ItemProps = {
     item: Omit<LineItem, "beforeInsert">
@@ -41,7 +42,7 @@ const Item = ({ item, region }: ItemProps) => {
 
 
     return (
-        <>
+        <Link href={`/products/${item.id}`}>
             <div className="row items-center bg-gray-50">
 
                 {/* Image */}
@@ -149,7 +150,7 @@ const Item = ({ item, region }: ItemProps) => {
           </NativeSelect> */}
 
             </div>
-        </>
+        </Link>
     )
 }
 

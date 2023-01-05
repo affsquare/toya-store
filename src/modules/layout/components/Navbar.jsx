@@ -77,7 +77,7 @@ export default function Navbar() {
                         </Link>
                     </div>
 
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className="navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className={router.pathname == "/" ? "activeLink px-3 fw-bold" : "nav-item main-nav px-3 fw-bold"}>
                                 <Link className="nav-link" href="/">Home</Link>

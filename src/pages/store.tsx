@@ -323,13 +323,14 @@ const Store: NextPageWithLayout = () => {
                                 /*cols Products Preview */
                                 <ul className="grid grid-cols-1 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
                                     {
-                                        products?.map((p: any) => (
+                                        products.map((p: any) => (
                                             // console.log(p.variants)
                                             <>
                                                 <li className="position-relative" key={p.id}  >
-                                                    <ProductProvider product={p}>
+                                                   {/* <ProductProvider product={p}> */}
                                                     <ProductPreview {...p} />
-                                                    </ProductProvider>
+                                                    {/* </ProductProvider> */}
+                                                    
                                                 </li>
                                             </>
                                         ))

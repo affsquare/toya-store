@@ -6,7 +6,7 @@ import { QueryClient } from "react-query"
 // let MEDUSA_BACKEND_URL = "http://localhost:9000"
 // let MEDUSA_BACKEND_URL = "http://toyaapp-env.eba-g9uk3evy.eu-west-2.elasticbeanstalk.com"
 // let MEDUSA_BACKEND_URL = "http://ec2-3-9-43-164.eu-west-2.compute.amazonaws.com:9000"
-let MEDUSA_BACKEND_URL = "http://156.210.139.23:9001"
+let MEDUSA_BACKEND_URL = "http://197.54.214.201:9001"
 
 
 /*if (process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL) {

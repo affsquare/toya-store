@@ -120,8 +120,14 @@ export const ProductProvider = ({
 
   const addToCart = (quantity: any) => {
     if (variant) {
+      console.log(variant)
       addItem({
         variantId: variant.id,
+        quantity,
+      })
+    }else{
+      addItem({
+        variantId:"variant_01GDX4NZ4FN7JZ1BRXB060KDES",
         quantity,
       })
     }
