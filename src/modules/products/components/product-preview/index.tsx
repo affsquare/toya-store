@@ -44,7 +44,7 @@ const ProductPreview = ({
     },)
 
     const [addToCart_, setAddToCart] = useState(false)
-    //let { addToCart } = useProductActions()
+    let { addToCart } = useProductActions()
 
     function numberWithCommas(x: any) {
         return x.toString().replace(/\b(\d{1,2})(\d{2})/g, '$1.$2');
@@ -63,7 +63,7 @@ const ProductPreview = ({
                         {addToCart_ ? <button onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            //addToCart(1);
+                            addToCart(1);
                         }
                         } className="toya-bg text-white position-absolute rounded-0 start-0 bottom-0  py-1 px-2">
                             {"Add to cart"}

@@ -40,7 +40,6 @@ const Store: NextPageWithLayout = () => {
 
     const { ref, inView } = useInView()
 
-
     const [search, setSearchScreen] = useState()
 
     const [collections, setCollections] = useState([])
@@ -327,9 +326,9 @@ const Store: NextPageWithLayout = () => {
                                             // console.log(p.variants)
                                             <>
                                                 <li className="position-relative" key={p.id}  >
-                                                   {/* <ProductProvider product={p}> */}
+                                                   <ProductProvider product={p}>
                                                     <ProductPreview {...p} />
-                                                    {/* </ProductProvider> */}
+                                                    </ProductProvider>
                                                     
                                                 </li>
                                             </>

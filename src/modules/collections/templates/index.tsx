@@ -96,9 +96,9 @@ const CollectionTemplate: React.FC<CollectionTemplateProps> = ({
       <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8">
         {products?.map((p:any) => (
           <li key={p.id}>
-            {/* <ProductProvider product ={p}> */}
+            <ProductProvider product ={p}>
             <ProductPreview {...p} />
-            {/* </ProductProvider> */}
+            </ProductProvider>
           </li>
         ))}
         {isLoading &&

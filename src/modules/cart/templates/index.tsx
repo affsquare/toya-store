@@ -2,6 +2,7 @@ import useEnrichedLineItems from "@lib/hooks/use-enrich-line-items"
 import DiscountCode from "@modules/checkout/components/discount-code"
 import SkeletonCartPage from "@modules/skeletons/templates/skeleton-cart-page"
 import { useCart, useMeCustomer } from "medusa-react"
+import { useEffect } from "react"
 import EmptyCartMessage from "../components/empty-cart-message"
 import SignInPrompt from "../components/sign-in-prompt"
 import ItemsTemplate from "./items"
@@ -13,13 +14,14 @@ const CartTemplate = () => {
   const items = useEnrichedLineItems()
 
   if (!cart || !cart?.id?.length || isLoading) {
+    console.log(cart?.items)
     return <SkeletonCartPage />
   }
-
   return (
     <div className="bg-gray-50 py-12">
       <div className="container">
         {cart.items.length ? (
+          // console.log(cart.items[0].id)
           <div className="grid grid-cols-1 small:grid-cols-[1fr_360px] gap-x-8">
             <div className="flex flex-col bg-white p-6 gap-y-6">
               {!customer && <SignInPrompt />}

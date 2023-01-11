@@ -3,7 +3,9 @@ import clsx from 'clsx';
 import { MEDUSA_BACKEND_URL } from "../../../lib/config"
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import ProductPreview from "@modules/products/components/product-preview"
+import ProductPreview from "@modules/products/components/product-preview";
+import { ProductProvider } from "@lib/context/product-context"
+
 
 import SkeletonProductPreview from "@modules/skeletons/components/skeleton-product-preview"
 
@@ -34,10 +36,9 @@ export default function BestSeller() {
                             // console.log(p.variants)
                             <>
                                 <li className="position-relative" key={p.id}  >
-
-                                    <ProductPreview {...p} />
-
-
+                                    <ProductProvider product ={p}>
+                <ProductPreview {...p} />
+                </ProductProvider>
                                 </li>
                             </>
                         ))

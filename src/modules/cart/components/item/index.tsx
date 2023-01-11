@@ -42,7 +42,7 @@ const Item = ({ item, region }: ItemProps) => {
 
 
     return (
-        <Link href={`/products/${item.id}`}>
+        <Link href={`/products/${item.variant.product.id}`}>
             <div className="row items-center bg-gray-50">
 
                 {/* Image */}
