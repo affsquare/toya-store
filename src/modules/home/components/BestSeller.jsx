@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { MEDUSA_BACKEND_URL } from "../../../lib/config"
 import { useRouter } from 'next/router';
@@ -16,156 +16,158 @@ export default function BestSeller() {
     })
     const [products, setProducts] = useState([]);
 
-    // const [collections, setCollections] = useState([])
+    const [collections, setCollections] = useState([])
 
     // "skin", "men", 'body', 'hair'
-    // useEffect(() => {
-    //     httpClient.get("/store/collections").then(({ data }) => {
-    //         setCollections(data?.collections)
-    //     })
-    // }, [])
+    useEffect(() => {
+        httpClient.get(`/store/products`).then(({ data }) => {
+            setProducts(data?.products)
+
+
+        })
+    }, [])
     const tabs = [
         {
             title: "skin",
-            id: "pcol_01GHBD8YS215TAVFW0H4QT5BJP",
+            id: "skin",
             render: (props) =>
                 <div className='d-flex justify-content-center'>
-                     <ul className="grid grid-cols-1 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
-                    {
-                        props.products.map((p) => (
-                            // console.log(p.variants)
-                            <>
-                                <li className="position-relative" key={p.id}  >
-                                    <ProductProvider product ={p}>
-                <ProductPreview {...p} />
-                </ProductProvider>
-                                </li>
-                            </>
-                        ))
-                    }
-                    {/* {isLoading &&
+                    <ul className="grid grid-cols-1 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
+                        {
+                            props.products.map((p) => (
+                                // console.log(p.variants)
+                                <>
+                                    <li className="position-relative" key={p.id}  >
+                                        <ProductProvider product={p}>
+                                            <ProductPreview {...p} />
+                                        </ProductProvider>
+                                    </li>
+                                </>
+                            ))
+                        }
+                        {/* {isLoading &&
                 !products.length &&
                 repeat(8).map((index) => (
                     <li key={index}>
                         <SkeletonProductPreview />
                     </li>
                 ))} */}
-                    {/* {isFetchingNextPage &&
+                        {/* {isFetchingNextPage &&
                 repeat(getNumberOfSkeletons(data?.pages)).map((index) => (
                     <li key={index}>
                         <SkeletonProductPreview />
                     </li>
                 ))} */}
-                </ul>
+                    </ul>
                 </div>
         },
         {
             title: "men",
-            id: "pcol_01GFGGKNZQ17VP6TQ2GV0AGFPD",
-            render: (props) => 
-            <div className='d-flex justify-content-center'>
-            <ul className="grid grid-cols-1 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
-           {
-               props.products.map((p) => (
-                   // console.log(p.variants)
-                   <>
-                       <li className="position-relative" key={p.id}  >
+            id: "man",
+            render: (props) =>
+                <div className='d-flex justify-content-center'>
+                    <ul className="grid grid-cols-1 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
+                        {
+                            props.products.map((p) => (
+                                // console.log(p.variants)
+                                <>
+                                    <li className="position-relative" key={p.id}  >
+                                        <ProductProvider product={p}>
+                                            <ProductPreview {...p} />
+                                        </ProductProvider>
 
-                           <ProductPreview {...p} />
-
-
-                       </li>
-                   </>
-               ))
-           }
-           {/* {isLoading &&
+                                    </li>
+                                </>
+                            ))
+                        }
+                        {/* {isLoading &&
        !products.length &&
        repeat(8).map((index) => (
            <li key={index}>
                <SkeletonProductPreview />
            </li>
        ))} */}
-           {/* {isFetchingNextPage &&
+                        {/* {isFetchingNextPage &&
        repeat(getNumberOfSkeletons(data?.pages)).map((index) => (
            <li key={index}>
                <SkeletonProductPreview />
            </li>
        ))} */}
-       </ul>
-       </div>
+                    </ul>
+                </div>
 
         },
         {
             title: "body",
-            id: "pcol_01GHBD5RWXQM6DTXBQ9B7XF6YV",
+            id: "women",
 
-            render: (props) => 
-            <div className='d-flex justify-content-center'>
-            <ul className="grid grid-cols-1 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
-           {
-               props.products.map((p) => (
-                   // console.log(p.variants)
-                   <>
-                       <li className="position-relative" key={p.id}  >
+            render: (props) =>
+                <div className='d-flex justify-content-center'>
+                    <ul className="grid grid-cols-1 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
+                        {
+                            props.products.map((p) => (
+                                // console.log(p.variants)
+                                <>
+                                    <li className="position-relative" key={p.id}  >
 
-                           <ProductPreview {...p} />
-
-
-                       </li>
-                   </>
-               ))
-           }
-           {/* {isLoading &&
+                                        <ProductProvider product={p}>
+                                            <ProductPreview {...p} />
+                                        </ProductProvider>
+                                    </li>
+                                </>
+                            ))
+                        }
+                        {/* {isLoading &&
        !products.length &&
        repeat(8).map((index) => (
            <li key={index}>
                <SkeletonProductPreview />
            </li>
        ))} */}
-           {/* {isFetchingNextPage &&
+                        {/* {isFetchingNextPage &&
        repeat(getNumberOfSkeletons(data?.pages)).map((index) => (
            <li key={index}>
                <SkeletonProductPreview />
            </li>
        ))} */}
-       </ul>
-       </div>
+                    </ul>
+                </div>
         },
         {
             title: "hair",
-            id: "pcol_01GHBD9GAP8ZP211DF9FM27KA0",
+            id: "hari",
 
-            render: (props) => 
-            <div className='d-flex justify-content-center'>
-            <ul className="grid grid-cols-1 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
-           {
-               props.products.map((p) => (
-                   // console.log(p.variants)
-                   <>
-                       <li className="position-relative" key={p.id}  >
+            render: (props) =>
+                <div className='d-flex justify-content-center'>
+                    <ul className="grid grid-cols-1 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
+                        {
+                            props.products.map((p) => (
+                                // console.log(p.variants)
+                                <>
+                                    <li className="position-relative" key={p.id}  >
+                                        <ProductProvider product={p}>
+                                            <ProductPreview {...p} />
+                                        </ProductProvider>
 
-                           <ProductPreview {...p} />
-
-
-                       </li>
-                   </>
-               ))
-           }
-           {/* {isLoading &&
+                                    </li>
+                                </>
+                            ))
+                        }
+                        {/* {isLoading &&
        !products.length &&
        repeat(8).map((index) => (
            <li key={index}>
                <SkeletonProductPreview />
            </li>
        ))} */}
-           {/* {isFetchingNextPage &&
+                        {/* {isFetchingNextPage &&
        repeat(getNumberOfSkeletons(data?.pages)).map((index) => (
            <li key={index}>
                <SkeletonProductPreview />
            </li>
        ))} */}
-       </ul>
-       </div>
+                    </ul>
+                </div>
         }
     ]
 
@@ -194,12 +196,13 @@ export default function BestSeller() {
                         <div className="tab-content" id="pills-tabContent">
                             {tabs.map((t, i) => {
                                 if (i == currentActive) {
-                                    httpClient.get(`/store/products?filter[collection]=${t.id}`).then(({ data }) => {
-                                        setProducts(data.products)
-                                        console.log(data.products)
+                                    // httpClient.get(`/store/products?filter[collection]=${t.id}`).then(({ data }) => {
+                                    //     setProducts(data.products)
+                                    //     console.log(data.products)
 
-                                    })
-                                    return <t.render products={products} key={i} />
+                                    // })
+                                    // console.log(products.filter(el => el.collection.title == t.id))
+                                    return <t.render products={products.filter(el => el.collection.title == t.id)} key={i} />
                                 }
                             })}
                         </div>
